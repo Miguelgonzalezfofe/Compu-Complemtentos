@@ -1,0 +1,310 @@
+/* ESTILOS GENERALES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ENCABEZADO */
+header {
+    border: 1px solid;
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+/* BARRANDE NAVEGACION */
+header nav {
+    border: 1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* CONTENEDIR DEL LOGO */
+header nav .contenedor_img {
+    border: 1px solid;
+    width: 120px;
+}
+
+/* LOGO */
+header nav .contenedor_img img {
+    width: 100%;
+}
+
+/* LISRA DE ELEMENTOS NO ORDENADOS */
+header nav ul {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* ENLACES DE NAVEGACION */
+header nav ul li a {
+    text-decoration: none;
+}
+
+/* CONTENEDOR SESION */
+header .sesion {
+    border: 1px solid;
+    width: 250px;
+}
+
+/* CAJA DE SESION IMG */
+header .sesion .img-sesion {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* IMG DE SESION */
+header .sesion .img-sesion img {
+    width: 25%;
+}
+header .sesion .inicio_sesion{
+    text-align: center;
+}
+header .sesion .inicio_sesion p{
+    cursor: pointer;
+}
+/* CONTENEDOR CARRITO */
+header .carrito_de_compras {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: auto;
+}
+/* IMG DEL CARRITO */
+header .carrito_de_compras img {
+    width: 65%;
+
+}
+/* FINALIZACION DEL HEADER */
+
+/* INICIO DEL MAIN */
+/* PRESENTACION */
+main .presentacion {
+    background: url("img/logo/banner_img_mercedes benzjpg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    border: 1px solid;
+    width: 100%;
+    height: 300px;
+}
+/* TEXTO PRESENTACION */
+main .presentacion p,
+h1 {
+    text-align: center;
+}
+/* CONTENEDOR DE PRODUCTOS */
+main .section_productos {
+    width: 100%;
+    height: 250px;
+}
+main .section_productos .filtro{
+    text-align: center;
+    border: 1px solid;
+    margin: auto;
+    width: 85%;
+    height: 80px;
+    padding: 10px;
+} 
+main .section_productos .filtro h3{
+    text-align: center;
+}
+main .section_productos .filtro form{
+    width: 100%;
+    height: 100%;
+}
+main .section_productos .productos {
+    width: 90%;
+    border: 1px solid;
+    margin: auto;
+}
+
+main .section_productos .productos h2 {
+    text-align: center;
+}
+
+main .section_productos .productos .caja_productos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+main .section_productos .productos .caja_productos .producto {
+    width: 250px;
+    height: 200px;
+    border: 1px solid;
+    padding: 5px;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+}
+/* INICIO DE ESTILO REGISTRO USUARIO */
+.contenedor_registro{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.655);
+    /* boton para quitar y agregar la pantalla del registro */
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor_registro .registro{
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
+    width: 450px;
+    height: 450px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.contenedor_registro .registro .cerrar{
+    width: 23px;
+    height: 23px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 100%;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+.contenedor_registro .registro h3{
+    font-size: 40px;
+    text-align: center;
+}
+.contenedor_registro .registro form{
+    width: 100%;
+    height: auto;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor_registro .registro form label{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.contenedor_registro .registro form input{
+    height: 30px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+/* INGRESO USUARIO */
+.contenedor_ingreso{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.655);
+    /* boton para quitar y agregar la pantalla del registro */
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor_ingreso .ingreso{
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
+    width: 450px;
+    height: 450px;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.contenedor_ingreso .ingreso .cerrar{
+    width: 23px;
+    height: 23px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 100%;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+.contenedor_ingreso .ingreso h3{
+    font-size: 40px;
+    text-align: center;
+}
+
+.contenedor_ingreso .ingreso #foto_perfil_usuario{
+    width: 150px;
+}
+
+.contenedor_ingreso .ingreso form{
+    width: 100%;
+    height: auto;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contenedor_ingreso .ingreso form label{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.contenedor_ingreso .ingreso form input{
+    height: 30px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+/* <!-- continuar con el formulario para ingresar el nuevo usuario capturar los datos en un objeto para pasarlo a json y enviarlo al sesionstorage o local storage y asi cuando inicie sesion verifique el correo y contraseña del usuario--> */
+#btnIngreso{
+    font-size: 23px;
+    width: 85%;
+    height: 60px;
+    border-radius: 10px;
+}
+#btnRegistrase{
+    font-size: 23px;
+    width: 85%;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.perfil_iniciado{
+    text-align: center;
+
+}

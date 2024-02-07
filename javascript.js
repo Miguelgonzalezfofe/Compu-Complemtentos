@@ -1,0 +1,166 @@
+/* 
+Registro usuario
+login Usuario
+array con objetos de los productos
+rendirizacion de producto en html segun la API
+Boton de agregar al carrtio
+mostrar carrito de compra
+    nombre > precio 
+
+    total a pagar
+boton de comprar carrito
+    itilizar un procesador de pago con la api de mercado pago 
+filtro de productos
+
+
+footer contacto con formulario 
+*/
+/* variables */
+/* 
+cauchos
+carburador
+radiador
+bujia
+mortor
+bolante
+caja de cambios
+puerta 
+faros
+ */
+
+
+
+
+
+
+
+/* VERIFICACION SI TENEMOS UN USUARIO EN LINEA */
+let usuario
+let usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
+usuarioEnLoSt ? console.log(usuarioEnLoSt) : console.log("no tenemos usuario")
+
+/* EVENTO ABRIR REGISTRO DE USUARIO */
+let registroDeUsuario = document.getElementById("registroDeUsuario").addEventListener("click", () => abrirRegistro())
+
+let ingresoDeUsuario = document.getElementById("inicioSesionUsuario").addEventListener("click", () => abrirIngreso())
+
+/* EVENTO CERRAR REGISTRO DE USUARIO */
+let cierreRegistroUsuario = document.getElementById("cerrarRegistroUsuario").addEventListener("click", () => cerrarRegistro())
+
+let cierreIngresoUsuario = document.getElementById("cerrarIngresoUsuario").addEventListener("click", () => cerrarIngreso())
+
+
+class registroUsuario {
+    constructor(nombre, apellido, correo, contraseña, termYCond) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.contraseña = contraseña
+        this.termYcond = termYCond
+    }
+}
+class registroP {
+    constructor(apellido) {
+        this.apellido = apellido
+    }
+}
+/* LOGICA DE REGISTRO USUARIO********************** */
+/* EVENTO DE ABRIR LA VENTADA DE REGISTRO */
+function abrirRegistro() {
+    let ventanaReg = document.getElementById("registro")
+    ventanaReg.style.display = "flex"
+}
+
+/* EVENTO DE CERRRAR LA VENTA DE REGISTRO */
+function cerrarRegistro() {
+    let ventanaReg = document.getElementById("registro")
+    ventanaReg.style.display = "none"
+}
+let regNomUsu = document.getElementById("registroNombreUsuario").addEventListener("change", (event) => { regNomUsu = event.target.value })
+let regApellUsu = document.getElementById("registroApellidoUsuario").addEventListener("change", (event) => { regApellUsu = event.target.value })
+let regCorreUsu = document.getElementById("registroCorreoUsuario").addEventListener("change", (event) => { regCorreUsu = event.target.value })
+let regcontrUsu = document.getElementById("registroContraseñaUsuario").addEventListener("change", (event) => { regcontrUsu = event.target.value })
+let terYConUsu = document.getElementById("terminosYCondiciones").addEventListener("change", (event) => { teryconUsu = event.target.value })
+
+
+/* BOTON DE CRACION DE USUARIO */
+let btnRegistrase = document.getElementById("btnRegistrase").addEventListener("click", () => creacionUsuario())
+/* FUNCION DE CRACION DEL USUARIO */
+function creacionUsuario() {
+    usuarioEnLoSt = new registroUsuario(regNomUsu, regApellUsu, regCorreUsu, regcontrUsu, terYConUsu)
+    localStorage.setItem("usuario", JSON.stringify(usuarioEnLoSt))
+    // console.log(usuario)
+    cerrarRegistro()
+
+
+}
+
+
+/* FINAL LOGICA REGISTRO USUARIO ******************* */
+
+/* LOGICA INGRESO USUARIO ************************* */
+function cerrarIngreso() {
+    let ventanaing = document.getElementById("ventanaIngreso")
+    ventanaing.style.display = "none"
+}
+function abrirIngreso() {
+    let ventanaing = document.getElementById("ventanaIngreso")
+    ventanaing.style.display = "flex"
+}
+/*DATOS INGRESADO DEL USUARIO  */
+let ingCorrUsu = document.getElementById("ingresoCorreoUsuario").addEventListener("change", (event) => ingCorrUsu = event.target.value)
+let contrUsu = document.getElementById("ingresoContraseñaUsuario").addEventListener("change", (event) => contrUsu = event.target.value)
+
+/* DATOS DEL LOCAL STORAGE DEL USUARIO */
+/* DESESTRUCTURACINO */
+const { nombre,apellido,correo, contraseña } = usuarioEnLoSt
+
+/* BOTON DE INGRESO USUARIO */
+let btnIngreso = document.getElementById("btnIngreso").addEventListener("click", () => ingresoUsuario())
+
+/* FUNCION DE INGRESOS DEL USUARIO*/
+function ingresoUsuario() {
+    validacionDatos() ? cambioDePerfil() : console.log("no ingresaste")
+    
+
+}
+function validacionDatos() {
+    if (validacionContraseña() && validacionCorreo()) {
+        return true
+    } else {
+        return false
+    }
+    // validacionContraseña() 
+}
+function validacionCorreo() {
+    if (ingCorrUsu == correo) {
+        return true
+    } else {
+        return false
+    }
+}
+function validacionContraseña() {
+    if (contrUsu === contraseña) {
+        return true
+    } else {
+        return false
+    }
+}
+
+/* CAMBIO DE PERFIL DEL USUARIO  */
+function cambioDePerfil(){
+    let perfil = document.getElementById("inicio_registo_Sesion")
+    perfil.innerHTML = `<p class="perfil_iniciado">${nombre} ${apellido}</p>`
+    cerrarIngreso()
+}
+/* FINAL LOCICA INGRESO USUARIO */
+
+/* continuar con el addventlistener para captar lo que escriben en el formulario  */
+// console.log(regNomUsu.innerText)
+// console.log(regApellUsu.innerText)
+// console.log(regCorreUsu.innerText)
+// // console.log(regcontrUsu.innerText)
+// console.log(teryconUsu.innerText)
+
+
+/* <!-- continuar con el formulario para ingresar el nuevo usuario capturar los datos en un objeto para pasarlo a json y enviarlo al sesionstorage o local storage y asi cuando inicie sesion verifique el correo y contraseña del usuario--> */

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="contenedor_img">
+                <img src="img/logo/logo_mercedez_benz.png" alt="logo">
+            </div>
+            <ul>
+                <li><a href="#">inicio</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">contacto</a></li>
+            </ul>
+        </nav>
+        <div class="sesion">
+            <div class="img-sesion">
+                <img src="img/logo/usuarioSinRegistro.png" alt="img_sesion" id="foto_perfil_usuario">
+                <div class="inicio_sesion" id="inicio_registo_Sesion">
+                    <p id="inicioSesionUsuario"">Iniciar sesion</p>
+                    <br>
+                    <p id="registroDeUsuario">Resistrase</p>
+                </div>
+            </div>
+        </div>
+        <div class="carrito_de_compras" id="carritoCompras">
+            <img src="img/logo/carrito.png" alt="">
+        </div>
+    </header>
+    <main>
+        <section class="presentacion">
+            <h1>Presentacion</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt excepturi facilis pariatur ipsum
+                expedita et! Aliquam obcaecati nobis pariatur eos?</p>
+            <div class="contenedor_registro" id="registro" >
+                <div class="registro">
+                    <div class="cerrar" id="cerrarRegistroUsuario">X</div>
+                    <h3>Registro de usuario</h3>
+                    <form>
+                        <label for="registroNombreUsuario">Nombre</label>
+                        <input type="text" id="registroNombreUsuario" name="registroNombreUsuario">
+                        <label for="registroApellidoUsuario">Apellido</label>
+                        <input type="text" id="registroApellidoUsuario">
+                        <label for="registroCorreoUsuario">Correo</label>
+                        <input type="email" id="registroCorreoUsuario">
+                        <label for="registroContraseñaUsuario">Contraseña</label>
+                        <input type="password" id="registroContraseñaUsuario">
+                        <div class="terminos_y_condiciones">
+                            <input type="radio" name="TerminosYCondiciones" id="terminosYCondiciones">
+                            <label for="TerminosYCondiciones"><a href="#" target="_blank">Terminos y condiciones</a></label>
+                        </div>
+                        <!-- continuar con el formulario para ingresar el nuevo usuario capturar los datos en un objeto para pasarlo a json y enviarlo al sesionstorage o local storage y asi cuando inicie sesion verifique el correo y contraseña del usuario-->
+                    </form>
+                    <input type="button" id="btnRegistrase" value="Registrarse">
+                </div>
+            </div>
+            <div class="contenedor_ingreso" id="ventanaIngreso" >
+                <div class="ingreso">
+                    <div class="cerrar" id="cerrarIngresoUsuario">X</div>
+                    <h3>Ingreso de usuario</h3>
+                    <img src="img/logo/usuarioSinRegistro.png" alt="logo" id="foto_perfil_usuario">
+                    <form>
+                        <label for="ingresoCorreoUsuario">Correo</label>
+                        <input type="email" id="ingresoCorreoUsuario">
+                        <label for="ingresoContraseñaUsuario">Contraseña</label>
+                        <input type="password" id="ingresoContraseñaUsuario">
+                    </form>
+                    <input type="button" id="btnIngreso" value="Ingresar">
+                </div>
+            </div>
+        </section>
+        <div class="section_productos">
+            <div class="filtro">
+                <h3>Buscar Producto</h3>
+                <form>
+                    <label for="">Producto</label>
+                    <input type="text" id="productoFiltro">
+                    <label for="">Rango de precios</label>
+                    <input type="range">
+                    <label for=""></label>
+                </form>
+            </div>
+            <section class="productos">
+                <h2>Productos</h2>
+
+                <div class="caja_productos">
+                    <div class="producto">
+                        <img src="#" alt="producto">
+                        <p class="precio" id="precio">$</p>
+                        <p class="drescripcion" id="descripcion">descripcion</p>
+                        <button type="button" id="botonAgregarProducto">Agregar producto</button>
+                    </div>
+                    <div class="producto">
+                        <img src="#" alt="producto">
+                        <p class="precio" id="precio">$</p>
+                        <p class="drescripcion" id="descripcion">descripcion</p>
+                        <button type="button" id="botonAgregarProducto">Agregar producto</button>
+                    </div>
+                    <div class="producto">
+                        <img src="#" alt="producto">
+                        <p class="precio" id="precio">$</p>
+                        <p class="drescripcion" id="descripcion">descripcion</p>
+                        <button type="button" id="botonAgregarProducto">Agregar producto</button>
+                    </div>
+                    <div class="producto">
+                        <img src="#" alt="producto">
+                        <p class="precio" id="precio">$</p>
+                        <p class="drescripcion" id="descripcion">descripcion</p>
+                        <button type="button" id="botonAgregarProducto">Agregar producto</button>
+                    </div>
+                    <div class="producto">
+                        <img src="#" alt="producto">
+                        <p class="precio" id="precio">$</p>
+                        <p class="drescripcion" id="descripcion">descripcion</p>
+                        <button type="button" id="botonAgregarProducto">Agregar producto</button>
+                    </div>
+                    <div class="producto">
+                        <img src="#" alt="producto">
+                        <p class="precio" id="precio">$</p>
+                        <p class="drescripcion" id="descripcion">descripcion</p>
+                        <button type="button" id="botonAgregarProducto">Agregar producto</button>
+                    </div>
+                    <div class="producto">
+                        <img src="#" alt="producto">
+                        <p class="precio" id="precio">$</p>
+                        <p class="drescripcion" id="descripcion">descripcion</p>
+                        <button type="button" id="botonAgregarProducto">Agregar producto</button>
+                    </div>
+                    <div class="producto">
+                        <img src="#" alt="producto">
+                        <p class="precio" id="precio">$</p>
+                        <p class="drescripcion" id="descripcion">descripcion</p>
+                        <button type="button" id="botonAgregarProducto">Agregar producto</button>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+        <footer class="pie_pagina">
+            <h3>FOOTER</h3>
+        </footer>
+
+    </main>
+
+
+    <script src="javascript.js"></script>
+</body>
+
+</html>
