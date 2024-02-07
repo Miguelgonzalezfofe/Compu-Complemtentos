@@ -113,7 +113,7 @@ let contrUsu = document.getElementById("ingresoContraseñaUsuario").addEventList
 
 /* DATOS DEL LOCAL STORAGE DEL USUARIO */
 /* DESESTRUCTURACINO */
-const { nombre,apellido,correo, contraseña } = usuarioEnLoSt
+const { nombre, apellido, correo, contraseña } = usuarioEnLoSt
 
 /* BOTON DE INGRESO USUARIO */
 let btnIngreso = document.getElementById("btnIngreso").addEventListener("click", () => ingresoUsuario())
@@ -121,7 +121,7 @@ let btnIngreso = document.getElementById("btnIngreso").addEventListener("click",
 /* FUNCION DE INGRESOS DEL USUARIO*/
 function ingresoUsuario() {
     validacionDatos() ? cambioDePerfil() : console.log("no ingresaste")
-    
+
 
 }
 function validacionDatos() {
@@ -148,7 +148,7 @@ function validacionContraseña() {
 }
 
 /* CAMBIO DE PERFIL DEL USUARIO  */
-function cambioDePerfil(){
+function cambioDePerfil() {
     let perfil = document.getElementById("inicio_registo_Sesion")
     perfil.innerHTML = `<p class="perfil_iniciado">${nombre} ${apellido}</p>`
     cerrarIngreso()
@@ -164,3 +164,51 @@ function cambioDePerfil(){
 
 
 /* <!-- continuar con el formulario para ingresar el nuevo usuario capturar los datos en un objeto para pasarlo a json y enviarlo al sesionstorage o local storage y asi cuando inicie sesion verifique el correo y contraseña del usuario--> */
+
+
+
+/* PRODUCTOS */
+
+class nuevoProducto {
+    constructor(nombre, precio, img) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.img = img
+    }
+}
+
+const productos = []
+
+productos.push(
+    new nuevoProducto("Comsola EXBOX SERIES S ", 750, "https://images.start.com.ar/RRS-00002.jpg"),
+    new nuevoProducto("AURICULAR SONY PS5", 200, "https://images.start.com.ar/3006433.jpg"),
+    new nuevoProducto("NOTEBOOK GAMER ASUS", 2500, "https://images.start.com.ar/G513RM-HQ084W-365.jpg"),
+    new nuevoProducto("JOYSTICK MICROSOFT XBOX", 130, "https://images.start.com.ar/QAS-00007.jpg"),
+    new nuevoProducto("CONSOLA SONY PLAYSTATION 4TB", 1200, "https://images.start.com.ar/1000037231.jpg"),
+    new nuevoProducto("MOUSE GAMER", 75, "https://images.start.com.ar/910-006366.jpg"),
+    new nuevoProducto("TECLADO GAMER G715", 190, "https://images.start.com.ar/920-010453.jpg"),
+    new nuevoProducto("MONITOR SAMSUNG 24", 270, "https://images.start.com.ar/LF24T350FHLCZB.jpg"),
+    new nuevoProducto("TACLADO GAMER TRUST GTX 833", 25, "https://images.start.com.ar/24067.jpg"),
+    new nuevoProducto("TECLADO MICROSOFT BLUETOOTH ",84,"https://images.start.com.ar/21Y-00061.jpg"),
+    new nuevoProducto("TECLADO Y MOUSE TRUST GAMER ",52,"https://images.start.com.ar/22460.jpg"),
+    new nuevoProducto("DISCO INTERNO SSD BX500-240GB ",35,"https://images.start.com.ar/CRU-CT240BX500SSD1.jpg"),
+
+)
+
+
+/* CREACION DE LOS PRODUCTOS EN LA WEB */
+let padreCajaProductos = document.getElementById("cajaProductos")
+for (const x of productos) {
+    let div = document.createElement("div")
+    div.innerHTML = `
+    <div class="producto">
+    <img src="${x.img}" alt="producto">
+    <p class="nombre_producto">${x.nombre}</p>
+    <p class="precio" id="precio">$${x.precio}</p>
+    <div class="caja_boton">
+    <button type="button" id="botonAgregarProducto">Agregar producto</button>
+    </div>
+    </div>
+    `
+    padreCajaProductos.append(div)
+}
