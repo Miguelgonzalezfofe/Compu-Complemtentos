@@ -113,7 +113,7 @@ let contrUsu = document.getElementById("ingresoContraseñaUsuario").addEventList
 
 /* DATOS DEL LOCAL STORAGE DEL USUARIO */
 /* DESESTRUCTURACINO */
-const { nombre, apellido, correo, contraseña } = usuarioEnLoSt
+usuarioEnLoSt? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : console.log("no tienes usuario")
 
 /* BOTON DE INGRESO USUARIO */
 let btnIngreso = document.getElementById("btnIngreso").addEventListener("click", () => ingresoUsuario())
