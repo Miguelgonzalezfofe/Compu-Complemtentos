@@ -37,7 +37,7 @@ faros
 /* VERIFICACION SI TENEMOS UN USUARIO EN LINEA */
 let usuario
 let usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
-usuarioEnLoSt ? console.log(usuarioEnLoSt) : console.log("no tenemos usuario")
+usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : console.log("no tenemos usuario")
 
 /* EVENTO ABRIR REGISTRO DE USUARIO */
 let registroDeUsuario = document.getElementById("registroDeUsuario").addEventListener("click", () => abrirRegistro())
@@ -113,7 +113,6 @@ let contrUsu = document.getElementById("ingresoContraseñaUsuario").addEventList
 
 /* DATOS DEL LOCAL STORAGE DEL USUARIO */
 /* DESESTRUCTURACINO */
-usuarioEnLoSt? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : console.log("no tienes usuario")
 
 /* BOTON DE INGRESO USUARIO */
 let btnIngreso = document.getElementById("btnIngreso").addEventListener("click", () => ingresoUsuario())
