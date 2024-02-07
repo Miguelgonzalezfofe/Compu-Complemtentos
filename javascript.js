@@ -177,23 +177,73 @@ class nuevoProducto {
     }
 }
 
-const productos = []
+const productos =[
+        {
+            "nombre": "Comsola EXBOX SERIES S ",
+            "precio": 750,
+            "img": "https://images.start.com.ar/RRS-00002.jpg"
+        },
+        {
+            "nombre": "AURICULAR SONY PS5",
+            "precio": 200,
+            "img": "https://images.start.com.ar/3006433.jpg"
+        },
+        {
+            "nombre": "NOTEBOOK GAMER ASUS",
+            "precio": 2500,
+            "img": "https://images.start.com.ar/G513RM-HQ084W-365.jpg"
+        },
+        {
+            "nombre": "JOYSTICK MICROSOFT XBOX",
+            "precio": 130,
+            "img": "https://images.start.com.ar/QAS-00007.jpg"
+        },
+        {
+            "nombre": "CONSOLA SONY PLAYSTATION 4TB",
+            "precio": 1200,
+            "img": "https://images.start.com.ar/1000037231.jpg"
+        },
+        {
+            "nombre": "MOUSE GAMER",
+            "precio": 75,
+            "img": "https://images.start.com.ar/910-006366.jpg"
+        },
+        {
+            "nombre": "TECLADO GAMER G715",
+            "precio": 190,
+            "img": "https://images.start.com.ar/920-010453.jpg"
+        },
+        {
+            "nombre": "MONITOR SAMSUNG 24",
+            "precio": 270,
+            "img": "https://images.start.com.ar/LF24T350FHLCZB.jpg"
+        },
+        {
+            "nombre": "TACLADO GAMER TRUST GTX 833",
+            "precio": 25,
+            "img": "https://images.start.com.ar/24067.jpg"
+        },
+        {
+            "nombre": "TECLADO MICROSOFT BLUETOOTH ",
+            "precio": 84,
+            "img": "https://images.start.com.ar/21Y-00061.jpg"
+        },
+        {
+            "nombre": "TECLADO Y MOUSE TRUST GAMER ",
+            "precio": 52,
+            "img": "https://images.start.com.ar/22460.jpg"
+        },
+        {
+            "nombre": "DISCO INTERNO SSD BX500-240GB ",
+            "precio": 35,
+            "img": "https://images.start.com.ar/CRU-CT240BX500SSD1.jpg"
+        }
+    ]
 
-productos.push(
-    new nuevoProducto("Comsola EXBOX SERIES S ", 750, "https://images.start.com.ar/RRS-00002.jpg"),
-    new nuevoProducto("AURICULAR SONY PS5", 200, "https://images.start.com.ar/3006433.jpg"),
-    new nuevoProducto("NOTEBOOK GAMER ASUS", 2500, "https://images.start.com.ar/G513RM-HQ084W-365.jpg"),
-    new nuevoProducto("JOYSTICK MICROSOFT XBOX", 130, "https://images.start.com.ar/QAS-00007.jpg"),
-    new nuevoProducto("CONSOLA SONY PLAYSTATION 4TB", 1200, "https://images.start.com.ar/1000037231.jpg"),
-    new nuevoProducto("MOUSE GAMER", 75, "https://images.start.com.ar/910-006366.jpg"),
-    new nuevoProducto("TECLADO GAMER G715", 190, "https://images.start.com.ar/920-010453.jpg"),
-    new nuevoProducto("MONITOR SAMSUNG 24", 270, "https://images.start.com.ar/LF24T350FHLCZB.jpg"),
-    new nuevoProducto("TACLADO GAMER TRUST GTX 833", 25, "https://images.start.com.ar/24067.jpg"),
-    new nuevoProducto("TECLADO MICROSOFT BLUETOOTH ",84,"https://images.start.com.ar/21Y-00061.jpg"),
-    new nuevoProducto("TECLADO Y MOUSE TRUST GAMER ",52,"https://images.start.com.ar/22460.jpg"),
-    new nuevoProducto("DISCO INTERNO SSD BX500-240GB ",35,"https://images.start.com.ar/CRU-CT240BX500SSD1.jpg"),
 
-)
+
+
+
 
 
 /* CREACION DE LOS PRODUCTOS EN LA WEB */
