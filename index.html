@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Tercera PreEntrega</title>
 </head>
 
 <body>
@@ -24,9 +24,9 @@
             <div class="img-sesion">
                 <img src="img/logo/usuarioSinRegistro.png" alt="img_sesion" id="foto_perfil_usuario">
                 <div class="inicio_sesion" id="inicio_registo_Sesion">
-                    <p id="inicioSesionUsuario"">Iniciar sesion</p>
+                    <p id="inicioSesionUsuario"">Iniciar sesión</p>
                     <br>
-                    <p id="registroDeUsuario">Resistrase</p>
+                    <p id="registroDeUsuario">Registrase</p>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
     </header>
     <main>
         <section class="presentacion">
-            <h1>Presentacion</h1>
+            <h1>Presentación</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt excepturi facilis pariatur ipsum
                 expedita et! Aliquam obcaecati nobis pariatur eos?</p>
             <div class="contenedor_registro" id="registro">
@@ -54,7 +54,7 @@
                         <input type="password" id="registroContraseñaUsuario">
                         <div class="terminos_y_condiciones">
                             <input type="radio" name="TerminosYCondiciones" id="terminosYCondiciones">
-                            <label for="TerminosYCondiciones"><a href="#" target="_blank">Terminos y
+                            <label for="TerminosYCondiciones"><a href="#" target="_blank">Términos y
                                     condiciones</a></label>
                         </div>
                         <!-- continuar con el formulario para ingresar el nuevo usuario capturar los datos en un objeto para pasarlo a json y enviarlo al sesionstorage o local storage y asi cuando inicie sesion verifique el correo y contraseña del usuario-->
@@ -74,6 +74,13 @@
                         <input type="password" id="ingresoContraseñaUsuario">
                     </form>
                     <input type="button" id="btnIngreso" value="Ingresar">
+                </div>
+            </div>
+            <div class="contenedor_carrito">
+                <h3>Carro de compras</h3>
+                <div id="caja_carrito">
+                <ul id="carrito"></ul>
+                <div class="total_carrito" >Total: <span id="totalCarrito">$</span></div>
                 </div>
             </div>
         </section>

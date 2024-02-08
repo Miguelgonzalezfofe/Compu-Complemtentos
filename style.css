@@ -171,7 +171,7 @@ main .section_productos .productos .caja_productos .producto .precio{
     font-size:20px;
     text-shadow: 1px 2px 3px;
 }
-main .section_productos .productos .caja_productos .producto .caja_boton #botonAgregarProducto{
+main .section_productos .productos .caja_productos .producto .caja_boton .botonAgregarProducto{
     width: 100%;
     height: 25px;
     border-radius: 5px;
@@ -331,3 +331,43 @@ main .section_productos .productos .caja_productos .producto .caja_boton #botonA
     text-align: center;
 
 }
+
+.presentacion .contenedor_carrito{
+width: 250px;
+height: 101vh;
+/* padding: 5px; */
+position: fixed;
+top:0;
+right: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color: blueviolet;
+}
+.presentacion .contenedor_carrito #caja_carrito{
+background-color: white;
+width: 100%;
+height: 100%;
+/* padding: 5px; */
+overflow: auto;
+}
+
+.presentacion .contenedor_carrito #caja_carrito ul{
+    list-style-type:none ;
+}
+.presentacion .contenedor_carrito #caja_carrito ul li{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+}
+.presentacion .contenedor_carrito .total_carrito{
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0px;
+}
+
+
+

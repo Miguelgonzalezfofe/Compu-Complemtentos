@@ -1,8 +1,9 @@
 /* 
-Registro usuario
-login Usuario
-array con objetos de los productos
-rendirizacion de producto en html segun la API
+Registro usuario*
+login Usuario*
+array con objetos de los productos*
+rendirizacion de producto en html segun la API*
+carrito
 Boton de agregar al carrtio
 mostrar carrito de compra
     nombre > precio 
@@ -37,6 +38,7 @@ faros
 /* VERIFICACION SI TENEMOS UN USUARIO EN LINEA */
 let usuario
 let usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
+/* DESESTRUCTURACION VARIABLES USUARIO */
 usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : console.log("no tenemos usuario")
 
 /* EVENTO ABRIR REGISTRO DE USUARIO */
@@ -59,12 +61,9 @@ class registroUsuario {
         this.termYcond = termYCond
     }
 }
-class registroP {
-    constructor(apellido) {
-        this.apellido = apellido
-    }
-}
+
 /* LOGICA DE REGISTRO USUARIO********************** */
+
 /* EVENTO DE ABRIR LA VENTADA DE REGISTRO */
 function abrirRegistro() {
     let ventanaReg = document.getElementById("registro")
@@ -85,24 +84,24 @@ let terYConUsu = document.getElementById("terminosYCondiciones").addEventListene
 
 /* BOTON DE CRACION DE USUARIO */
 let btnRegistrase = document.getElementById("btnRegistrase").addEventListener("click", () => creacionUsuario())
+
 /* FUNCION DE CRACION DEL USUARIO */
 function creacionUsuario() {
     usuarioEnLoSt = new registroUsuario(regNomUsu, regApellUsu, regCorreUsu, regcontrUsu, terYConUsu)
     localStorage.setItem("usuario", JSON.stringify(usuarioEnLoSt))
     // console.log(usuario)
     cerrarRegistro()
-
-
 }
-
-
 /* FINAL LOGICA REGISTRO USUARIO ******************* */
 
+
 /* LOGICA INGRESO USUARIO ************************* */
+/* EVENTO CERRAR VENTANE DE INGRESO */
 function cerrarIngreso() {
     let ventanaing = document.getElementById("ventanaIngreso")
     ventanaing.style.display = "none"
 }
+/* EVENTO ABRIR VENTA DE INGRESO */
 function abrirIngreso() {
     let ventanaing = document.getElementById("ventanaIngreso")
     ventanaing.style.display = "flex"
@@ -111,8 +110,6 @@ function abrirIngreso() {
 let ingCorrUsu = document.getElementById("ingresoCorreoUsuario").addEventListener("change", (event) => ingCorrUsu = event.target.value)
 let contrUsu = document.getElementById("ingresoContraseñaUsuario").addEventListener("change", (event) => contrUsu = event.target.value)
 
-/* DATOS DEL LOCAL STORAGE DEL USUARIO */
-/* DESESTRUCTURACINO */
 
 /* BOTON DE INGRESO USUARIO */
 let btnIngreso = document.getElementById("btnIngreso").addEventListener("click", () => ingresoUsuario())
@@ -121,8 +118,9 @@ let btnIngreso = document.getElementById("btnIngreso").addEventListener("click",
 function ingresoUsuario() {
     validacionDatos() ? cambioDePerfil() : console.log("no ingresaste")
 
-
+/* falta agregar una confirmacion de correo  */
 }
+console.log(usuarioEnLoSt)
 function validacionDatos() {
     if (validacionContraseña() && validacionCorreo()) {
         return true
@@ -154,95 +152,92 @@ function cambioDePerfil() {
 }
 /* FINAL LOCICA INGRESO USUARIO */
 
-/* continuar con el addventlistener para captar lo que escriben en el formulario  */
-// console.log(regNomUsu.innerText)
-// console.log(regApellUsu.innerText)
-// console.log(regCorreUsu.innerText)
-// // console.log(regcontrUsu.innerText)
-// console.log(teryconUsu.innerText)
-
-
-/* <!-- continuar con el formulario para ingresar el nuevo usuario capturar los datos en un objeto para pasarlo a json y enviarlo al sesionstorage o local storage y asi cuando inicie sesion verifique el correo y contraseña del usuario--> */
-
-
 
 /* PRODUCTOS */
 
 class nuevoProducto {
-    constructor(nombre, precio, img) {
-        this.nombre = nombre;
+    constructor(id, nombre, precio, img) {
+        this.id = id,
+            this.nombre = nombre;
         this.precio = precio;
         this.img = img
     }
 }
 
-const productos =[
-        {
-            "nombre": "Comsola EXBOX SERIES S ",
-            "precio": 750,
-            "img": "https://images.start.com.ar/RRS-00002.jpg"
-        },
-        {
-            "nombre": "AURICULAR SONY PS5",
-            "precio": 200,
-            "img": "https://images.start.com.ar/3006433.jpg"
-        },
-        {
-            "nombre": "NOTEBOOK GAMER ASUS",
-            "precio": 2500,
-            "img": "https://images.start.com.ar/G513RM-HQ084W-365.jpg"
-        },
-        {
-            "nombre": "JOYSTICK MICROSOFT XBOX",
-            "precio": 130,
-            "img": "https://images.start.com.ar/QAS-00007.jpg"
-        },
-        {
-            "nombre": "CONSOLA SONY PLAYSTATION 4TB",
-            "precio": 1200,
-            "img": "https://images.start.com.ar/1000037231.jpg"
-        },
-        {
-            "nombre": "MOUSE GAMER",
-            "precio": 75,
-            "img": "https://images.start.com.ar/910-006366.jpg"
-        },
-        {
-            "nombre": "TECLADO GAMER G715",
-            "precio": 190,
-            "img": "https://images.start.com.ar/920-010453.jpg"
-        },
-        {
-            "nombre": "MONITOR SAMSUNG 24",
-            "precio": 270,
-            "img": "https://images.start.com.ar/LF24T350FHLCZB.jpg"
-        },
-        {
-            "nombre": "TACLADO GAMER TRUST GTX 833",
-            "precio": 25,
-            "img": "https://images.start.com.ar/24067.jpg"
-        },
-        {
-            "nombre": "TECLADO MICROSOFT BLUETOOTH ",
-            "precio": 84,
-            "img": "https://images.start.com.ar/21Y-00061.jpg"
-        },
-        {
-            "nombre": "TECLADO Y MOUSE TRUST GAMER ",
-            "precio": 52,
-            "img": "https://images.start.com.ar/22460.jpg"
-        },
-        {
-            "nombre": "DISCO INTERNO SSD BX500-240GB ",
-            "precio": 35,
-            "img": "https://images.start.com.ar/CRU-CT240BX500SSD1.jpg"
-        }
-    ]
-
-
-
-
-
+const productos = [
+    {
+        "id": 1,
+        "nombre": "Comsola EXBOX SERIES S ",
+        "precio": 750,
+        "img": "https://images.start.com.ar/RRS-00002.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "AURICULAR SONY PS5",
+        "precio": 200,
+        "img": "https://images.start.com.ar/3006433.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "NOTEBOOK GAMER ASUS",
+        "precio": 2500,
+        "img": "https://images.start.com.ar/G513RM-HQ084W-365.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "JOYSTICK MICROSOFT XBOX",
+        "precio": 130,
+        "img": "https://images.start.com.ar/QAS-00007.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "CONSOLA SONY PLAYSTATION 4TB",
+        "precio": 1200,
+        "img": "https://images.start.com.ar/1000037231.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "MOUSE GAMER",
+        "precio": 75,
+        "img": "https://images.start.com.ar/910-006366.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "TECLADO GAMER G715",
+        "precio": 190,
+        "img": "https://images.start.com.ar/920-010453.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "MONITOR SAMSUNG 24",
+        "precio": 270,
+        "img": "https://images.start.com.ar/LF24T350FHLCZB.jpg"
+    },
+    {
+        "id": 9,
+        "nombre": "TACLADO GAMER TRUST GTX 833",
+        "precio": 25,
+        "img": "https://images.start.com.ar/24067.jpg"
+    },
+    {
+        "id": 10,
+        "nombre": "TECLADO MICROSOFT BLUETOOTH ",
+        "precio": 84,
+        "img": "https://images.start.com.ar/21Y-00061.jpg"
+    },
+    {
+        "id": 11,
+        "nombre": "TECLADO Y MOUSE TRUST GAMER ",
+        "precio": 52,
+        "img": "https://images.start.com.ar/22460.jpg"
+    },
+    {
+        "id": 12,
+        "nombre": "DISCO INTERNO SSD BX500-240GB ",
+        "precio": 35,
+        "img": "https://images.start.com.ar/CRU-CT240BX500SSD1.jpg"
+    }
+]
 
 
 /* CREACION DE LOS PRODUCTOS EN LA WEB */
@@ -255,9 +250,68 @@ for (const x of productos) {
     <p class="nombre_producto">${x.nombre}</p>
     <p class="precio" id="precio">$${x.precio}</p>
     <div class="caja_boton">
-    <button type="button" id="botonAgregarProducto">Agregar producto</button>
+    <button type="button" class="botonAgregarProducto" id="btn${x.id}">Agregar producto</button>
     </div>
     </div>
     `
     padreCajaProductos.append(div)
 }
+/* SECCION PARA MOSTRAR EL CARRITO DE COMPRAS */
+/* variable carrito donde se guardan */
+let carrito = []
+/* CARRITO EN EL LOCAL STORAGE */
+let carritoEnLoSt = JSON.parse(localStorage.getItem("carrito"))
+
+/* EVENTO DE BOTONES AGREGAR PRODUCTOS */
+let btn1 = document.getElementById("btn1").addEventListener("click", () => agregarAlCarrito(productos[0]))
+let btn2 = document.getElementById("btn2").addEventListener("click", () => agregarAlCarrito(productos[1]))
+let btn3 = document.getElementById("btn3").addEventListener("click", () => agregarAlCarrito(productos[2]))
+let btn4 = document.getElementById("btn4").addEventListener("click", () => agregarAlCarrito(productos[3]))
+let btn5 = document.getElementById("btn5").addEventListener("click", () => agregarAlCarrito(productos[4]))
+let btn6 = document.getElementById("btn6").addEventListener("click", () => agregarAlCarrito(productos[5]))
+let btn7 = document.getElementById("btn7").addEventListener("click", () => agregarAlCarrito(productos[6]))
+let btn8 = document.getElementById("btn8").addEventListener("click", () => agregarAlCarrito(productos[7]))
+let btn9 = document.getElementById("btn9").addEventListener("click", () => agregarAlCarrito(productos[8]))
+let btn10 = document.getElementById("btn10").addEventListener("click", () => agregarAlCarrito(productos[9]))
+let btn11 = document.getElementById("btn11").addEventListener("click", () => agregarAlCarrito(productos[10]))
+let btn12 = document.getElementById("btn12").addEventListener("click", () => agregarAlCarrito(productos[11]))
+
+
+
+/* FUNCION AGREGAR EL PRODUCTO AL CARRITO */
+function agregarAlCarrito(valor) {
+    carrito.push(valor)
+    mostarCarrtio()
+}
+/* FUNCION PARA MOSTRAR EL CARRITO DE COMPRAS EN PANTALLA */
+function mostarCarrtio() {
+    carritoEnHtml()
+}
+
+let PantallaCarrito = document.getElementById("carrito")
+/* FUNCION DE AGREGAR LOS PORDUCTOS AL HTML */
+function carritoEnHtml() {
+    let ul = document.createElement("li")
+    for (x of carrito) {
+        ul.innerHTML = ` 
+        ${x.nombre} $${x.precio}
+        `
+        PantallaCarrito.append(ul)
+    }
+    sumarCarrito()
+}
+let preciodelcarrito = []
+function sumarCarrito (){
+    preciodelcarrito = []
+    for(x of carrito){
+    preciodelcarrito.push(x.precio)
+}
+let total = preciodelcarrito.reduce((acc,num)=> acc+num)
+let precioFinal = document.getElementById("totalCarrito")
+precioFinal.innerText= total
+console.log(preciodelcarrito)
+console.log(total)
+}
+
+
+
