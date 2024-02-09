@@ -50,13 +50,8 @@
                         <input type="text" id="registroApellidoUsuario">
                         <label for="registroCorreoUsuario">Correo</label>
                         <input type="email" id="registroCorreoUsuario">
-                        <label for="registroContraseñaUsuario">Contraseña</label>
+                        <label for="registroContraseñaUsuario" >Contraseña</label>
                         <input type="password" id="registroContraseñaUsuario">
-                        <div class="terminos_y_condiciones">
-                            <input type="radio" name="TerminosYCondiciones" id="terminosYCondiciones">
-                            <label for="TerminosYCondiciones"><a href="#" target="_blank">Términos y
-                                    condiciones</a></label>
-                        </div>
                         <!-- continuar con el formulario para ingresar el nuevo usuario capturar los datos en un objeto para pasarlo a json y enviarlo al sesionstorage o local storage y asi cuando inicie sesion verifique el correo y contraseña del usuario-->
                     </form>
                     <input type="button" id="btnRegistrase" value="Registrarse">
@@ -76,24 +71,28 @@
                     <input type="button" id="btnIngreso" value="Ingresar">
                 </div>
             </div>
-            <div class="contenedor_carrito">
+            <div class="contenedor_carrito" id="contenedorCarrito">
+            <p id="cerrarCarrito">x</p>
                 <h3>Carro de compras</h3>
                 <div id="caja_carrito">
                 <ul id="carrito"></ul>
-                <div class="total_carrito" >Total: <span id="totalCarrito">$</span></div>
+                <div class="total_carrito" >
+                    <p>Total: <span id="totalCarrito">$</span></p>
+                    <p>Producto Mayor valor: <span id="mayorValor">$</span></p>
+                </div>
                 </div>
             </div>
         </section>
         <div class="section_productos">
             <div class="filtro">
                 <h3>Buscar Producto</h3>
-                <form>
+                <!-- <form>
                     <label for="">Producto</label>
                     <input type="text" id="productoFiltro">
                     <label for="">Rango de precios</label>
                     <input type="range">
                     <label for=""></label>
-                </form>
+                </form> -->
             </div>
             <section class="productos">
                 <h2>Productos</h2>

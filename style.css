@@ -83,6 +83,7 @@ header .carrito_de_compras {
     align-items: center;
     width: 100px;
     height: auto;
+    cursor: pointer;
 }
 /* IMG DEL CARRITO */
 header .carrito_de_compras img {
@@ -334,15 +335,24 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 
 .presentacion .contenedor_carrito{
 width: 250px;
-height: 101vh;
+height: 100%; 
 /* padding: 5px; */
 position: fixed;
 top:0;
 right: 0;
-display: flex;
+display:flex;
 flex-direction: column;
 align-items: center;
 background-color: blueviolet;
+}
+.presentacion .contenedor_carrito #cerrarCarrito{
+    border-radius: 100%;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    
+
 }
 .presentacion .contenedor_carrito #caja_carrito{
 background-color: white;
@@ -362,12 +372,18 @@ overflow: auto;
 }
 .presentacion .contenedor_carrito .total_carrito{
     background-color: black;
-    color: white;
     width: 100%;
     height: 40px;
     position: absolute;
     bottom: 0px;
 }
+.presentacion .contenedor_carrito .total_carrito p{ 
+    text-align: start;
+    color: white;
+}
+
+
+
 
 
 
