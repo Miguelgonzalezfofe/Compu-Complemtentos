@@ -3,7 +3,7 @@
 let usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
 
 /* DESESTRUCTURACION VARIABLES USUARIO */
-usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : abrirRegistro()
+const { nombre, apellido, correo, contraseña } = usuarioEnLoSt 
 /* EVENTO ABRIR REGISTRO DE USUARIO */
 let registroDeUsuario = document.getElementById("registroDeUsuario").addEventListener("click", () => abrirRegistro())
 
