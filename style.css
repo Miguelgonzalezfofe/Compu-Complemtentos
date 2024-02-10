@@ -188,7 +188,7 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     height: 100%;
     background-color: rgba(0, 0, 0, 0.655);
     /* boton para quitar y agregar la pantalla del registro */
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -340,7 +340,7 @@ height: 100%;
 position: fixed;
 top:0;
 right: 0;
-display:flex;
+display:none;
 flex-direction: column;
 align-items: center;
 background-color: blueviolet;

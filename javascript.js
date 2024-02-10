@@ -4,7 +4,6 @@ let usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
 
 /* DESESTRUCTURACION VARIABLES USUARIO */
 usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : abrirRegistro()
-
 /* EVENTO ABRIR REGISTRO DE USUARIO */
 let registroDeUsuario = document.getElementById("registroDeUsuario").addEventListener("click", () => abrirRegistro())
 
@@ -23,7 +22,6 @@ class registroUsuario {
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña
-
     }
 }
 
@@ -47,15 +45,61 @@ let regcontrUsu = document.getElementById("registroContraseñaUsuario").addEvent
 
 
 /* BOTON DE CRACION DE USUARIO */
-let btnRegistrase = document.getElementById("btnRegistrase").addEventListener("click", () => creacionUsuario())
+let btnRegistrase = document.getElementById("btnRegistrase").addEventListener("click", () => validacionRegistro())
+
+let textErroregistro = document.getElementById("errorDeregistro")
+
+
+/* VALIDACION DE DATOS CREACION DE USUARIO */
+function validacionRegistro() {
+    if (valRegNomUsu()&& valApellUsu() && valCorreUsu() && valcontrUsu()) {
+        creacionUsuario()
+    } else {
+        textErroregistro.innerText = "Error de ingreso vuelva a intentar"
+    }
+}
+
+/* VALIDACION DATOS INGRESASDO NOMBRE USUARIO */
+function valRegNomUsu() {
+    if (regNomUsu || false) {
+        return true
+    } else{
+        return false
+    }
+}
+/* VALIDACION DATOS INGRESASDO APELLIDO USUARIO */
+function valApellUsu(){
+    if(regApellUsu || false){
+        return true
+    } else{
+        return false
+    }
+}
+
+/* VALIDACION DATOS INGRESASDO CORREO USUARIO */
+function valCorreUsu(){
+    if(regCorreUsu|| false){
+        return true
+    } else{
+        return false
+    }
+}
+/* VALIDACION DATOS INGRESASDO CONTRASEÑA USUARIO */
+function valcontrUsu(){
+    if(regcontrUsu|| false){
+        return true
+    } else{
+        return false
+    }
+}
 
 /* FUNCION DE CRACION DEL USUARIO */
 function creacionUsuario() {
-    usuarioEnLoSt = new registroUsuario({ regNomUsu, regApellUsu, regCorreUsu, regcontrUsu })
+    usuarioEnLoSt = new registroUsuario(regNomUsu, regApellUsu, regCorreUsu, regcontrUsu)
     localStorage.setItem("usuario", JSON.stringify(usuarioEnLoSt))
-    // console.log(usuario)
     cerrarRegistro()
 }
+
 /* FINAL LOGICA REGISTRO USUARIO ******************* */
 
 
@@ -78,10 +122,17 @@ let contrUsu = document.getElementById("ingresoContraseñaUsuario").addEventList
 /* BOTON DE INGRESO USUARIO */
 let btnIngreso = document.getElementById("btnIngreso").addEventListener("click", () => ingresoUsuario())
 
-/* FUNCION DE INGRESOS DEL USUARIO*/
-function ingresoUsuario() {
-    validacionDatos() ? cambioDePerfil() : console.log("no ingresaste")
 
+/* FUNCION DE INGRESOS DEL USUARIO*/
+let textErroingreso = document.getElementById("errorDeIngreso")
+
+
+function ingresoUsuario() {
+    validacionDatos() ? cambioDePerfil() : errorlogin()
+
+}
+function errorlogin(){
+    textErroingreso.innerText = "Error en la contraseña o usuario"
 }
 
 function validacionDatos() {
@@ -120,7 +171,7 @@ function cambioDePerfil() {
 class nuevoProducto {
     constructor(id, nombre, precio, img) {
         this.id = id,
-        this.nombre = nombre;
+            this.nombre = nombre;
         this.precio = precio;
         this.img = img
     }
@@ -200,14 +251,14 @@ const productos = [
         "img": "https://images.start.com.ar/CRU-CT240BX500SSD1.jpg"
     }
 ]
-let cerrarCarr = document.getElementById("cerrarCarrito").addEventListener("click",()=> cerrarCarrito())
-let abrirCarr = document.getElementById("carritoCompras").addEventListener("click",()=> abrirCarrito())
+let cerrarCarr = document.getElementById("cerrarCarrito").addEventListener("click", () => cerrarCarrito())
+let abrirCarr = document.getElementById("carritoCompras").addEventListener("click", () => abrirCarrito())
 
-function cerrarCarrito(){
+function cerrarCarrito() {
     let ventanaCarrito = document.getElementById("contenedorCarrito")
     ventanaCarrito.style.display = "none"
 }
-function abrirCarrito(){
+function abrirCarrito() {
     ventanaCarrito = document.getElementById("contenedorCarrito")
     ventanaCarrito.style.display = "flex"
 }
@@ -248,7 +299,7 @@ for (let i = 0; i < productos.length; i++) {
 function agregarAlCarrito(valor) {
     carrito.push(valor)
     carritoEnLoSt = carrito
-    localStorage.setItem("carrito",JSON.stringify(carritoEnLoSt))
+    localStorage.setItem("carrito", JSON.stringify(carritoEnLoSt))
     mostarCarrtio()
 }
 
