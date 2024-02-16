@@ -10,7 +10,7 @@ header {
     display: flex;
     width: 100%;
     height: auto;
-    background-color: rgb(142, 35, 241);
+    background-color: rgb(74, 9, 104);
 }
 
 /* BARRANDE NAVEGACION */
@@ -30,6 +30,8 @@ header nav .contenedor_img {
 /* LOGO */
 header nav .contenedor_img img {
     width: 100%;
+    border-radius: 40%;
+    
 }
 
 /* LISRA DE ELEMENTOS NO ORDENADOS */
@@ -44,8 +46,8 @@ header nav ul {
 /* ENLACES DE NAVEGACION */
 header nav ul li a {
     text-decoration: none;
-    color: rgb(255, 255, 255);
-    background-color: blueviolet;
+    color: rgb(252, 230, 230);
+    background-color: rgb(123, 80, 167);
     padding: 10px;
     border-radius: 10px;
 }
@@ -53,6 +55,7 @@ header nav ul li a {
 /* CONTENEDOR SESION */
 header .sesion {
     width: 250px;
+    color: white;
 }
 
 /* CAJA DE SESION IMG */
@@ -81,15 +84,29 @@ header .carrito_de_compras {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: auto;
+    width: 130px;
+    height: 100px;
     cursor: pointer;
+    background-color: white;
+    border-radius: 50%;
+    margin: auto 10px;
 }
 /* IMG DEL CARRITO */
 header .carrito_de_compras img {
     width: 65%;
-
 }
+header .carrito_de_compras p{
+    position: absolute;
+    background-color: red;
+    text-align: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 28px;
+    color: white;
+    padding-top: 5px;
+    top: 5px;
+}
+
 /* FINALIZACION DEL HEADER */
 
 /* INICIO DEL MAIN */
@@ -101,16 +118,36 @@ main .presentacion {
     background-position: center;
     width: 100%;
     height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 /* TEXTO PRESENTACION */
-main .presentacion p,
-h1 {
+main .presentacion #ini{
+    color: aliceblue;
+    font-size: 25px;
+    width: 85%;
     text-align: center;
+}
+#garantia{
+    color: black;
+    font-weight: 800;
+}
+main .presentacion h2{
+    background-color: rgba(255, 255, 255, 0.274);
+    padding: 10px;
+    font-size: 40px;
+    border-radius: 10px;
+    width: 90%;
+    text-align: center;
+
+
 }
 /* CONTENEDOR DE PRODUCTOS */
 main .section_productos {
     width: 100%;
-    height: 250px;
+    height: auto;
 }
 main .section_productos .filtro{
     text-align: center;
@@ -333,7 +370,8 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 
 }
 
-.presentacion .contenedor_carrito{
+.contenedor_carrito{
+position: relative;
 width: 250px;
 height: 100%; 
 /* padding: 5px; */
@@ -345,20 +383,18 @@ flex-direction: column;
 align-items: center;
 background-color: blueviolet;
 }
-.presentacion .contenedor_carrito #cerrarCarrito{
-    border-radius: 100%;
+.contenedor_carrito #cerrarCarrito{
+    font-size: 18px;
     cursor: pointer;
     position: absolute;
     top: 0;
     right: 10px;
-    
 
 }
 .presentacion .contenedor_carrito #caja_carrito{
 background-color: white;
 width: 100%;
 height: 100%;
-/* padding: 5px; */
 overflow: auto;
 }
 
@@ -382,8 +418,46 @@ overflow: auto;
     color: white;
 }
 
+.pie_pagina{
+    padding: 5px;
+    width: 100%;
+    height: 350px;
+}
+.pie_pagina form{
+border: 1px solid;
+border-radius: 10px;
+padding: 10px;
+margin: auto;
+}
 
 
+.pie_pagina #contacto{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.pie_pagina #contacto input{
+height: 22px;
+font-size: 15px;
+border-radius: 5px;
+}
+
+.pie_pagina #contacto textarea{
+    width: auto;
+    height: 120px;
+    overflow: auto;
+}
+
+.pie_pagina #contacto #botonEnviar{
+width: 90%;
+margin: 5px auto;
+}
+.pie_pagina #contacto #reset{
+width: 90%;
+margin: 5px auto;
+}
 
 
 

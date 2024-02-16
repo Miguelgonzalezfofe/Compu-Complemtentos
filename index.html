@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Tercera PreEntrega</title>
+    <title>Compu/Complemetos</title>
 </head>
 
 <body>
     <header>
         <nav>
             <div class="contenedor_img">
-                <img src="img/logo/logo_mercedez_benz.png" alt="logo">
+                <img src="img/logo/DSC06105 - copia.png" alt="logo">
             </div>
             <ul>
-                <li><a href="#">inicio</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">contacto</a></li>
+                <li><a href="#inicio">inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#contacto">contacto</a></li>
             </ul>
         </nav>
         <div class="sesion">
@@ -31,14 +31,14 @@
             </div>
         </div>
         <div class="carrito_de_compras" id="carritoCompras">
-            <img src="img/logo/carrito.png" alt="">
+            <img src="img/logo/carrito.png" alt="carrito_de_compras">
+            <p id="catidadCarrito">0</p>
         </div>
     </header>
     <main>
-        <section class="presentacion">
-            <h1>Presentación</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt excepturi facilis pariatur ipsum
-                expedita et! Aliquam obcaecati nobis pariatur eos?</p>
+        <section class="presentacion" id="inicio"> 
+            <h2>AQUI ENCONTRARAS TODO LO QUE NECESITAS<br> PARA ARMAR TU ZONA DE TRABAJO O ZONA GAMER</h2>
+            <p id="ini">Equipos de alta calidad <span id="garantia">Garantias</span> de hasta 6 meses. Envios a todo el mundo desde argentina </p>
             <div class="contenedor_registro" id="registro">
                 <div class="registro">
                     <div class="cerrar" id="cerrarRegistroUsuario">X</div>
@@ -85,7 +85,7 @@
                 </div>
             </div>
         </section>
-        <div class="section_productos">
+        <div class="section_productos" id="productos">
             <div class="filtro">
                 <h3>Buscar Producto</h3>
                 <!-- <form>
@@ -107,11 +107,22 @@
             </section>
         </div>
         <footer class="pie_pagina">
-            <h3>FOOTER</h3>
+            <form action="post" id="contacto">
+                <label for="Nombre">Nombre</label>
+                <input type="text" id="Nombre">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido">
+                <label for="correo">Correo</label>
+                <input type="text" id="correo">
+                <label for="comentario">Mensaje</label>
+                <textarea name="comentario" id="comentario"></textarea>
+                <input type="button" value="Enviar" id="botonEnviar">
+                <input type="reset" value="Borrar" id="reset">
+            </form>
         </footer>
 
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="javascript.js"></script>
 </body>
 

@@ -1,9 +1,18 @@
 
+// Swal.fire("SweetAlert2 is working!"); agregar mas alertas con sweel alert
+
+/* AGRAGAR LOS ENLACES DE LAS PAGINAS DEL LA BARRA DE NAVEGACION
+PONER LA BARRA DE NAVEGACION EL POSITIO FIXED PARA QUE SIGA LA PANTALLA
+HACER LO RESPONSIVE 
+AGREGAR TITULOS Y SUB TITULOS DE LA PAGINA
+AGREGAR EL FFUTER */
+// BOTON PARA HACER EL CAMBIO DE IMG    
+
 /* VERIFICACION SI TENEMOS UN USUARIO EN LINEA */
 let usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
 
 /* DESESTRUCTURACION VARIABLES USUARIO */
-usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : usuarioEnLoSt = []
+usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : {nombre,apellido,correo,contraseña} = undefined
 /* EVENTO ABRIR REGISTRO DE USUARIO */
 let registroDeUsuario = document.getElementById("registroDeUsuario").addEventListener("click", () => abrirRegistro())
 
