@@ -7,8 +7,8 @@ class registroUsuario {
         this.contraseña = contraseña
     }
 }
-let usuarioEnLoSt ;
-let usuarioEnSeSt ;
+let usuarioEnLoSt;
+let usuarioEnSeSt;
 // usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))  
 // usuarioEnLoSt? ingresoDePerfil() : false
 /* SECCION DE EVENTOS DE VENTANA REGISTRO E INGRESO */
@@ -52,7 +52,7 @@ function cerrarIngreso() {
     let ventanaing = document.getElementById("ventanaIngreso")
     ventanaing.style.display = "none"
     textErroingreso.innerText = ""
-    
+
 }
 /* FINAL SECCION DE EVENTOS DE VENTANA REGISTRO E INGRESO */
 
@@ -70,7 +70,7 @@ let textErroregistro = document.getElementById("errorDeregistro")
 
 /* VALIDACION DE DATOS CREACION DE USUARIO */
 function validacionRegistro() {
-    
+
     if (valRegNomUsu() && valApellUsu() && valCorreUsu() && valcontrUsu()) {
         creacionUsuario()
         Swal.fire({
@@ -83,7 +83,7 @@ function validacionRegistro() {
     } else {
         textErroregistro.innerText = "Error de ingreso vuelva a intentar"
     }
-    
+
 }
 
 /* VALIDACION DATOS INGRESASDO NOMBRE USUARIO */
@@ -149,16 +149,16 @@ let textErroingreso = document.getElementById("errorDeIngreso")
 
 function ingresoUsuario() {
     usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
-    usuarioEnLoSt? { nombre, apellido, correo, contraseña } = usuarioEnLoSt: textErroingreso.innerText = "No tenemos tus datos. Debes registrarte"
+    usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : textErroingreso.innerText = "No tenemos tus datos. Debes registrarte"
     validacionDatos() ? ingresoDePerfil() : errorlogin()
-    
-    
-    if(usuarioEnLoSt == false){
-        sessionStorage.setItem("usuario-sesion",JSON.stringify(usuarioEnLoSt))
+
+
+    if (usuarioEnLoSt == false) {
+        sessionStorage.setItem("usuario-sesion", JSON.stringify(usuarioEnLoSt))
         usuarioEnSeSt = JSON.parse(sessionStorage.getItem("usuario-sesion"))
-        
-    } 
-    
+
+    }
+
 }
 function errorlogin() {
     textErroingreso.innerText = "Error en la contraseña o usuario"
@@ -185,16 +185,11 @@ function validacionContraseña() {
         return false
     }
 }
-/* QUE DE EN QUE CUANDO CIERRE O CAMBIO EL USARIO DESDE ESO CAMBIE EL DISPLAY DE INICIO Y REGITRO DE SESIO  */
 /* TAREAS 
-BAJAR LA VENTANA DE REGISTRO Y DE INGRESO POR EL FIXED DEL HEADER
-CUANDO SE ABRA EL REGISTRO SE CIERRE EL INGRESO Y LO MISMO AL CONTRARIO 
-AGREGAR UNA ALERTA CON TOASTY PARA INDICAR CUANDO SE AGREGO UN NUEVO PRODUCTO AL CARRITO 
+AGREGAR UNA ALERTA CON TOASTY PARA INDICAR CUANDO SE AGREGO UN NUEVO PRODUCTO AL CARRITO *
 APLICAR UN FILTRO PARA LOS PRODUCTOS POR PRECIO 
-AGREGAR LA OPCION DE CERRAR SESION EN LA FOTO DE PERFIL
 PENSAR EL FOOTER PARA COMPLETAR LA VISTA DE LA PAGINA
 CAMBIAR LOS LOGOS DE USUARIO Y CARRITO POR EL DE BOOSTRAP
-SACAR LOS PRODUCTOS DEL JS Y GUARDARLOS EN UN JSON
 COMENTAR Y SEPARAR LAS PORCIONES DE CODIGO PARA QUE SEA MAS ENTENDIBLE EN HTML CSS Y JS
 AGREGAR EL FORMATO PARA QUE ACEPTE SOLAMENTE CON EL .COM EN EL INPUT DE CORREO
 
@@ -205,23 +200,23 @@ let sesionIngreoRegistro = document.getElementById("inicio_registo_Sesion")
 let perfil = document.getElementById("usuarioIngresado")
 function ingresoDePerfil() {
     usuarioEnSeSt ? { nombre, apellido, correo, contraseña } = usuarioEnSeSt : false
-    sesionIngreoRegistro.style.display ="none"
+    sesionIngreoRegistro.style.display = "none"
     cerrarSesion.style.display = "block"
-    
-    
-    
+
+
+
     perfil.innerHTML = `<p class="perfil_iniciado">${nombre} ${apellido}</p>`
     cerrarIngreso()
 }
 let cerrarSesion = document.getElementById("cerrarSesion")
-cerrarSesion.addEventListener("click", ()=>{cerrarlaSesion()} )
-function cerrarlaSesion(){
+cerrarSesion.addEventListener("click", () => { cerrarlaSesion() })
+function cerrarlaSesion() {
     sessionStorage.clear()
-    sesionIngreoRegistro.style.display ="block"
+    sesionIngreoRegistro.style.display = "block"
     cerrarSesion.style.display = "none"
     perfil.innerHTML = ""
 
-    
+
 
 }
 
@@ -239,80 +234,7 @@ class nuevoProducto {
     }
 }
 
-const productos = [
-    {
-        "id": 1,
-        "nombre": "Comsola EXBOX SERIES S ",
-        "precio": 750,
-        "img": "https://images.start.com.ar/RRS-00002.jpg"
-    },
-    {
-        "id": 2,
-        "nombre": "AURICULAR SONY PS5",
-        "precio": 200,
-        "img": "https://images.start.com.ar/3006433.jpg"
-    },
-    {
-        "id": 3,
-        "nombre": "NOTEBOOK GAMER ASUS",
-        "precio": 2500,
-        "img": "https://images.start.com.ar/G513RM-HQ084W-365.jpg"
-    },
-    {
-        "id": 4,
-        "nombre": "JOYSTICK MICROSOFT XBOX",
-        "precio": 130,
-        "img": "https://images.start.com.ar/QAS-00007.jpg"
-    },
-    {
-        "id": 5,
-        "nombre": "CONSOLA SONY PLAYSTATION 4TB",
-        "precio": 1200,
-        "img": "https://images.start.com.ar/1000037231.jpg"
-    },
-    {
-        "id": 6,
-        "nombre": "MOUSE GAMER",
-        "precio": 75,
-        "img": "https://images.start.com.ar/910-006366.jpg"
-    },
-    {
-        "id": 7,
-        "nombre": "TECLADO GAMER G715",
-        "precio": 190,
-        "img": "https://images.start.com.ar/920-010453.jpg"
-    },
-    {
-        "id": 8,
-        "nombre": "MONITOR SAMSUNG 24",
-        "precio": 270,
-        "img": "https://images.start.com.ar/LF24T350FHLCZB.jpg"
-    },
-    {
-        "id": 9,
-        "nombre": "TACLADO GAMER TRUST GTX 833",
-        "precio": 25,
-        "img": "https://images.start.com.ar/24067.jpg"
-    },
-    {
-        "id": 10,
-        "nombre": "TECLADO MICROSOFT BLUETOOTH ",
-        "precio": 84,
-        "img": "https://images.start.com.ar/21Y-00061.jpg"
-    },
-    {
-        "id": 11,
-        "nombre": "TECLADO Y MOUSE TRUST GAMER ",
-        "precio": 52,
-        "img": "https://images.start.com.ar/22460.jpg"
-    },
-    {
-        "id": 12,
-        "nombre": "DISCO INTERNO SSD BX500-240GB ",
-        "precio": 35,
-        "img": "https://images.start.com.ar/CRU-CT240BX500SSD1.jpg"
-    }
-]
+
 let cerrarCarr = document.getElementById("cerrarCarrito").addEventListener("click", () => cerrarCarrito())
 let abrirCarr = document.getElementById("carritoCompras").addEventListener("click", () => abrirCarrito())
 
@@ -327,20 +249,40 @@ function abrirCarrito() {
 
 /* CREACION DE LOS PRODUCTOS EN LA WEB */
 let padreCajaProductos = document.getElementById("cajaProductos")
-for (const x of productos) {
-    let div = document.createElement("div")
-    div.innerHTML = `
-    <div class="producto">
-    <img src="${x.img}" alt="producto">
-    <p class="nombre_producto">${x.nombre}</p>
-    <p class="precio" id="precio">$${x.precio}</p>
-    <div class="caja_boton">
-    <button type="button" class="botonAgregarProducto" id="btn${x.id}">Agregar producto</button>
-    </div>
-    </div>
-    `
-    padreCajaProductos.append(div)
-}
+setTimeout(() => {
+    let creacionCatalogo = new Promise((resolve) => {
+        resolve(
+            fetch("js/productos.json")
+                .then(response => response.json())
+                .then(data => {
+                    productos = data.producto
+                    productos.forEach(producto => {
+
+                        let div = document.createElement("div")
+                        div.className = "producto"
+
+                        div.innerHTML = `
+                        <img src="${producto.img}" alt="producto">
+                        <p class="nombre_producto">${producto.nombre}</p>
+                        <p class="precio" id="precio">$${producto.precio}</p>
+                        <div class="caja_boton">
+                        <button type="button" class="botonAgregarProducto" id="btn${producto.id}">Agregar producto</button>
+                        </div>
+                        `
+                        padreCajaProductos.appendChild(div)
+                    });
+                })
+                .catch(error => {
+                    console.error("algo salio mal")
+                })
+        )
+    })
+
+
+
+}, 2000)
+
+
 /* SECCION PARA MOSTRAR EL CARRITO DE COMPRAS */
 
 /* variable carrito donde se guardan */
@@ -351,11 +293,14 @@ let carritoEnLoSt = JSON.parse(localStorage.getItem("carrito"))
 
 
 /* EVENTO DE BOTONES AGREGAR PRODUCTOS */
-for (let i = 0; i < productos.length; i++) {
-    let btn = document.getElementById(`btn${productos[i].id}`);
-    btn.addEventListener("click", () => agregarAlCarrito({ ...productos[i] }));
-}
+setTimeout(() => {
+    for (let i = 0; i < productos.length; i++) {
+        let btn = document.getElementById(`btn${productos[i].id}`);
+        btn.addEventListener("click", () => agregarAlCarrito({ ...productos[i] }));
+    }
+}, 3000)
 
+/* CANTIDAD DE ARTICULOS */
 
 /* FUNCION AGREGAR EL PRODUCTO AL CARRITO */
 function agregarAlCarrito(valor) {
@@ -385,6 +330,7 @@ function carritoEnHtml() {
     productoMasCaro()
 }
 /* AGREGAR SOLO EL PRECIO DE LOS PRODUCTOS A UNA VARIABLE */
+let catidadCarrito = document.getElementById("catidadCarrito")
 let preciodelcarrito
 function sumarCarrito() {
     preciodelcarrito = []
@@ -396,6 +342,9 @@ function sumarCarrito() {
     let precioFinal = document.getElementById("totalCarrito")
     /* CAMBIO DEL TEXTO CON EL DOM */
     precioFinal.innerText = total
+    catidadCarrito.style.display = "block"
+    catidadCarrito.innerText = carrito.length
+    avisoCarrito()
 }
 
 /* PRODUCTO MAS CARO CON EM METODO SPREND */
@@ -405,4 +354,20 @@ function productoMasCaro() {
     /* CAMBIO DEL TEXTO CON EL DOM */
     let mayorValor = document.getElementById("mayorValor")
     mayorValor.innerText = masCaro
+}
+
+
+
+
+/* SECTOR DE PRUEBAS */
+function avisoCarrito(){
+    Toastify({
+    text: "Se agrego un producto al carrito",
+    duration: 3000,
+    gravity: "bottom",
+    avatar: "img/logo/carrito.png",
+    style: {
+        background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
+    }
+}).showToast();
 }
