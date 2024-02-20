@@ -1,29 +1,3 @@
-
-// Swal.fire("SweetAlert2 is working!"); agregar mas alertas con sweel alert
-
-/* AGRAGAR LOS ENLACES DE LAS PAGINAS DEL LA BARRA DE NAVEGACION
-PONER LA BARRA DE NAVEGACION EL POSITIO FIXED PARA QUE SIGA LA PANTALLA
-HACER LO RESPONSIVE 
-AGREGAR TITULOS Y SUB TITULOS DE LA PAGINA
-AGREGAR EL FFUTER */
-// BOTON PARA HACER EL CAMBIO DE IMG    
-
-/* VERIFICACION SI TENEMOS UN USUARIO EN LINEA */
-let usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
-
-/* DESESTRUCTURACION VARIABLES USUARIO */
-usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : {nombre,apellido,correo,contraseña} = undefined
-/* EVENTO ABRIR REGISTRO DE USUARIO */
-let registroDeUsuario = document.getElementById("registroDeUsuario").addEventListener("click", () => abrirRegistro())
-
-let ingresoDeUsuario = document.getElementById("inicioSesionUsuario").addEventListener("click", () => abrirIngreso())
-
-/* EVENTO CERRAR REGISTRO DE USUARIO */
-let cierreRegistroUsuario = document.getElementById("cerrarRegistroUsuario").addEventListener("click", () => cerrarRegistro())
-
-/* EVENTO CERRAR INGRESO USUARIO */
-let cierreIngresoUsuario = document.getElementById("cerrarIngresoUsuario").addEventListener("click", () => cerrarIngreso())
-
 /* CONSTRUCTOR DE USURIO */
 class registroUsuario {
     constructor(nombre, apellido, correo, contraseña) {
@@ -33,20 +7,57 @@ class registroUsuario {
         this.contraseña = contraseña
     }
 }
+let usuarioEnLoSt ;
+let usuarioEnSeSt ;
+// usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))  
+// usuarioEnLoSt? ingresoDePerfil() : false
+/* SECCION DE EVENTOS DE VENTANA REGISTRO E INGRESO */
 
-/* LOGICA DE REGISTRO USUARIO********************** */
+/* ABRIR REGISTRO DE USUARIO */
+let registroDeUsuario = document.getElementById("registroDeUsuario").addEventListener("click", () => abrirRegistro())
 
-/* EVENTO DE ABRIR LA VENTADA DE REGISTRO */
+/* FUNCION DE ABRIR LA VENTADA DE REGISTRO */
 function abrirRegistro() {
     let ventanaReg = document.getElementById("registro")
     ventanaReg.style.display = "flex"
+    cerrarIngreso()
 }
 
-/* EVENTO DE CERRRAR LA VENTA DE REGISTRO */
+/* CERRAR REGISTRO DE USUARIO */
+let cierreRegistroUsuario = document.getElementById("cerrarRegistroUsuario").addEventListener("click", () => cerrarRegistro())
+
+/* FUNCION DE CERRRAR LA VENTA DE REGISTRO */
 function cerrarRegistro() {
     let ventanaReg = document.getElementById("registro")
     ventanaReg.style.display = "none"
+    textErroregistro.innerText = ""
+
 }
+
+/* ABRIR INGRESO DE USUARIO */
+let ingresoDeUsuario = document.getElementById("inicioSesionUsuario").addEventListener("click", () => abrirIngreso())
+
+/* FUNCION ABRIR VENTA DE INGRESO */
+function abrirIngreso() {
+    let ventanaing = document.getElementById("ventanaIngreso")
+    ventanaing.style.display = "flex"
+    cerrarRegistro()
+}
+
+/* EVENTO CERRAR INGRESO USUARIO */
+let cierreIngresoUsuario = document.getElementById("cerrarIngresoUsuario").addEventListener("click", () => cerrarIngreso())
+
+/* fUNCION CERRAR VENTANE DE INGRESO */
+function cerrarIngreso() {
+    let ventanaing = document.getElementById("ventanaIngreso")
+    ventanaing.style.display = "none"
+    textErroingreso.innerText = ""
+    
+}
+/* FINAL SECCION DE EVENTOS DE VENTANA REGISTRO E INGRESO */
+
+
+/* VARIABLES PARA EL REGISTRO USUARIO */
 let regNomUsu = document.getElementById("registroNombreUsuario").addEventListener("change", (event) => { regNomUsu = event.target.value })
 let regApellUsu = document.getElementById("registroApellidoUsuario").addEventListener("change", (event) => { regApellUsu = event.target.value })
 let regCorreUsu = document.getElementById("registroCorreoUsuario").addEventListener("change", (event) => { regCorreUsu = event.target.value })
@@ -55,49 +66,56 @@ let regcontrUsu = document.getElementById("registroContraseñaUsuario").addEvent
 
 /* BOTON DE CRACION DE USUARIO */
 let btnRegistrase = document.getElementById("btnRegistrase").addEventListener("click", () => validacionRegistro())
-
 let textErroregistro = document.getElementById("errorDeregistro")
-
 
 /* VALIDACION DE DATOS CREACION DE USUARIO */
 function validacionRegistro() {
-    if (valRegNomUsu()&& valApellUsu() && valCorreUsu() && valcontrUsu()) {
+    
+    if (valRegNomUsu() && valApellUsu() && valCorreUsu() && valcontrUsu()) {
         creacionUsuario()
+        Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "El Usuario fue creado con extio ya puede iniciar sesion",
+            showConfirmButton: false,
+            timer: 2500
+        });
     } else {
         textErroregistro.innerText = "Error de ingreso vuelva a intentar"
     }
+    
 }
 
 /* VALIDACION DATOS INGRESASDO NOMBRE USUARIO */
 function valRegNomUsu() {
     if (regNomUsu || false) {
         return true
-    } else{
+    } else {
         return false
     }
 }
 /* VALIDACION DATOS INGRESASDO APELLIDO USUARIO */
-function valApellUsu(){
-    if(regApellUsu || false){
+function valApellUsu() {
+    if (regApellUsu || false) {
         return true
-    } else{
+    } else {
         return false
     }
 }
 
 /* VALIDACION DATOS INGRESASDO CORREO USUARIO */
-function valCorreUsu(){
-    if(regCorreUsu|| false){
+function valCorreUsu() {
+    if (regCorreUsu || false) {
         return true
-    } else{
+    } else {
         return false
     }
 }
 /* VALIDACION DATOS INGRESASDO CONTRASEÑA USUARIO */
-function valcontrUsu(){
-    if(regcontrUsu|| false){
+function valcontrUsu() {
+    if (regcontrUsu || false) {
         return true
-    } else{
+    } else {
         return false
     }
 }
@@ -107,22 +125,15 @@ function creacionUsuario() {
     usuarioEnLoSt = new registroUsuario(regNomUsu, regApellUsu, regCorreUsu, regcontrUsu)
     localStorage.setItem("usuario", JSON.stringify(usuarioEnLoSt))
     cerrarRegistro()
+    abrirIngreso()
 }
 
 /* FINAL LOGICA REGISTRO USUARIO ******************* */
 
 
 /* LOGICA INGRESO USUARIO ************************* */
-/* EVENTO CERRAR VENTANE DE INGRESO */
-function cerrarIngreso() {
-    let ventanaing = document.getElementById("ventanaIngreso")
-    ventanaing.style.display = "none"
-}
-/* EVENTO ABRIR VENTA DE INGRESO */
-function abrirIngreso() {
-    let ventanaing = document.getElementById("ventanaIngreso")
-    ventanaing.style.display = "flex"
-}
+
+
 /*DATOS INGRESADO DEL USUARIO  */
 let ingCorrUsu = document.getElementById("ingresoCorreoUsuario").addEventListener("change", (event) => ingCorrUsu = event.target.value)
 let contrUsu = document.getElementById("ingresoContraseñaUsuario").addEventListener("change", (event) => contrUsu = event.target.value)
@@ -137,10 +148,19 @@ let textErroingreso = document.getElementById("errorDeIngreso")
 
 
 function ingresoUsuario() {
-    validacionDatos() ? cambioDePerfil() : errorlogin()
-
+    usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
+    usuarioEnLoSt? { nombre, apellido, correo, contraseña } = usuarioEnLoSt: textErroingreso.innerText = "No tenemos tus datos. Debes registrarte"
+    validacionDatos() ? ingresoDePerfil() : errorlogin()
+    
+    
+    if(usuarioEnLoSt == false){
+        sessionStorage.setItem("usuario-sesion",JSON.stringify(usuarioEnLoSt))
+        usuarioEnSeSt = JSON.parse(sessionStorage.getItem("usuario-sesion"))
+        
+    } 
+    
 }
-function errorlogin(){
+function errorlogin() {
     textErroingreso.innerText = "Error en la contraseña o usuario"
 }
 
@@ -165,16 +185,49 @@ function validacionContraseña() {
         return false
     }
 }
+/* QUE DE EN QUE CUANDO CIERRE O CAMBIO EL USARIO DESDE ESO CAMBIE EL DISPLAY DE INICIO Y REGITRO DE SESIO  */
+/* TAREAS 
+BAJAR LA VENTANA DE REGISTRO Y DE INGRESO POR EL FIXED DEL HEADER
+CUANDO SE ABRA EL REGISTRO SE CIERRE EL INGRESO Y LO MISMO AL CONTRARIO 
+AGREGAR UNA ALERTA CON TOASTY PARA INDICAR CUANDO SE AGREGO UN NUEVO PRODUCTO AL CARRITO 
+APLICAR UN FILTRO PARA LOS PRODUCTOS POR PRECIO 
+AGREGAR LA OPCION DE CERRAR SESION EN LA FOTO DE PERFIL
+PENSAR EL FOOTER PARA COMPLETAR LA VISTA DE LA PAGINA
+CAMBIAR LOS LOGOS DE USUARIO Y CARRITO POR EL DE BOOSTRAP
+SACAR LOS PRODUCTOS DEL JS Y GUARDARLOS EN UN JSON
+COMENTAR Y SEPARAR LAS PORCIONES DE CODIGO PARA QUE SEA MAS ENTENDIBLE EN HTML CSS Y JS
+AGREGAR EL FORMATO PARA QUE ACEPTE SOLAMENTE CON EL .COM EN EL INPUT DE CORREO
+
+ */
 
 /* CAMBIO DE PERFIL DEL USUARIO  */
-function cambioDePerfil() {
-    let perfil = document.getElementById("inicio_registo_Sesion")
+let sesionIngreoRegistro = document.getElementById("inicio_registo_Sesion")
+let perfil = document.getElementById("usuarioIngresado")
+function ingresoDePerfil() {
+    usuarioEnSeSt ? { nombre, apellido, correo, contraseña } = usuarioEnSeSt : false
+    sesionIngreoRegistro.style.display ="none"
+    cerrarSesion.style.display = "block"
+    
+    
+    
     perfil.innerHTML = `<p class="perfil_iniciado">${nombre} ${apellido}</p>`
     cerrarIngreso()
+}
+let cerrarSesion = document.getElementById("cerrarSesion")
+cerrarSesion.addEventListener("click", ()=>{cerrarlaSesion()} )
+function cerrarlaSesion(){
+    sessionStorage.clear()
+    sesionIngreoRegistro.style.display ="block"
+    cerrarSesion.style.display = "none"
+    perfil.innerHTML = ""
+
+    
+
 }
 
 /* FINAL LOCICA INGRESO USUARIO */
 
+/* CERRAR SESION DEL USUARIO */
 /* PRODUCTOS */
 /* CREADOR DE PRODUCTOS */
 class nuevoProducto {

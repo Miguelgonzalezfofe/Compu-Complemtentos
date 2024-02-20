@@ -9,37 +9,52 @@
 </head>
 
 <body>
+    <!-- INICIO DEL HEADER -->
     <header>
+        <!-- BARRA DE NAVEGACION CON LOGO, ENLACES, INICIO DE SESION Y CARRITO DE COMPRAS -->
         <nav>
+            <!-- CONTENEDOR DE LOGO -->
             <div class="contenedor_img">
                 <img src="img/logo/DSC06105 - copia.png" alt="logo">
             </div>
+            <!-- ENLACES -->
             <ul>
                 <li><a href="#inicio">inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#contacto">contacto</a></li>
             </ul>
         </nav>
+        <!-- CONTENEDOR DE CODIGO DE SESION -->
         <div class="sesion">
             <div class="img-sesion">
                 <img src="img/logo/usuarioSinRegistro.png" alt="img_sesion" id="foto_perfil_usuario">
                 <div class="inicio_sesion" id="inicio_registo_Sesion">
                     <p id="inicioSesionUsuario"">Iniciar sesión</p>
-                    <br>
                     <p id="registroDeUsuario">Registrase</p>
                 </div>
+                <div id="usuarioIngresado"></div>
+                <div id="cerrarSesion">Cerrar sesion</div>
             </div>
         </div>
+        <!-- IMAGEN DEL CARRITO DE COMPRAS -->
         <div class="carrito_de_compras" id="carritoCompras">
             <img src="img/logo/carrito.png" alt="carrito_de_compras">
+
+            <!-- CANTIDAD DE PRODUCTOS EN EL CARRITO -->
             <p id="catidadCarrito">0</p>
         </div>
     </header>
+    <!-- FINAL DEL HEADER -->
     <main>
-        <section class="presentacion" id="inicio"> 
+        <!-- PRESENTACION DE LA PAGINA AL USUARIO -->
+        <section class="presentacion" id="inicio">
             <h2>AQUI ENCONTRARAS TODO LO QUE NECESITAS<br> PARA ARMAR TU ZONA DE TRABAJO O ZONA GAMER</h2>
-            <p id="ini">Equipos de alta calidad <span id="garantia">Garantias</span> de hasta 6 meses. Envios a todo el mundo desde argentina </p>
+            <p id="ini">Equipos de alta calidad <span id="garantia">Garantias</span> de hasta 6 meses. Envios a todo el
+                mundo desde argentina </p>
+
+                <!-- CONTENEDOR PARA EL REGISTRO DEL USUARIO -->
             <div class="contenedor_registro" id="registro">
+                <!-- CAJA PARA LLENAR LOS DATOS DEL USUARIO -->
                 <div class="registro">
                     <div class="cerrar" id="cerrarRegistroUsuario">X</div>
                     <h3>Registro de usuario</h3>
@@ -50,9 +65,8 @@
                         <input type="text" id="registroApellidoUsuario">
                         <label for="registroCorreoUsuario">Correo</label>
                         <input type="email" id="registroCorreoUsuario">
-                        <label for="registroContraseñaUsuario" >Contraseña</label>
-                        <input type="password" id="registroContraseñaUsuario">
-                        <!-- continuar con el formulario para ingresar el nuevo usuario capturar los datos en un objeto para pasarlo a json y enviarlo al sesionstorage o local storage y asi cuando inicie sesion verifique el correo y contraseña del usuario-->
+                        <label for="registroContraseñaUsuario">Contraseña</label>
+                        <input type="current-password"  id="registroContraseñaUsuario">
                     </form>
                     <p id="errorDeregistro"></p>
                     <input type="button" id="btnRegistrase" value="Registrarse">
@@ -67,21 +81,21 @@
                         <label for="ingresoCorreoUsuario">Correo</label>
                         <input type="email" id="ingresoCorreoUsuario">
                         <label for="ingresoContraseñaUsuario">Contraseña</label>
-                        <input type="password" id="ingresoContraseñaUsuario">
-                    </form>
+                        <input type="current-password" id="ingresoContraseñaUsuario">
+                    </form> 
                     <p id="errorDeIngreso"></p>
                     <input type="button" id="btnIngreso" value="Ingresar">
                 </div>
             </div>
             <div class="contenedor_carrito" id="contenedorCarrito">
-            <p id="cerrarCarrito">x</p>
+                <p id="cerrarCarrito">x</p>
                 <h3>Carro de compras</h3>
                 <div id="caja_carrito">
-                <ul id="carrito"></ul>
-                <div class="total_carrito" >
-                    <p>Total: <span id="totalCarrito">$</span></p>
-                    <p>Producto Mayor valor: <span id="mayorValor">$</span></p>
-                </div>
+                    <ul id="carrito"></ul>
+                    <div class="total_carrito">
+                        <p>Total: <span id="totalCarrito">$</span></p>
+                        <p>Producto Mayor valor: <span id="mayorValor">$</span></p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -100,7 +114,7 @@
                 <h2>Productos</h2>
 
                 <div class="caja_productos" id="cajaProductos">
-                    
+
 
                 </div>
 

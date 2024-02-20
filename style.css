@@ -11,7 +11,12 @@ header {
     width: 100%;
     height: auto;
     background-color: rgb(74, 9, 104);
+    position: fixed;
+    top: 0;
+    z-index: 1  ;
+
 }
+
 
 /* BARRANDE NAVEGACION */
 header nav {
@@ -57,6 +62,11 @@ header .sesion {
     width: 250px;
     color: white;
 }
+/* ESTILO PARA EL CERRADO DE SESION */
+header .sesion #cerrarSesion{
+    display: none;
+    cursor: pointer;
+}
 
 /* CAJA DE SESION IMG */
 header .sesion .img-sesion {
@@ -84,8 +94,8 @@ header .carrito_de_compras {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 130px;
-    height: 100px;
+    width: 120px;
+    height: 90px;
     cursor: pointer;
     background-color: white;
     border-radius: 50%;
@@ -95,7 +105,9 @@ header .carrito_de_compras {
 header .carrito_de_compras img {
     width: 65%;
 }
+/* CANTIDAD DE ARTICULOS EN EL CARRITO */
 header .carrito_de_compras p{
+    display: none;
     position: absolute;
     background-color: red;
     text-align: center;
@@ -122,6 +134,8 @@ main .presentacion {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    margin-top: 89px;
+    z-index: 2;
 }
 /* TEXTO PRESENTACION */
 main .presentacion #ini{
@@ -150,8 +164,8 @@ main .section_productos {
     height: auto;
 }
 main .section_productos .filtro{
+    background-color: aquamarine;
     text-align: center;
-    border: 1px solid;
     margin: auto;
     width: 85%;
     height: 80px;
@@ -165,13 +179,13 @@ main .section_productos .filtro form{
     height: 100%;
 }
 main .section_productos .productos {
-    width: 90%;
-    border: 1px solid;
+    width: 100%;
     margin: auto;
 }
 
 main .section_productos .productos h2 {
     text-align: center;
+    font-size: 35px;
 }
 
 main .section_productos .productos .caja_productos {
@@ -196,6 +210,11 @@ main .section_productos .productos .caja_productos .producto {
     justify-content:space-evenly;
     flex-direction: column;
 }
+main .section_productos .productos .caja_productos .producto:hover{
+    box-shadow: 0 1px 15px rgba(139, 37, 159, 0.694);
+    scale: 1.03;
+}
+
 
 main .section_productos .productos .caja_productos .producto img{
 width: auto;
@@ -203,7 +222,10 @@ height: 200px;
 border-radius: 15px;
 }
 main .section_productos .productos .caja_productos .producto .nombre_producto{
-    font-size: 18px;
+    font-size: 15px;
+    text-align: center;
+    width: 100%;
+    height: 40px;
 }
 main .section_productos .productos .caja_productos .producto .precio{
     font-size:20px;
@@ -213,14 +235,19 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     width: 100%;
     height: 25px;
     border-radius: 5px;
+    background-color: rgba(159, 37, 159, 0.694)
 }
+main .section_productos .productos .caja_productos .producto .caja_boton .botonAgregarProducto:hover{
+    scale: 1.05;
+}
+
 
 
 
 /* INICIO DE ESTILO REGISTRO USUARIO */
 .contenedor_registro{
     position: fixed;
-    top: 0;
+    top: 30px;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.655);
@@ -284,11 +311,10 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 /* INGRESO USUARIO */
 .contenedor_ingreso{
     position: fixed;
-    top: 0;
+    top: 30px;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.655);
-    /* boton para quitar y agregar la pantalla del registro */
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -351,6 +377,9 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     border-radius: 5px;
 }
 
+
+
+
 /* <!-- continuar con el formulario para ingresar el nuevo usuario capturar los datos en un objeto para pasarlo a json y enviarlo al sesionstorage o local storage y asi cuando inicie sesion verifique el correo y contraseña del usuario--> */
 #btnIngreso{
     font-size: 23px;
@@ -371,12 +400,13 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 }
 
 .contenedor_carrito{
+z-index: 1;
 position: relative;
 width: 250px;
-height: 100%; 
+height: 85%;
 /* padding: 5px; */
 position: fixed;
-top:0;
+bottom:0;
 right: 0;
 display:none;
 flex-direction: column;
