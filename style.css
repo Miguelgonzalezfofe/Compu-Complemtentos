@@ -406,19 +406,19 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 .contenedor_carrito{
 z-index: 1;
 position: relative;
-width: 250px;
-height: 85%;
+width: 280px;
+height: 510px;
 /* padding: 5px; */
 position: fixed;
 bottom:0;
-right: 0;
-display:none;
+right: 3px;
+display:flex;
 flex-direction: column;
 align-items: center;
 background-color: blueviolet;
 }
 .contenedor_carrito #cerrarCarrito{
-    font-size: 18px;
+    font-size: 24px;
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -427,19 +427,68 @@ background-color: blueviolet;
 }
 .presentacion .contenedor_carrito #caja_carrito{
 background-color: white;
+padding-right: 10px;
 width: 100%;
 height: 100%;
-overflow: auto;
+overflow: scroll;
+}
+.presentacion .contenedor_carrito #caja_carrito #carrito{
+    width: 99%;
+}
+.presentacion .contenedor_carrito #caja_carrito #carrito .spd{
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: azure;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    gap: 3px;
+}
+.presentacion .contenedor_carrito #caja_carrito #carrito div #contenedor_img_carrito{
+    width: 130px;
 }
 
-.presentacion .contenedor_carrito #caja_carrito ul{
-    list-style-type:none ;
+.presentacion .contenedor_carrito #caja_carrito #carrito div #contenedor_img_carrito  #img_pro_carr{
+    border-radius: 8px;
+    /* posible problema */
+    width: 100%;
+    height: 100%;
 }
-.presentacion .contenedor_carrito #caja_carrito ul li{
+.presentacion .contenedor_carrito #caja_carrito #carrito div .info{
+    display: flex;
+    width: 250px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.presentacion .contenedor_carrito #caja_carrito #carrito div .info .nombre_pro_carr{
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    color: blueviolet;
+    font-weight: 900;
+}
+
+.presentacion .contenedor_carrito #caja_carrito #carrito div .info .precio_art_carr{
+    padding: 0;
+    margin: 0;
+    color: black;
+    font-weight: 500;
+    text-align: end;
+    justify-self: end;
+}
+
+
+
+
+
+
+/* .presentacion .contenedor_carrito #caja_carrito ul li{
     width: 100%;
     height: 30px;
     text-align: center;
-}
+} */
 .presentacion .contenedor_carrito .total_carrito{
     background-color: black;
     width: 100%;

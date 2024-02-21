@@ -188,7 +188,6 @@ function validacionContraseña() {
 /* TAREAS 
 APLICAR UN FILTRO PARA LOS PRODUCTOS POR PRECIO 
 PENSAR EL FOOTER PARA COMPLETAR LA VISTA DE LA PAGINA
-CAMBIAR LOS LOGOS DE USUARIO Y CARRITO POR EL DE BOOSTRAP
 COMENTAR Y SEPARAR LAS PORCIONES DE CODIGO PARA QUE SEA MAS ENTENDIBLE EN HTML CSS Y JS
 AGREGAR EL FORMATO PARA QUE ACEPTE SOLAMENTE CON EL .COM EN EL INPUT DE CORREO
 
@@ -279,7 +278,7 @@ setTimeout(() => {
 
 
 
-}, 2000)
+},1200)
 
 
 /* SECCION PARA MOSTRAR EL CARRITO DE COMPRAS */
@@ -297,7 +296,7 @@ setTimeout(() => {
         let btn = document.getElementById(`btn${productos[i].id}`);
         btn.addEventListener("click", () => agregarAlCarrito({ ...productos[i] }));
     }
-}, 3000)
+}, 1500)
 
 /* CANTIDAD DE ARTICULOS */
 
@@ -318,12 +317,21 @@ function mostarCarrtio() {
 let PantallaCarrito = document.getElementById("carrito")
 /* FUNCION DE AGREGAR LOS PORDUCTOS AL HTML */
 function carritoEnHtml() {
-    let ul = document.createElement("li")
+    let divElement = document.createElement("div")
+    divElement.className ="spd"
     for (x of carrito) {
-        ul.innerHTML = ` 
-        ${x.nombre} $${x.precio}
+        divElement.innerHTML = `
+                        
+                            <div id="contenedor_img_carrito"><img id="img_pro_carr" src="${x.img}"
+                                    alt="producto_carrito"> </div>
+                            <div class="info">
+                                <h6 class="nombre_pro_carr">${x.nombre}</h6>
+                                <p class="precio_art_carr">$${x.precio}</p>
+                            </div>
+
+                        
         `
-        PantallaCarrito.append(ul)
+        PantallaCarrito.append(divElement)
     }
     sumarCarrito()
     productoMasCaro()
@@ -363,7 +371,8 @@ function avisoCarrito(){
     Toastify({
     text: "Se agrego un producto al carrito",
     duration: 3000,
-    gravity: "bottom",
+    gravity: "top",
+    position: "left",
     avatar: "img/logo/carrito.png",
     style: {
         background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
