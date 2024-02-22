@@ -1,3 +1,25 @@
+/* TAREAS 
+investigar en cuanto sale el precio del hosttinger para alojar mis proyectos
+cambiar los colores del texto de  la presentacion
+agregar fotos de perfiles para seleccionar al registrarse
+APLICAR UN FILTRO PARA LOS PRODUCTOS POR PRECIO (inicio de trabajo)
+PENSAR EL FOOTER PARA COMPLETAR LA VISTA DE LA PAGINA
+    NOMBRE DEL SITIO WEB / CONTACTO /METODOS DE PAGO
+posicionar el numero del carrito 
+AGREGAR UNA TRASITION AL CARRITO DE COMPRAS
+COMENZAR A INCORMPAR BOOSTRAP
+ADAPTAR A DISTINTOS DISPOSITIVOS 
+*guardar los datos del carrito en el localstorage y que al inicia sesion se cargen los datos del carrito*
+incorparar la api de dolar
+agregar el boton de compra {que lleve a un html aparte para realizar el pago del carrito}
+simular el pago realizado y el pago con error
+COMENTAR Y SEPARAR LAS PORCIONES DE CODIGO PARA QUE SEA MAS ENTENDIBLE EN HTML CSS Y JS
+AGREGAR EL FORMATO PARA QUE ACEPTE SOLAMENTE CON EL .COM EN EL INPUT DE CORREO
+darle mas espacio al logo del inicio
+AGREGAR MAS PRODUCTOS
+EDITAR LA CARTAS Y LOS BOTONES 
+ */
+
 /* CONSTRUCTOR DE USURIO */
 class registroUsuario {
     constructor(nombre, apellido, correo, contraseña) {
@@ -9,8 +31,6 @@ class registroUsuario {
 }
 let usuarioEnLoSt;
 let usuarioEnSeSt;
-// usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))  
-// usuarioEnLoSt? ingresoDePerfil() : false
 /* SECCION DE EVENTOS DE VENTANA REGISTRO E INGRESO */
 
 /* ABRIR REGISTRO DE USUARIO */
@@ -185,13 +205,7 @@ function validacionContraseña() {
         return false
     }
 }
-/* TAREAS 
-APLICAR UN FILTRO PARA LOS PRODUCTOS POR PRECIO 
-PENSAR EL FOOTER PARA COMPLETAR LA VISTA DE LA PAGINA
-COMENTAR Y SEPARAR LAS PORCIONES DE CODIGO PARA QUE SEA MAS ENTENDIBLE EN HTML CSS Y JS
-AGREGAR EL FORMATO PARA QUE ACEPTE SOLAMENTE CON EL .COM EN EL INPUT DE CORREO
 
- */
 
 /* CAMBIO DE PERFIL DEL USUARIO  */
 let sesionIngreoRegistro = document.getElementById("inicio_registo_Sesion")
@@ -245,21 +259,70 @@ function abrirCarrito() {
     ventanaCarrito.style.display = "flex"
 }
 
-/* CREACION DE LOS PRODUCTOS EN LA WEB */
-let padreCajaProductos = document.getElementById("cajaProductos")
-setTimeout(() => {
-    let creacionCatalogo = new Promise((resolve) => {
+/* SECCION PARA EL FILTRADO DE LOS PRODUCTOS */
+
+/* VARIABLE DEL NODO INPUT DEL FILTRADO */
+let entraFiltro = document.getElementById("productoFiltro").addEventListener("change", (event)=>{ entraFiltro = (event.target.value)})
+
+function filtrarCatalogo(){
+        filtrado = new Promise((resolve) => {
         resolve(
             fetch("js/productos.json")
-                .then(response => response.json())
-                .then(data => {
-                    productos = data.producto
-                    productos.forEach(producto => {
-
-                        let div = document.createElement("div")
+            .then((responde) => responde.json())
+            .then((data) => {
+                let pa = document.getElementsByClassName("producto")
+                
+                    produFiltra = data.producto
+                    const resultado = produFiltra.filter((x) => x.nombre.includes(entraFiltro.toLowerCase()))
+                    console.log(resultado)
+                    eliminarDivs()
+                    resultado.forEach(producto => {
+                        div = document.createElement("div")
                         div.className = "producto"
-
                         div.innerHTML = `
+                    <img src="${producto.img}" alt="producto">
+                    <p class="nombre_producto">${producto.nombre}</p>
+                    <p class="precio" id="precio">$${producto.precio}</p>
+                    <div class="caja_boton">
+                    <button type="button" class="botonAgregarProducto" id="btn${producto.id}">Agregar producto</button>
+                    </div>
+                    `
+                        padreCajaProductos.appendChild(div)
+                    })
+                })
+
+        )
+    })
+    }
+/* FUNCION DE FILTRADO */
+// function filtrarProducto(valor) {}
+
+/* VARIBLE NODO DEL FORMULARIO DE FILTRADO */
+let formFiltr = document.getElementById("form_filtr")
+formFiltr.addEventListener("submit",(event)=> {
+    event.preventDefault()
+    filtrarCatalogo()
+
+})
+
+/* CREACION DE LOS PRODUCTOS EN LA WEB */
+let padreCajaProductos = document.getElementById("cajaProductos") //contenedor donde iran los div productos
+let div2; //variable para eliminar los productos al aplicar el filtro
+/* FUNCION PARA CRAR EL CATALOGO DE INICIO */
+function buscarCatalogo() {
+    setTimeout(() => {
+        creacionCatalogo = new Promise((resolve) => {
+            resolve(
+                fetch("js/productos.json")
+                    .then(response => response.json())
+                    .then(data => {
+                        productos = data.producto
+                        productos.forEach(producto => {
+                            /* CREACION DEL NODO PARA LOS PRODUCTOS */
+                            let div = document.createElement("div")
+                            div.className = "producto"
+                            /* HTML PARA EL DIV */
+                            div.innerHTML = `
                         <img src="${producto.img}" alt="producto">
                         <p class="nombre_producto">${producto.nombre}</p>
                         <p class="precio" id="precio">$${producto.precio}</p>
@@ -267,19 +330,30 @@ setTimeout(() => {
                         <button type="button" class="botonAgregarProducto" id="btn${producto.id}">Agregar producto</button>
                         </div>
                         `
-                        padreCajaProductos.appendChild(div)
-                    });
-                })
-                .catch(error => {
-                    console.error("algo salio mal")
-                })
-        )
-    })
+                            padreCajaProductos.appendChild(div)
+
+                            div2 = div
+                        });
+                    })
+                    .catch(error => {
+                        console.error("algo salio mal")
+                    })
+            )
+        })
 
 
 
-},1200)
+    }, 1200)
+}
+buscarCatalogo()
 
+    /* FUNCION PARA ELIMINAR LOS PRODUCTOS */
+    function eliminarDivs() {
+        let productosDivs = document.querySelectorAll('.producto');
+        productosDivs.forEach(div => {
+            div.remove();
+        });
+    }
 
 /* SECCION PARA MOSTRAR EL CARRITO DE COMPRAS */
 
@@ -318,7 +392,7 @@ let PantallaCarrito = document.getElementById("carrito")
 /* FUNCION DE AGREGAR LOS PORDUCTOS AL HTML */
 function carritoEnHtml() {
     let divElement = document.createElement("div")
-    divElement.className ="spd"
+    divElement.className = "spd"
     for (x of carrito) {
         divElement.innerHTML = `
                         
@@ -364,18 +438,19 @@ function productoMasCaro() {
 }
 
 
-
-
-/* SECTOR DE PRUEBAS */
-function avisoCarrito(){
+/* SECCION DE AVISOS DE TOASTIFY */
+function avisoCarrito() {
     Toastify({
-    text: "Se agrego un producto al carrito",
-    duration: 3000,
-    gravity: "top",
-    position: "left",
-    avatar: "img/logo/carrito.png",
-    style: {
-        background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
-    }
-}).showToast();
+        text: "Se agrego un producto al carrito",
+        duration: 3000,
+        gravity: "top",
+        position: "left",
+        avatar: "img/logo/carrito.png",
+        style: {
+            background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
+        }
+    }).showToast();
 }
+
+/* FINAL SECCION DE AVISOS DE TOASTTIFY */
+

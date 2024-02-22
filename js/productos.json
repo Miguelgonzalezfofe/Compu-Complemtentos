@@ -2,75 +2,76 @@
     "producto": [
         {
             "id": 1,
-            "nombre": "Comsola EXBOX SERIES S ",
+            "nombre": "consola exbox series s ",
             "precio": 750,
             "img": "https://images.start.com.ar/RRS-00002.jpg"
         },
         {
             "id": 2,
-            "nombre": "AURICULAR SONY PS5",
+            "nombre": "auricular sony ps5",
             "precio": 200,
             "img": "https://images.start.com.ar/3006433.jpg"
         },
         {
             "id": 3,
-            "nombre": "NOTEBOOK GAMER ASUS",
+            "nombre": "notebook gamer asus",
             "precio": 2500,
             "img": "https://images.start.com.ar/G513RM-HQ084W-365.jpg"
         },
         {
             "id": 4,
-            "nombre": "JOYSTICK MICROSOFT XBOX",
+            "nombre": "joystick microsoft xbox",
             "precio": 130,
             "img": "https://images.start.com.ar/QAS-00007.jpg"
         },
         {
             "id": 5,
-            "nombre": "CONSOLA SONY PLAYSTATION 4TB",
+            "nombre": "consola sony playstation 4tb",
             "precio": 1200,
             "img": "https://images.start.com.ar/1000037231.jpg"
         },
         {
             "id": 6,
-            "nombre": "MOUSE GAMER",
+            "nombre": "mouse gamer",
             "precio": 75,
             "img": "https://images.start.com.ar/910-006366.jpg"
         },
         {
             "id": 7,
-            "nombre": "TECLADO GAMER G715",
+            "nombre": "teclado gamer g715",
             "precio": 190,
             "img": "https://images.start.com.ar/920-010453.jpg"
         },
         {
             "id": 8,
-            "nombre": "MONITOR SAMSUNG 24",
+            "nombre": "monitor samsung 24",
             "precio": 270,
             "img": "https://images.start.com.ar/LF24T350FHLCZB.jpg"
         },
         {
             "id": 9,
-            "nombre": "TACLADO GAMER TRUST GTX 833",
+            "nombre": "taclado gamer trust gtx 833",
             "precio": 25,
             "img": "https://images.start.com.ar/24067.jpg"
         },
         {
             "id": 10,
-            "nombre": "TECLADO MICROSOFT BLUETOOTH ",
+            "nombre": "teclado microsoft bluetooth",
             "precio": 84,
             "img": "https://images.start.com.ar/21Y-00061.jpg"
         },
         {
             "id": 11,
-            "nombre": "TECLADO Y MOUSE TRUST GAMER ",
+            "nombre": "teclado y mouse trust gamer",
             "precio": 52,
             "img": "https://images.start.com.ar/22460.jpg"
         },
         {
             "id": 12,
-            "nombre": "DISCO INTERNO SSD BX500-240GB ",
+            "nombre": "teclado y mouse trust gamer",
             "precio": 35,
             "img": "https://images.start.com.ar/CRU-CT240BX500SSD1.jpg"
         }
+        
     ]
 }

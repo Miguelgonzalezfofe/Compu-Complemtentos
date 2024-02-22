@@ -13,7 +13,7 @@ header {
     background-color: rgb(74, 9, 104);
     position: fixed;
     top: 0;
-    z-index: 1  ;
+    z-index: 1;
 
 }
 
@@ -37,7 +37,7 @@ header nav .contenedor_img {
 header nav .contenedor_img img {
     width: 100%;
     border-radius: 40%;
-    
+
 }
 
 /* LISRA DE ELEMENTOS NO ORDENADOS */
@@ -65,8 +65,9 @@ header .sesion {
     width: 250px;
     color: white;
 }
+
 /* ESTILO PARA EL CERRADO DE SESION */
-header .sesion #cerrarSesion{
+header .sesion #cerrarSesion {
     display: none;
     cursor: pointer;
 }
@@ -85,13 +86,16 @@ header .sesion .img-sesion {
 header .sesion .img-sesion img {
     width: 25%;
 }
-header .sesion .inicio_sesion{
+
+header .sesion .inicio_sesion {
     text-align: center;
 }
-header .sesion .inicio_sesion p{
+
+header .sesion .inicio_sesion p {
     margin: 0;
     cursor: pointer;
 }
+
 /* CONTENEDOR CARRITO */
 header .carrito_de_compras {
     display: flex;
@@ -105,12 +109,14 @@ header .carrito_de_compras {
     border-radius: 50%;
     margin: auto 10px;
 }
+
 /* IMG DEL CARRITO */
 header .carrito_de_compras img {
     width: 65%;
 }
+
 /* CANTIDAD DE ARTICULOS EN EL CARRITO */
-header .carrito_de_compras p{
+header .carrito_de_compras p {
     display: none;
     position: absolute;
     background-color: red;
@@ -141,18 +147,21 @@ main .presentacion {
     margin-top: 89px;
     z-index: 2;
 }
+
 /* TEXTO PRESENTACION */
-main .presentacion #ini{
+main .presentacion #ini {
     color: aliceblue;
     font-size: 25px;
     width: 85%;
     text-align: center;
 }
-#garantia{
+
+#garantia {
     color: black;
     font-weight: 800;
 }
-main .presentacion h2{
+
+main .presentacion h2 {
     background-color: rgba(255, 255, 255, 0.274);
     padding: 10px;
     font-size: 40px;
@@ -162,26 +171,38 @@ main .presentacion h2{
 
 
 }
+
 /* CONTENEDOR DE PRODUCTOS */
 main .section_productos {
     width: 100%;
     height: auto;
 }
-main .section_productos .filtro{
+
+/* +++++++++++++++++ DESDE AQUI FALTA COMENTAR EL CODIGO ++++++++++++++++++++++++++++++ */
+main .section_productos .filtro {
     background-color: aquamarine;
     text-align: center;
     margin: auto;
     width: 85%;
     height: 80px;
     padding: 10px;
-} 
-main .section_productos .filtro h3{
+}
+
+main .section_productos .filtro h3 {
     text-align: center;
 }
-main .section_productos .filtro form{
+
+main .section_productos .filtro form {
     width: 100%;
     height: 100%;
 }
+/* ESTILOS ENTRADA DE TEXTO PARA EL FILTRADO DE PRODUCTOS */
+main .section_productos .filtro form input{
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    width: 400px;
+}
+
 main .section_productos .productos {
     width: 100%;
     margin: auto;
@@ -211,37 +232,43 @@ main .section_productos .productos .caja_productos .producto {
     border: 1px solid;
     box-shadow: 1px 1px 4px;
     display: flex;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     flex-direction: column;
 }
-main .section_productos .productos .caja_productos .producto:hover{
+
+main .section_productos .productos .caja_productos .producto:hover {
     box-shadow: 0 1px 15px rgba(139, 37, 159, 0.694);
     scale: 1.03;
 }
 
 
-main .section_productos .productos .caja_productos .producto img{
-width: auto;
-height: 200px;
-border-radius: 15px;
+main .section_productos .productos .caja_productos .producto img {
+    width: auto;
+    height: 200px;
+    border-radius: 15px;
 }
-main .section_productos .productos .caja_productos .producto .nombre_producto{
+
+main .section_productos .productos .caja_productos .producto .nombre_producto {
+    text-transform: uppercase;
     font-size: 15px;
     text-align: center;
     width: 100%;
     height: 40px;
 }
-main .section_productos .productos .caja_productos .producto .precio{
-    font-size:20px;
+
+main .section_productos .productos .caja_productos .producto .precio {
+    font-size: 20px;
     text-shadow: 1px 2px 3px;
 }
-main .section_productos .productos .caja_productos .producto .caja_boton .botonAgregarProducto{
+
+main .section_productos .productos .caja_productos .producto .caja_boton .botonAgregarProducto {
     width: 100%;
     height: 25px;
     border-radius: 5px;
     background-color: rgba(159, 37, 159, 0.694)
 }
-main .section_productos .productos .caja_productos .producto .caja_boton .botonAgregarProducto:hover{
+
+main .section_productos .productos .caja_productos .producto .caja_boton .botonAgregarProducto:hover {
     scale: 1.05;
 }
 
@@ -249,7 +276,7 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 
 
 /* INICIO DE ESTILO REGISTRO USUARIO */
-.contenedor_registro{
+.contenedor_registro {
     position: fixed;
     top: 30px;
     width: 100%;
@@ -262,7 +289,7 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     align-items: center;
 }
 
-.contenedor_registro .registro{
+.contenedor_registro .registro {
     position: relative;
     padding: 10px;
     border-radius: 10px;
@@ -273,9 +300,10 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    
+
 }
-.contenedor_registro .registro .cerrar{
+
+.contenedor_registro .registro .cerrar {
     width: 23px;
     height: 23px;
     font-size: 18px;
@@ -287,11 +315,13 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     top: 5px;
     cursor: pointer;
 }
-.contenedor_registro .registro h3{
+
+.contenedor_registro .registro h3 {
     font-size: 40px;
     text-align: center;
 }
-.contenedor_registro .registro form{
+
+.contenedor_registro .registro form {
     width: 100%;
     height: auto;
     border: 1px solid;
@@ -301,19 +331,19 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     flex-direction: column;
 }
 
-.contenedor_registro .registro form label{
+.contenedor_registro .registro form label {
     font-size: 25px;
     font-weight: 600;
 }
 
-.contenedor_registro .registro form input{
+.contenedor_registro .registro form input {
     height: 30px;
     font-size: 18px;
     border-radius: 5px;
 }
 
 /* INGRESO USUARIO */
-.contenedor_ingreso{
+.contenedor_ingreso {
     position: fixed;
     top: 30px;
     width: 100%;
@@ -325,7 +355,7 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     align-items: center;
 }
 
-.contenedor_ingreso .ingreso{
+.contenedor_ingreso .ingreso {
     position: relative;
     padding: 10px;
     border-radius: 10px;
@@ -336,9 +366,10 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    
+
 }
-.contenedor_ingreso .ingreso .cerrar{
+
+.contenedor_ingreso .ingreso .cerrar {
     width: 23px;
     height: 23px;
     font-size: 18px;
@@ -350,16 +381,17 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     top: 5px;
     cursor: pointer;
 }
-.contenedor_ingreso .ingreso h3{
+
+.contenedor_ingreso .ingreso h3 {
     font-size: 40px;
     text-align: center;
 }
 
-.contenedor_ingreso .ingreso #foto_perfil_usuario{
+.contenedor_ingreso .ingreso #foto_perfil_usuario {
     width: 150px;
 }
 
-.contenedor_ingreso .ingreso form{
+.contenedor_ingreso .ingreso form {
     width: 100%;
     height: auto;
     border: 1px solid;
@@ -370,12 +402,12 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 }
 
 
-.contenedor_ingreso .ingreso form label{
+.contenedor_ingreso .ingreso form label {
     font-size: 25px;
     font-weight: 600;
 }
 
-.contenedor_ingreso .ingreso form input{
+.contenedor_ingreso .ingreso form input {
     height: 30px;
     font-size: 18px;
     border-radius: 5px;
@@ -384,40 +416,41 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 
 
 
-/* <!-- continuar con el formulario para ingresar el nuevo usuario capturar los datos en un objeto para pasarlo a json y enviarlo al sesionstorage o local storage y asi cuando inicie sesion verifique el correo y contraseña del usuario--> */
-#btnIngreso{
-    font-size: 23px;
-    width: 85%;
-    height: 60px;
-    border-radius: 10px;
-}
-#btnRegistrase{
+#btnIngreso {
     font-size: 23px;
     width: 85%;
     height: 60px;
     border-radius: 10px;
 }
 
-.perfil_iniciado{
+#btnRegistrase {
+    font-size: 23px;
+    width: 85%;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.perfil_iniciado {
     text-align: center;
 
 }
 
-.contenedor_carrito{
-z-index: 1;
-position: relative;
-width: 280px;
-height: 510px;
-/* padding: 5px; */
-position: fixed;
-bottom:0;
-right: 3px;
-display:flex;
-flex-direction: column;
-align-items: center;
-background-color: blueviolet;
+.contenedor_carrito {
+    z-index: 1;
+    position: relative;
+    width: 280px;
+    height: 99%;
+    /* padding: 5px; */
+    position: fixed;
+    bottom: 0;
+    right: 3px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: blueviolet;
 }
-.contenedor_carrito #cerrarCarrito{
+
+.contenedor_carrito #cerrarCarrito {
     font-size: 24px;
     cursor: pointer;
     position: absolute;
@@ -425,17 +458,20 @@ background-color: blueviolet;
     right: 10px;
 
 }
-.presentacion .contenedor_carrito #caja_carrito{
-background-color: white;
-padding-right: 10px;
-width: 100%;
-height: 100%;
-overflow: scroll;
+
+.presentacion .contenedor_carrito #caja_carrito {
+    background-color: white;
+    padding-right: 10px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
 }
-.presentacion .contenedor_carrito #caja_carrito #carrito{
+
+.presentacion .contenedor_carrito #caja_carrito #carrito {
     width: 99%;
 }
-.presentacion .contenedor_carrito #caja_carrito #carrito .spd{
+
+.presentacion .contenedor_carrito #caja_carrito #carrito .spd {
     padding: 5px;
     margin: 5px;
     border: 1px solid;
@@ -446,23 +482,26 @@ overflow: scroll;
     display: flex;
     gap: 3px;
 }
-.presentacion .contenedor_carrito #caja_carrito #carrito div #contenedor_img_carrito{
+
+.presentacion .contenedor_carrito #caja_carrito #carrito div #contenedor_img_carrito {
     width: 130px;
 }
 
-.presentacion .contenedor_carrito #caja_carrito #carrito div #contenedor_img_carrito  #img_pro_carr{
+.presentacion .contenedor_carrito #caja_carrito #carrito div #contenedor_img_carrito #img_pro_carr {
     border-radius: 8px;
     /* posible problema */
     width: 100%;
     height: 100%;
 }
-.presentacion .contenedor_carrito #caja_carrito #carrito div .info{
+
+.presentacion .contenedor_carrito #caja_carrito #carrito div .info {
     display: flex;
     width: 250px;
     flex-direction: column;
     justify-content: space-between;
 }
-.presentacion .contenedor_carrito #caja_carrito #carrito div .info .nombre_pro_carr{
+
+.presentacion .contenedor_carrito #caja_carrito #carrito div .info .nombre_pro_carr {
     padding: 0;
     margin: 0;
     font-size: 15px;
@@ -470,7 +509,7 @@ overflow: scroll;
     font-weight: 900;
 }
 
-.presentacion .contenedor_carrito #caja_carrito #carrito div .info .precio_art_carr{
+.presentacion .contenedor_carrito #caja_carrito #carrito div .info .precio_art_carr {
     padding: 0;
     margin: 0;
     color: black;
@@ -480,67 +519,58 @@ overflow: scroll;
 }
 
 
-
-
-
-
-/* .presentacion .contenedor_carrito #caja_carrito ul li{
-    width: 100%;
-    height: 30px;
-    text-align: center;
-} */
-.presentacion .contenedor_carrito .total_carrito{
+.presentacion .contenedor_carrito .total_carrito {
     background-color: black;
     width: 100%;
     height: 40px;
     position: absolute;
     bottom: 0px;
 }
-.presentacion .contenedor_carrito .total_carrito p{ 
+
+.presentacion .contenedor_carrito .total_carrito p {
     text-align: start;
     color: white;
 }
 
-.pie_pagina{
+.pie_pagina {
     padding: 5px;
     width: 100%;
     height: 350px;
 }
-.pie_pagina form{
-border: 1px solid;
-border-radius: 10px;
-padding: 10px;
-margin: auto;
+
+.pie_pagina form {
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
 }
 
 
-.pie_pagina #contacto{
+.pie_pagina #contacto {
     width: 350px;
     display: flex;
     flex-direction: column;
     font-size: 20px;
 }
 
-.pie_pagina #contacto input{
-height: 22px;
-font-size: 15px;
-border-radius: 5px;
+.pie_pagina #contacto input {
+    height: 22px;
+    font-size: 15px;
+    border-radius: 5px;
 }
 
-.pie_pagina #contacto textarea{
+.pie_pagina #contacto textarea {
     width: auto;
     height: 120px;
     overflow: auto;
 }
 
-.pie_pagina #contacto #botonEnviar{
-width: 90%;
-margin: 5px auto;
-}
-.pie_pagina #contacto #reset{
-width: 90%;
-margin: 5px auto;
+.pie_pagina #contacto #botonEnviar {
+    width: 90%;
+    margin: 5px auto;
 }
 
-
-
+.pie_pagina #contacto #reset {
+    width: 90%;
+    margin: 5px auto;
+}
