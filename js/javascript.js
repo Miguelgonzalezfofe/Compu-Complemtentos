@@ -2,7 +2,7 @@
 investigar en cuanto sale el precio del hosttinger para alojar mis proyectos
 cambiar los colores del texto de  la presentacion
 agregar fotos de perfiles para seleccionar al registrarse
-APLICAR UN FILTRO PARA LOS PRODUCTOS POR PRECIO (inicio de trabajo)
+**+ ahora no funciona el agregar un producto al carrito ******************
 PENSAR EL FOOTER PARA COMPLETAR LA VISTA DE LA PAGINA
     NOMBRE DEL SITIO WEB / CONTACTO /METODOS DE PAGO
 posicionar el numero del carrito 

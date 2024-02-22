@@ -98,9 +98,10 @@ header .sesion .inicio_sesion p {
 
 /* CONTENEDOR CARRITO */
 header .carrito_de_compras {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     width: 100px;
     height: 70px;
@@ -112,21 +113,22 @@ header .carrito_de_compras {
 
 /* IMG DEL CARRITO */
 header .carrito_de_compras img {
-    width: 65%;
+    width: 70%;
+    height: 60%;
 }
 
 /* CANTIDAD DE ARTICULOS EN EL CARRITO */
 header .carrito_de_compras p {
-    display: none;
     position: absolute;
+    display: block;
     background-color: red;
     text-align: center;
     border-radius: 50%;
     width: 25px;
-    height: 28px;
+    height: 24px;
     color: white;
-    padding-top: 5px;
     top: 5px;
+    margin: 0;
 }
 
 /* FINALIZACION DEL HEADER */
