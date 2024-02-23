@@ -2,10 +2,8 @@
 investigar en cuanto sale el precio del hosttinger para alojar mis proyectos
 cambiar los colores del texto de  la presentacion
 agregar fotos de perfiles para seleccionar al registrarse
-**+ ahora no funciona el agregar un producto al carrito ******************
 PENSAR EL FOOTER PARA COMPLETAR LA VISTA DE LA PAGINA
     NOMBRE DEL SITIO WEB / CONTACTO /METODOS DE PAGO
-posicionar el numero del carrito 
 AGREGAR UNA TRASITION AL CARRITO DE COMPRAS
 COMENZAR A INCORMPAR BOOSTRAP
 ADAPTAR A DISTINTOS DISPOSITIVOS 
@@ -210,15 +208,49 @@ function validacionContraseña() {
 /* CAMBIO DE PERFIL DEL USUARIO  */
 let sesionIngreoRegistro = document.getElementById("inicio_registo_Sesion")
 let perfil = document.getElementById("usuarioIngresado")
+let actualizarCarrito 
 function ingresoDePerfil() {
     usuarioEnSeSt ? { nombre, apellido, correo, contraseña } = usuarioEnSeSt : false
     sesionIngreoRegistro.style.display = "none"
     cerrarSesion.style.display = "block"
 
-
-
     perfil.innerHTML = `<p class="perfil_iniciado">${nombre} ${apellido}</p>`
     cerrarIngreso()
+    actualizarCarrito = JSON.parse(localStorage.getItem("carrito"))
+    eliminarcatg()
+    for(const x of actualizarCarrito){
+        divElement = document.createElement("div")
+        divElement.className = "spd"
+        divElement.innerHTML = `
+                            <div id="contenedor_img_carrito"><img id="img_pro_carr" src="${x.img}"
+                                    alt="producto_carrito"> </div>
+                            <div class="info">
+                                <h6 class="nombre_pro_carr">${x.nombre}</h6>
+                                <p class="precio_art_carr">$${x.precio}</p>
+                            </div>
+                            `
+        PantallaCarrito.append(divElement)
+    }
+    catidadCarrito.style.display = "block"
+    catidadCarrito.innerText = actualizarCarrito.length
+
+    preciodelcarrito = []
+    for (x of actualizarCarrito) {
+        preciodelcarrito.push(x.precio)
+    }
+    /* SUMAR TODOS LOS PRECIOS DE LOS PRODUCTOS */
+    let total = preciodelcarrito.reduce((acc, num) => acc + num)
+    /* CAMBIO DEL TEXTO CON EL DOM */
+    precioFinal.innerText = total
+    
+
+}
+
+function eliminarcatg() {
+    let catalogoDivs = document.querySelectorAll('.spd');
+    catalogoDivs.forEach(div => {
+        div.remove();
+    });
 }
 let cerrarSesion = document.getElementById("cerrarSesion")
 cerrarSesion.addEventListener("click", () => { cerrarlaSesion() })
@@ -227,6 +259,10 @@ function cerrarlaSesion() {
     sesionIngreoRegistro.style.display = "block"
     cerrarSesion.style.display = "none"
     perfil.innerHTML = ""
+    catidadCarrito.innerText = 0
+    eliminarcatg()
+    totalCarrito.innerText = 0
+    
 
 
 
@@ -262,21 +298,18 @@ function abrirCarrito() {
 /* SECCION PARA EL FILTRADO DE LOS PRODUCTOS */
 
 /* VARIABLE DEL NODO INPUT DEL FILTRADO */
-let entraFiltro = document.getElementById("productoFiltro").addEventListener("change", (event)=>{ entraFiltro = (event.target.value)})
+let entraFiltro = document.getElementById("productoFiltro").addEventListener("change", (event) => { entraFiltro = (event.target.value) })
 
-function filtrarCatalogo(){
-        filtrado = new Promise((resolve) => {
+function filtrarCatalogo() {
+    filtrado = new Promise((resolve) => {
         resolve(
             fetch("js/productos.json")
-            .then((responde) => responde.json())
-            .then((data) => {
-                let pa = document.getElementsByClassName("producto")
-                
+                .then((responde) => responde.json())
+                .then((data) => {
                     produFiltra = data.producto
-                    const resultado = produFiltra.filter((x) => x.nombre.includes(entraFiltro.toLowerCase()))
-                    console.log(resultado)
+                    productos = produFiltra.filter((x) => x.nombre.includes(entraFiltro.toLowerCase()))
                     eliminarDivs()
-                    resultado.forEach(producto => {
+                    productos.forEach(producto => {
                         div = document.createElement("div")
                         div.className = "producto"
                         div.innerHTML = `
@@ -293,13 +326,16 @@ function filtrarCatalogo(){
 
         )
     })
-    }
+    setTimeout(()=>{
+        btnProductos()
+    },300)
+}
 /* FUNCION DE FILTRADO */
 // function filtrarProducto(valor) {}
 
 /* VARIBLE NODO DEL FORMULARIO DE FILTRADO */
 let formFiltr = document.getElementById("form_filtr")
-formFiltr.addEventListener("submit",(event)=> {
+formFiltr.addEventListener("submit", (event) => {
     event.preventDefault()
     filtrarCatalogo()
 
@@ -309,6 +345,8 @@ formFiltr.addEventListener("submit",(event)=> {
 let padreCajaProductos = document.getElementById("cajaProductos") //contenedor donde iran los div productos
 let div2; //variable para eliminar los productos al aplicar el filtro
 /* FUNCION PARA CRAR EL CATALOGO DE INICIO */
+let div
+let productos
 function buscarCatalogo() {
     setTimeout(() => {
         creacionCatalogo = new Promise((resolve) => {
@@ -319,7 +357,7 @@ function buscarCatalogo() {
                         productos = data.producto
                         productos.forEach(producto => {
                             /* CREACION DEL NODO PARA LOS PRODUCTOS */
-                            let div = document.createElement("div")
+                            div = document.createElement("div")
                             div.className = "producto"
                             /* HTML PARA EL DIV */
                             div.innerHTML = `
@@ -340,45 +378,46 @@ function buscarCatalogo() {
                     })
             )
         })
-
-
-
     }, 1200)
+    setTimeout(()=>{
+        btnProductos()
+    },1300)
 }
 buscarCatalogo()
 
-    /* FUNCION PARA ELIMINAR LOS PRODUCTOS */
-    function eliminarDivs() {
-        let productosDivs = document.querySelectorAll('.producto');
-        productosDivs.forEach(div => {
-            div.remove();
-        });
-    }
+/* FUNCION PARA ELIMINAR LOS PRODUCTOS */
+function eliminarDivs() {
+    let productosDivs = document.querySelectorAll('.producto');
+    productosDivs.forEach(div => {
+        div.remove();
+    });
+}
 
 /* SECCION PARA MOSTRAR EL CARRITO DE COMPRAS */
 
 /* variable carrito donde se guardan */
 let carrito = []
 
-/* CARRITO EN EL LOCAL STORAGE */
-let carritoEnLoSt = JSON.parse(localStorage.getItem("carrito"))
+// /* CARRITO EN EL LOCAL STORAGE */
+// let carritoEnLoSt = JSON.parse(localStorage.getItem("carrito"))
 
 
 /* EVENTO DE BOTONES AGREGAR PRODUCTOS */
-setTimeout(() => {
+function btnProductos() {
     for (let i = 0; i < productos.length; i++) {
         let btn = document.getElementById(`btn${productos[i].id}`);
         btn.addEventListener("click", () => agregarAlCarrito({ ...productos[i] }));
     }
-}, 1500)
+}
+
 
 /* CANTIDAD DE ARTICULOS */
 
 /* FUNCION AGREGAR EL PRODUCTO AL CARRITO */
 function agregarAlCarrito(valor) {
     carrito.push(valor)
-    carritoEnLoSt = carrito
-    localStorage.setItem("carrito", JSON.stringify(carritoEnLoSt))
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+    carrito = JSON.parse(localStorage.getItem("carrito"))
     mostarCarrtio()
 }
 
@@ -389,22 +428,20 @@ function mostarCarrtio() {
 }
 
 let PantallaCarrito = document.getElementById("carrito")
+let divElement
 /* FUNCION DE AGREGAR LOS PORDUCTOS AL HTML */
 function carritoEnHtml() {
-    let divElement = document.createElement("div")
+    divElement = document.createElement("div")
     divElement.className = "spd"
     for (x of carrito) {
         divElement.innerHTML = `
-                        
                             <div id="contenedor_img_carrito"><img id="img_pro_carr" src="${x.img}"
                                     alt="producto_carrito"> </div>
                             <div class="info">
                                 <h6 class="nombre_pro_carr">${x.nombre}</h6>
                                 <p class="precio_art_carr">$${x.precio}</p>
                             </div>
-
-                        
-        `
+                            `
         PantallaCarrito.append(divElement)
     }
     sumarCarrito()
@@ -413,6 +450,7 @@ function carritoEnHtml() {
 /* AGREGAR SOLO EL PRECIO DE LOS PRODUCTOS A UNA VARIABLE */
 let catidadCarrito = document.getElementById("catidadCarrito")
 let preciodelcarrito
+let precioFinal = document.getElementById("totalCarrito")
 function sumarCarrito() {
     preciodelcarrito = []
     for (x of carrito) {
@@ -420,7 +458,6 @@ function sumarCarrito() {
     }
     /* SUMAR TODOS LOS PRECIOS DE LOS PRODUCTOS */
     let total = preciodelcarrito.reduce((acc, num) => acc + num)
-    let precioFinal = document.getElementById("totalCarrito")
     /* CAMBIO DEL TEXTO CON EL DOM */
     precioFinal.innerText = total
     catidadCarrito.style.display = "block"
