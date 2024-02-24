@@ -1,21 +1,18 @@
 /* TAREAS 
 investigar en cuanto sale el precio del hosttinger para alojar mis proyectos
 cambiar los colores del texto de  la presentacion
-agregar fotos de perfiles para seleccionar al registrarse
 PENSAR EL FOOTER PARA COMPLETAR LA VISTA DE LA PAGINA
     NOMBRE DEL SITIO WEB / CONTACTO /METODOS DE PAGO
-AGREGAR UNA TRASITION AL CARRITO DE COMPRAS
 COMENZAR A INCORMPAR BOOSTRAP
 ADAPTAR A DISTINTOS DISPOSITIVOS 
-*guardar los datos del carrito en el localstorage y que al inicia sesion se cargen los datos del carrito*
 incorparar la api de dolar
 agregar el boton de compra {que lleve a un html aparte para realizar el pago del carrito}
 simular el pago realizado y el pago con error
 COMENTAR Y SEPARAR LAS PORCIONES DE CODIGO PARA QUE SEA MAS ENTENDIBLE EN HTML CSS Y JS
 AGREGAR EL FORMATO PARA QUE ACEPTE SOLAMENTE CON EL .COM EN EL INPUT DE CORREO
-darle mas espacio al logo del inicio
-AGREGAR MAS PRODUCTOS
 EDITAR LA CARTAS Y LOS BOTONES 
+
+****** quede en hacer el codigo mas legible y sencillo el inicio se sesion y cerrar sesion estan muy complejos ************
  */
 
 /* CONSTRUCTOR DE USURIO */
@@ -28,7 +25,6 @@ class registroUsuario {
     }
 }
 let usuarioEnLoSt;
-let usuarioEnSeSt;
 /* SECCION DE EVENTOS DE VENTANA REGISTRO E INGRESO */
 
 /* ABRIR REGISTRO DE USUARIO */
@@ -166,17 +162,13 @@ let textErroingreso = document.getElementById("errorDeIngreso")
 
 
 function ingresoUsuario() {
+    
     usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
-    usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : textErroingreso.innerText = "No tenemos tus datos. Debes registrarte"
+    usuarioEnLoSt ? usbUser(): textErroingreso.innerText = "No tenemos tus datos. Debes registrarte"
+}
+function usbUser() {
+    usuarioEnLoSt? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : false
     validacionDatos() ? ingresoDePerfil() : errorlogin()
-
-
-    if (usuarioEnLoSt == false) {
-        sessionStorage.setItem("usuario-sesion", JSON.stringify(usuarioEnLoSt))
-        usuarioEnSeSt = JSON.parse(sessionStorage.getItem("usuario-sesion"))
-
-    }
-
 }
 function errorlogin() {
     textErroingreso.innerText = "Error en la contraseña o usuario"
@@ -207,18 +199,35 @@ function validacionContraseña() {
 
 /* CAMBIO DE PERFIL DEL USUARIO  */
 let sesionIngreoRegistro = document.getElementById("inicio_registo_Sesion")
+
 let perfil = document.getElementById("usuarioIngresado")
-let actualizarCarrito 
+
+
+let carritoEnLoSt
+let estadoUsuario = false
+
 function ingresoDePerfil() {
-    usuarioEnSeSt ? { nombre, apellido, correo, contraseña } = usuarioEnSeSt : false
+    eliminarcatg()
+    usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : false
+
     sesionIngreoRegistro.style.display = "none"
+
     cerrarSesion.style.display = "block"
 
+    estadoUsuario = true
+    carritoEnLoSt = JSON.parse(localStorage.getItem("carrito"))
+
+    carritoEnLoSt? creacionNuevoCarrito() : carritoEnLoSt = []
+
     perfil.innerHTML = `<p class="perfil_iniciado">${nombre} ${apellido}</p>`
+
     cerrarIngreso()
-    actualizarCarrito = JSON.parse(localStorage.getItem("carrito"))
-    eliminarcatg()
-    for(const x of actualizarCarrito){
+
+    avisoInicio()
+
+}
+function creacionNuevoCarrito(){
+    for (const x of carritoEnLoSt) {
         divElement = document.createElement("div")
         divElement.className = "spd"
         divElement.innerHTML = `
@@ -231,19 +240,13 @@ function ingresoDePerfil() {
                             `
         PantallaCarrito.append(divElement)
     }
-    catidadCarrito.style.display = "block"
-    catidadCarrito.innerText = actualizarCarrito.length
-
     preciodelcarrito = []
-    for (x of actualizarCarrito) {
+    for (x of carritoEnLoSt) {
         preciodelcarrito.push(x.precio)
     }
     /* SUMAR TODOS LOS PRECIOS DE LOS PRODUCTOS */
-    let total = preciodelcarrito.reduce((acc, num) => acc + num)
-    /* CAMBIO DEL TEXTO CON EL DOM */
+    preciodelcarrito ? total = preciodelcarrito.reduce((acc, num) => acc + num) : total = 0
     precioFinal.innerText = total
-    
-
 }
 
 function eliminarcatg() {
@@ -255,19 +258,18 @@ function eliminarcatg() {
 let cerrarSesion = document.getElementById("cerrarSesion")
 cerrarSesion.addEventListener("click", () => { cerrarlaSesion() })
 function cerrarlaSesion() {
-    sessionStorage.clear()
     sesionIngreoRegistro.style.display = "block"
     cerrarSesion.style.display = "none"
     perfil.innerHTML = ""
-    catidadCarrito.innerText = 0
     eliminarcatg()
     totalCarrito.innerText = 0
-    
+    estadoUsuario = false
+    avisoCerrar()
+
 
 
 
 }
-
 /* FINAL LOCICA INGRESO USUARIO */
 
 /* CERRAR SESION DEL USUARIO */
@@ -326,9 +328,9 @@ function filtrarCatalogo() {
 
         )
     })
-    setTimeout(()=>{
+    setTimeout(() => {
         btnProductos()
-    },300)
+    }, 300)
 }
 /* FUNCION DE FILTRADO */
 // function filtrarProducto(valor) {}
@@ -379,9 +381,9 @@ function buscarCatalogo() {
             )
         })
     }, 1200)
-    setTimeout(()=>{
+    setTimeout(() => {
         btnProductos()
-    },1300)
+    }, 1300)
 }
 buscarCatalogo()
 
@@ -395,11 +397,6 @@ function eliminarDivs() {
 
 /* SECCION PARA MOSTRAR EL CARRITO DE COMPRAS */
 
-/* variable carrito donde se guardan */
-let carrito = []
-
-// /* CARRITO EN EL LOCAL STORAGE */
-// let carritoEnLoSt = JSON.parse(localStorage.getItem("carrito"))
 
 
 /* EVENTO DE BOTONES AGREGAR PRODUCTOS */
@@ -411,15 +408,34 @@ function btnProductos() {
 }
 
 
+/* variable carrito donde se guardan */
+carritoEnLoSt
 /* CANTIDAD DE ARTICULOS */
+let carrito = []
 
 /* FUNCION AGREGAR EL PRODUCTO AL CARRITO */
 function agregarAlCarrito(valor) {
+if(estadoUsuario){
+    carritoEnLoSt.push(valor)
+    localStorage.setItem("carrito",JSON.stringify(carritoEnLoSt))
+    console.log(carritoEnLoSt);
+} else{
     carrito.push(valor)
-    localStorage.setItem("carrito", JSON.stringify(carrito))
-    carrito = JSON.parse(localStorage.getItem("carrito"))
-    mostarCarrtio()
 }
+    // estadoUsuario ? conSesion() : sinSesion()
+mostarCarrtio()
+}
+
+// function conSesion() {
+    
+//     localStorage.setItem("carrito", JSON.stringify(carrito))
+//     mostarCarrtio()
+
+// }
+// function sinSesion(){
+//     mostarCarrtio()
+// }
+
 
 /* FUNCION PARA MOSTRAR EL CARRITO DE COMPRAS EN PANTALLA */
 function mostarCarrtio() {
@@ -433,7 +449,8 @@ let divElement
 function carritoEnHtml() {
     divElement = document.createElement("div")
     divElement.className = "spd"
-    for (x of carrito) {
+    estadoUsuario? kkk = carritoEnLoSt : kkk = carrito
+    for (x of kkk) {
         divElement.innerHTML = `
                             <div id="contenedor_img_carrito"><img id="img_pro_carr" src="${x.img}"
                                     alt="producto_carrito"> </div>
@@ -448,22 +465,20 @@ function carritoEnHtml() {
     productoMasCaro()
 }
 /* AGREGAR SOLO EL PRECIO DE LOS PRODUCTOS A UNA VARIABLE */
-let catidadCarrito = document.getElementById("catidadCarrito")
 let preciodelcarrito
 let precioFinal = document.getElementById("totalCarrito")
 function sumarCarrito() {
     preciodelcarrito = []
-    for (x of carrito) {
+    for (x of kkk) {
         preciodelcarrito.push(x.precio)
     }
     /* SUMAR TODOS LOS PRECIOS DE LOS PRODUCTOS */
     let total = preciodelcarrito.reduce((acc, num) => acc + num)
     /* CAMBIO DEL TEXTO CON EL DOM */
     precioFinal.innerText = total
-    catidadCarrito.style.display = "block"
-    catidadCarrito.innerText = carrito.length
     avisoCarrito()
 }
+
 
 /* PRODUCTO MAS CARO CON EM METODO SPREND */
 function productoMasCaro() {
@@ -485,6 +500,38 @@ function avisoCarrito() {
         avatar: "img/logo/carrito.png",
         style: {
             background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
+            
+        }
+    }).showToast();
+}
+
+function avisoInicio() {
+    Toastify({
+        text: "Ingresaste son exito",
+        duration: 3500,
+        gravity: "top",
+        position: "left",
+        avatar: "img/logo/usuarioSinRegistro.png",
+        style: {
+            background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
+            width: "300px",
+            height: "60px",
+            fontSize: "23px"
+        }
+    }).showToast();
+}
+function avisoCerrar() {
+    Toastify({
+        text: "Sesion cerrada",
+        duration: 3500,
+        gravity: "top",
+        position: "left",
+        avatar: "img/logo/usuarioSinRegistro.png",
+        style: {
+            background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
+            width: "300px",
+            height: "60px",
+            fontSize: "23px"
         }
     }).showToast();
 }
