@@ -162,12 +162,12 @@ let textErroingreso = document.getElementById("errorDeIngreso")
 
 
 function ingresoUsuario() {
-    
+
     usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
-    usuarioEnLoSt ? usbUser(): textErroingreso.innerText = "No tenemos tus datos. Debes registrarte"
+    usuarioEnLoSt ? usbUser() : textErroingreso.innerText = "No tenemos tus datos. Debes registrarte"
 }
 function usbUser() {
-    usuarioEnLoSt? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : false
+    usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : false
     validacionDatos() ? ingresoDePerfil() : errorlogin()
 }
 function errorlogin() {
@@ -217,7 +217,7 @@ function ingresoDePerfil() {
     estadoUsuario = true
     carritoEnLoSt = JSON.parse(localStorage.getItem("carrito"))
 
-    carritoEnLoSt? creacionNuevoCarrito() : carritoEnLoSt = []
+    carritoEnLoSt ? creacionNuevoCarrito() : carritoEnLoSt = []
 
     perfil.innerHTML = `<p class="perfil_iniciado">${nombre} ${apellido}</p>`
 
@@ -226,27 +226,41 @@ function ingresoDePerfil() {
     avisoInicio()
 
 }
-function creacionNuevoCarrito(){
-    for (const x of carritoEnLoSt) {
-        divElement = document.createElement("div")
-        divElement.className = "spd"
-        divElement.innerHTML = `
-                            <div id="contenedor_img_carrito"><img id="img_pro_carr" src="${x.img}"
-                                    alt="producto_carrito"> </div>
-                            <div class="info">
-                                <h6 class="nombre_pro_carr">${x.nombre}</h6>
-                                <p class="precio_art_carr">$${x.precio}</p>
-                            </div>
-                            `
-        PantallaCarrito.append(divElement)
-    }
-    preciodelcarrito = []
-    for (x of carritoEnLoSt) {
-        preciodelcarrito.push(x.precio)
-    }
-    /* SUMAR TODOS LOS PRECIOS DE LOS PRODUCTOS */
-    preciodelcarrito ? total = preciodelcarrito.reduce((acc, num) => acc + num) : total = 0
-    precioFinal.innerText = total
+
+function creacionNuevoCarrito() {
+    estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
+    if(varCarro[0]){
+        console.log("yes")
+        for (const x of varCarro) {
+            divElement = document.createElement("div")
+            divElement.className = "spd"
+            divElement.innerHTML = `
+                                    <div id="contenedor_img_carrito"><img id="img_pro_carr" src="${x.img}"
+                                            alt="producto_carrito"> </div>
+                                    <div class="info">
+                                        <h6 class="nombre_pro_carr">${x.nombre}</h6>
+                                        <p class="precio_art_carr">$${x.precio}</p>
+                                    </div>
+                                    `
+            PantallaCarrito.append(divElement)
+            
+        }
+        btndelet.style.display = "block"
+    
+        preciodelcarrito = []
+        for (x of varCarro) {
+            preciodelcarrito.push(x.precio)
+        }
+        /* SUMAR TODOS LOS PRECIOS DE LOS PRODUCTOS */
+        preciodelcarrito ? total = preciodelcarrito.reduce((acc, num) => acc + num) : total = 0
+        precioFinal.innerText = total
+        if(estadoUsuario){
+            localStorage.setItem("carrito",JSON.stringify(varCarro))
+        } else{
+            console.log("no se envia nada")
+        }
+    } 
+    
 }
 
 function eliminarcatg() {
@@ -260,6 +274,7 @@ cerrarSesion.addEventListener("click", () => { cerrarlaSesion() })
 function cerrarlaSesion() {
     sesionIngreoRegistro.style.display = "block"
     cerrarSesion.style.display = "none"
+    btndelet.style.display = "none"
     perfil.innerHTML = ""
     eliminarcatg()
     totalCarrito.innerText = 0
@@ -383,7 +398,7 @@ function buscarCatalogo() {
     }, 1200)
     setTimeout(() => {
         btnProductos()
-    }, 1300)
+    }, 1500)
 }
 buscarCatalogo()
 
@@ -408,6 +423,11 @@ function btnProductos() {
 }
 
 
+
+
+
+
+
 /* variable carrito donde se guardan */
 carritoEnLoSt
 /* CANTIDAD DE ARTICULOS */
@@ -415,27 +435,17 @@ let carrito = []
 
 /* FUNCION AGREGAR EL PRODUCTO AL CARRITO */
 function agregarAlCarrito(valor) {
-if(estadoUsuario){
-    carritoEnLoSt.push(valor)
-    localStorage.setItem("carrito",JSON.stringify(carritoEnLoSt))
-    console.log(carritoEnLoSt);
-} else{
-    carrito.push(valor)
-}
+    if (estadoUsuario) {
+        carritoEnLoSt.push(valor)
+        localStorage.setItem("carrito", JSON.stringify(carritoEnLoSt))
+        console.log(carritoEnLoSt);
+
+    } else {
+        carrito.push(valor)
+    }
     // estadoUsuario ? conSesion() : sinSesion()
-mostarCarrtio()
+    mostarCarrtio()
 }
-
-// function conSesion() {
-    
-//     localStorage.setItem("carrito", JSON.stringify(carrito))
-//     mostarCarrtio()
-
-// }
-// function sinSesion(){
-//     mostarCarrtio()
-// }
-
 
 /* FUNCION PARA MOSTRAR EL CARRITO DE COMPRAS EN PANTALLA */
 function mostarCarrtio() {
@@ -449,27 +459,62 @@ let divElement
 function carritoEnHtml() {
     divElement = document.createElement("div")
     divElement.className = "spd"
-    estadoUsuario? kkk = carritoEnLoSt : kkk = carrito
-    for (x of kkk) {
+
+    estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
+    for (x of varCarro) {
         divElement.innerHTML = `
-                            <div id="contenedor_img_carrito"><img id="img_pro_carr" src="${x.img}"
-                                    alt="producto_carrito"> </div>
-                            <div class="info">
-                                <h6 class="nombre_pro_carr">${x.nombre}</h6>
-                                <p class="precio_art_carr">$${x.precio}</p>
-                            </div>
-                            `
+                                <div id="contenedor_img_carrito"><img id="img_pro_carr" src="${x.img}"
+                                        alt="producto_carrito"> </div>
+                                <div class="info">
+                                    <h6 class="nombre_pro_carr">${x.nombre}</h6>
+                                    <p class="precio_art_carr">$${x.precio}</p>
+                                </div>
+                                `
         PantallaCarrito.append(divElement)
+
     }
+    btndelet.style.display = "block"
     sumarCarrito()
-    productoMasCaro()
 }
+
+
+
+
+
+
+/* EVENTO DE BOTONES ELIMINAR DEL CARRITO */
+let btndelet = document.getElementById("delet")
+btndelet.addEventListener("click",()=> prueba())
+
+function prueba(){
+    estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
+    if(varCarro.length < 2){
+        localStorage.removeItem("carrito")
+    }
+    varCarro.pop()
+    eliminarcatg()
+    creacionNuevoCarrito()
+    avisoDeletCarrito()
+
+
+
+}
+
+
+
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+
 /* AGREGAR SOLO EL PRECIO DE LOS PRODUCTOS A UNA VARIABLE */
 let preciodelcarrito
 let precioFinal = document.getElementById("totalCarrito")
 function sumarCarrito() {
     preciodelcarrito = []
-    for (x of kkk) {
+    for (x of varCarro) {
         preciodelcarrito.push(x.precio)
     }
     /* SUMAR TODOS LOS PRECIOS DE LOS PRODUCTOS */
@@ -489,7 +534,6 @@ function productoMasCaro() {
     mayorValor.innerText = masCaro
 }
 
-
 /* SECCION DE AVISOS DE TOASTIFY */
 function avisoCarrito() {
     Toastify({
@@ -500,7 +544,20 @@ function avisoCarrito() {
         avatar: "img/logo/carrito.png",
         style: {
             background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
-            
+
+        }
+    }).showToast();
+}
+function avisoDeletCarrito() {
+    Toastify({
+        text: "Se elimino un producto al carrito",
+        duration: 3000,
+        gravity: "top",
+        position: "left",
+        avatar: "img/logo/carrito.png",
+        style: {
+            background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
+
         }
     }).showToast();
 }

@@ -446,7 +446,7 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     position: fixed;
     bottom: 0;
     right: 3px;
-    display: none;
+    display: block;
     flex-direction: column;
     align-items: center;
     background-color: blueviolet;
@@ -471,9 +471,26 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 
 .presentacion .contenedor_carrito #caja_carrito #carrito {
     width: 99%;
+    display: flex;
+    flex-direction: column;
+}
+.presentacion .contenedor_carrito #caja_carrito #carrito .box-delet{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    height: 19px;
+
 }
 
+.presentacion .contenedor_carrito #caja_carrito #carrito .box-delet .delet{
+    cursor: pointer;
+    font-weight: 500;
+    display: none;
+}
+
+
 .presentacion .contenedor_carrito #caja_carrito #carrito .spd {
+    position: relative;
     padding: 5px;
     margin: 5px;
     border: 1px solid;
@@ -484,6 +501,9 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     display: flex;
     gap: 3px;
 }
+
+
+
 
 .presentacion .contenedor_carrito #caja_carrito #carrito div #contenedor_img_carrito {
     width: 130px;
@@ -506,6 +526,8 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 .presentacion .contenedor_carrito #caja_carrito #carrito div .info .nombre_pro_carr {
     padding: 0;
     margin: 0;
+    margin-right: 10px;
+
     font-size: 15px;
     color: blueviolet;
     font-weight: 900;
@@ -521,18 +543,39 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 }
 
 
+
 .presentacion .contenedor_carrito .total_carrito {
     background-color: black;
     width: 100%;
     height: 40px;
     position: absolute;
     bottom: 0px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .presentacion .contenedor_carrito .total_carrito p {
     text-align: start;
     color: white;
 }
+.presentacion .contenedor_carrito .total_carrito a {
+    text-decoration: none;
+}
+
+.presentacion .contenedor_carrito .total_carrito a .pagar {
+    color: black;
+    text-align: center;
+    cursor:pointer;
+    background-color: white;
+    margin-top: 3px;
+    border-radius: 5px;
+    height: 25px;
+    width: 100px;
+}
+.presentacion .contenedor_carrito .total_carrito .pagar:hover {
+    background-color: #aaa;
+}
+
 
 .pie_pagina {
     padding: 5px;
