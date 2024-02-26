@@ -94,7 +94,7 @@
                 <p id="cerrarCarrito">x</p>
                 <h3>Carro de compras</h3>
                 <div id="caja_carrito">
-                    <div id="carrito">  
+                    <div id="carrito">
                         <div class="box-delet">
                             <p class="delet" id="delet">Eliminar ultimo</p>
                         </div>
@@ -106,15 +106,56 @@
                 </div>
             </div>
         </section>
+
         <div class="ventana_de_pago" id="ventanaDePago">
             <div class="caja_de_pago">
-                <h1>Pago del carrito</h1>
-                <p>total a Pagar <span Id="precioCarrito"></span>$</p>
-                <div class="boton_pagar">
-                    <button id="pagarCarrito">Pagar</button>
+                <p id="cerrar_v_P">x</p>
+                <div class="section_carr">
+                    <div class="pago_Catalogo" id="pagoCatalogo">
+                    </div>
+                    
+                    <p>total a Pagar <span id="pagarCarrito"></span>$</p>
+                    <div class="contenedor_monedas">
+                        <p class="moneda">Moneda de pago</p>
+                        <input type="radio" name="moneda">
+                        <label for="dolar">Dolar: <span id="dolar"></span>$</label>
+                        <input type="radio" name="moneda">
+                        <label for="pesos">Pesos: <span id="dolar"></span>$</label>
+                    </div>
+
+                </div>
+                <div class="section_Pago">
+                    <img src="https://www.paymentmedia.com/gallery/5b3aa3f84413fVisa-MasterCard-in-Iran-.jpg" alt="img medios de pago">
+                    <form class="form_pago" id="formPago">
+
+                        <label for="numeroTarj">Numero de tarjeta</label>
+                        <input type="text" id="numeroTarj">
+
+                        <label for="titularTrj">Titular de la tarjeta</label>
+                        <input type="text" id="titularTrj">
+
+                        <div class="divisor">
+                            <div class="vencimiento">
+                                <label for="vencimiento">vencimiento</label>
+                                <input type="text" id="vencimiento">
+                            </div>
+                            <div class="cvc">
+                                <label for="cvc">CVC</label>
+                            <input type="text" id="cvc">
+                            </div>
+                            
+
+                        </div>
+
+                    </form>
+                    <div class="boton_pagar">
+                        <button class="pagar_Carrito">Pagar</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+
         <div class="section_productos" id="productos">
             <div class="filtro">
                 <h3>Buscar Producto</h3>
@@ -131,9 +172,13 @@
 
             </section>
         </div>
-        
+
         <footer class="pie_pagina">
-            <form action="post" id="contacto">
+            <div class="contanedor-footer">
+                <div class="map">
+                mapa
+            </div>
+            <!-- <form action="post" id="contacto">
                 <label for="Nombre">Nombre</label>
                 <input type="text" id="Nombre">
                 <label for="apellido">Apellido</label>
@@ -144,7 +189,9 @@
                 <textarea name="comentario" id="comentario"></textarea>
                 <input type="button" value="Enviar" id="botonEnviar">
                 <input type="reset" value="Borrar" id="reset">
-            </form>
+            </form> -->
+            </div>
+            <h1>Compu / complementos </h1>
         </footer>
 
     </main>

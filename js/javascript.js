@@ -35,6 +35,7 @@ function abrirRegistro() {
     let ventanaReg = document.getElementById("registro")
     ventanaReg.style.display = "flex"
     cerrarIngreso()
+    cerrarVentaPago()
 }
 
 /* CERRAR REGISTRO DE USUARIO */
@@ -56,6 +57,7 @@ function abrirIngreso() {
     let ventanaing = document.getElementById("ventanaIngreso")
     ventanaing.style.display = "flex"
     cerrarRegistro()
+    cerrarVentaPago()
 }
 
 /* EVENTO CERRAR INGRESO USUARIO */
@@ -139,7 +141,6 @@ function creacionUsuario() {
     usuarioEnLoSt = new registroUsuario(regNomUsu, regApellUsu, regCorreUsu, regcontrUsu)
     localStorage.setItem("usuario", JSON.stringify(usuarioEnLoSt))
     cerrarRegistro()
-    abrirIngreso()
 }
 
 /* FINAL LOGICA REGISTRO USUARIO ******************* */
@@ -230,7 +231,6 @@ function ingresoDePerfil() {
 function creacionNuevoCarrito() {
     estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
     if(varCarro[0]){
-        console.log("yes")
         for (const x of varCarro) {
             divElement = document.createElement("div")
             divElement.className = "spd"
@@ -256,9 +256,7 @@ function creacionNuevoCarrito() {
         precioFinal.innerText = total
         if(estadoUsuario){
             localStorage.setItem("carrito",JSON.stringify(varCarro))
-        } else{
-            console.log("no se envia nada")
-        }
+        } 
     } 
     
 }
@@ -490,10 +488,15 @@ function deletProducto(){
     estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
     if(varCarro.length < 2){
         localStorage.removeItem("carrito")
+        precioFinal.innerText = ""
+        pagarCarrito.innerText = ""
+        btndelet.style.display = "none"
+        
     }
     varCarro.pop()
     eliminarcatg()
     creacionNuevoCarrito()
+    carritoVentanaPago()
     avisoDeletCarrito()
 
 
@@ -511,6 +514,7 @@ function deletProducto(){
 
 /* AGREGAR SOLO EL PRECIO DE LOS PRODUCTOS A UNA VARIABLE */
 let preciodelcarrito
+let total
 let precioFinal = document.getElementById("totalCarrito")
 function sumarCarrito() {
     preciodelcarrito = []
@@ -518,7 +522,7 @@ function sumarCarrito() {
         preciodelcarrito.push(x.precio)
     }
     /* SUMAR TODOS LOS PRECIOS DE LOS PRODUCTOS */
-    let total = preciodelcarrito.reduce((acc, num) => acc + num)
+    total = preciodelcarrito.reduce((acc, num) => acc + num)
     /* CAMBIO DEL TEXTO CON EL DOM */
     precioFinal.innerText = total
     avisoCarrito()
@@ -571,9 +575,6 @@ function avisoInicio() {
         avatar: "img/logo/usuarioSinRegistro.png",
         style: {
             background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
-            width: "300px",
-            height: "60px",
-            fontSize: "23px"
         }
     }).showToast();
 }
@@ -586,20 +587,115 @@ function avisoCerrar() {
         avatar: "img/logo/usuarioSinRegistro.png",
         style: {
             background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
-            width: "300px",
-            height: "60px",
-            fontSize: "23px"
+        }
+    }).showToast();
+}
+function avisoCarroVacio() {
+    Toastify({
+        text: "El carrito esta vacio",
+        duration: 3500,
+        gravity: "top",
+        position: "left",
+        avatar: "img/logo/carrito.png",
+        style: {
+            background: "linear-gradient(to right, #04b09b, rgba(159, 37, 159))",
         }
     }).showToast();
 }
 
 /* FINAL SECCION DE AVISOS DE TOASTTIFY */
+
+/* EVENTO ABRIR VENTANA DE PAGO */
 let ventanaDePago = document.getElementById("ventanaDePago")
+let pagarCarrito = document.getElementById("pagarCarrito")
 
 let pagar = document.getElementById("pagar")
 pagar.addEventListener("click",()=> pagarCarroDeCompras())
 
 function pagarCarroDeCompras(){
-    cerrarCarrito()
-ventanaDePago.style.display = "flex"
+    estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
+
+    if(varCarro[0]){
+        cerrarCarrito()
+        dolarapi()
+        carritoVentanaPago()
+        ventanaDePago.style.display = "flex"
+        pagarCarrito.innerText = total
+        cerrarIngreso()
+        cerrarRegistro()
+
+    } else{
+        avisoCarroVacio()
+    }
+    
 }
+
+
+/* CERRAR VENTA DE PAGO */
+let cerrar_v_P = document.getElementById("cerrar_v_P")
+cerrar_v_P.addEventListener("click",()=> cerrarVentaPago())
+
+function cerrarVentaPago(){
+    ventanaDePago.style.display ="none"
+    
+}
+
+/* creacion del catalago en la venta de pago  */
+let ventanaPagoProductos = document.getElementById("pagoCatalogo")
+let divElementVentanaPago
+/* FUNCION DE AGREGAR LOS PORDUCTOS AL HTML */
+function carritoVentanaPago() {
+    estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
+    if(varCarro[0]){
+        for (const x of varCarro) {
+            divElementVentanaPago = document.createElement("div")
+            divElementVentanaPago.className = "spd"
+            divElementVentanaPago.innerHTML = `
+                                    <div id="contenedor_img_carrito"><img id="img_pro_carr" src="${x.img}"
+                                            alt="producto_carrito"> </div>
+                                    <div class="info">
+                                        <h6 class="nombre_pro_carr">${x.nombre}</h6>
+                                        <p class="precio_art_carr">$${x.precio}</p>
+                                    </div>
+                                    `
+            ventanaPagoProductos.append(divElementVentanaPago)
+            
+        }
+        btndelet.style.display = "block"
+    
+
+        pagarCarrito.innerText = total
+        
+    } 
+    
+}
+
+let dolar = document.getElementById("dolar")
+function dolarapi(){
+    setTimeout(()=>{
+        new Promise((resolve)=>{
+    
+            resolve(
+                fetch("https://dolarapi.com/v1/dolares")
+                .then((response) => response.json())
+                .then((data) => {
+                    coticazion = data[1].venta
+                    coticazion = total / coticazion
+                    dolar.innerText = coticazion.toFixed(2)
+    
+    /* QUEDE EN AGREGAR AHORA EL PRECIO DEL CARRO EN PESOS Y QUE PUEDA ELEGIR QUE TIPO DE MONEDA QUIERE PAGAR EL USUARIO */
+    })
+            )   
+            
+        })
+    })
+}
+
+
+
+
+// fetch("js/productos.json")
+//                 .then((responde) => responde.json())
+//                 .then((data) => {
+//                     produFiltra = data.producto
+

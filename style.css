@@ -489,14 +489,14 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 }
 
 
-.presentacion .contenedor_carrito #caja_carrito #carrito .spd {
+/* .presentacion .contenedor_carrito #caja_carrito #carrito */ .spd {
     position: relative;
     padding: 5px;
     margin: 5px;
     border: 1px solid;
     border-radius: 10px;
     background-color: azure;
-    width: 100%;
+    width: 95%;
     height: 75px;
     display: flex;
     gap: 3px;
@@ -505,25 +505,25 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 
 
 
-.presentacion .contenedor_carrito #caja_carrito #carrito div #contenedor_img_carrito {
+/* .presentacion .contenedor_carrito #caja_carrito #carrito  */div #contenedor_img_carrito {
     width: 130px;
 }
 
-.presentacion .contenedor_carrito #caja_carrito #carrito div #contenedor_img_carrito #img_pro_carr {
+/* .presentacion .contenedor_carrito #caja_carrito #carrito  */div #contenedor_img_carrito #img_pro_carr {
     border-radius: 8px;
     /* posible problema */
     width: 100%;
     height: 100%;
 }
 
-.presentacion .contenedor_carrito #caja_carrito #carrito div .info {
+/* .presentacion .contenedor_carrito #caja_carrito #carrito  */div .info {
     display: flex;
     width: 250px;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.presentacion .contenedor_carrito #caja_carrito #carrito div .info .nombre_pro_carr {
+/* .presentacion .contenedor_carrito #caja_carrito #carrito  */div .info .nombre_pro_carr {
     padding: 0;
     margin: 0;
     margin-right: 10px;
@@ -533,7 +533,7 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     font-weight: 900;
 }
 
-.presentacion .contenedor_carrito #caja_carrito #carrito div .info .precio_art_carr {
+/* .presentacion .contenedor_carrito #caja_carrito #carrito  */div .info .precio_art_carr {
     padding: 0;
     margin: 0;
     color: black;
@@ -544,7 +544,7 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 
 
 
-.presentacion .contenedor_carrito .total_carrito {
+/* .presentacion .contenedor_carrito  */.total_carrito {
     background-color: black;
     width: 100%;
     height: 40px;
@@ -576,9 +576,18 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
 
 
 .pie_pagina {
-    padding: 5px;
+    padding: 10px;
     width: 100%;
-    height: 350px;
+    height: auto;
+    background-color: brown;
+    
+}
+.pie_pagina h1{
+    text-align: center;
+}
+.pie_pagina .contenedor_footer{
+    display: flex;
+    flex-direction: row;
 }
 
 .pie_pagina form {
@@ -617,36 +626,114 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     width: 90%;
     margin: 5px auto;
 }
+.pie_pagina .map{
+    width: 280px;
+    height: 280px;
+    background-color: blue;
+}
 
-.ventana_de_pago{
+/* @~@~@ ESTYLOS PARA EL PAGO DE LOS PRODUCTOS @~@~@ */
+
+/* CONTENEDOR DEL PROCESO DE PAGO */
+.ventana_de_pago{ 
+    margin-top: 95px;
     position: fixed;
     top:0;
     background-color: rgba(0, 0, 0, 0.655);
     width: 100%;
     height: 100vh;
-    display: none;
+    display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    padding: 10px;
 }
+
+
+/* ESTYLOS DE LA VENTANA DE PAGO */
 .ventana_de_pago .caja_de_pago{
-    padding: 30px;
-    width: 400px;
+    position: relative;
+    padding: 10px;
+    width: 800px;
+    height: 470px;
     background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
 }
-.ventana_de_pago .caja_de_pago h1{
-    text-align: center;
+.ventana_de_pago .caja_de_pago #cerrar_v_P{
+    position: absolute;
+    right: 15px;
+    top: 0;
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
 }
+.ventana_de_pago .caja_de_pago .section_carr{
+    border-radius:  10px 0px 0 10px ;
+    background-color: #d4d4d4;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+} 
+.ventana_de_pago .caja_de_pago .section_carr .pago_Catalogo{
+    height: 550px;
+    overflow: auto;
+}
+
+
+
+.ventana_de_pago .caja_de_pago .section_Pago{
+    border-radius: 0 10px 10px 0;
+    padding: 15px;
+    background-color: cadetblue;
+    width: 50%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.ventana_de_pago .caja_de_pago .section_Pago img{
+    width: auto;
+    border-radius: 20px;
+}
+
+.caja_de_pago .section_Pago .form_pago{
+    display: flex;
+    flex-direction: column;
+}
+.caja_de_pago .section_Pago .form_pago input{
+    width: 100%;
+    height: 32px;
+    border-radius: 8px;
+}
+
+.caja_de_pago .section_Pago .form_pago .divisor{
+    /* margin-top:5px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.caja_de_pago .section_Pago .form_pago .divisor div{
+    margin: 0 3px;
+}
+
+
+
+/* ESTYLOS PARA EL PRECIO TOTAL A PAGAR */
 .ventana_de_pago .caja_de_pago p{
     font-size: 20px;
 }
+/* ESTYLOS PARA EL CONTENEDOR DEL BOTON DE HACER EL PAGO */
 .ventana_de_pago .caja_de_pago .boton_pagar{
     background-color: rgb(206, 16, 16);
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.ventana_de_pago .caja_de_pago #pagarCarrito{
+/* ESTYLO PARA EL BOTON DE PAGO */
+.ventana_de_pago .caja_de_pago .pagar_Carrito{
 width: 80%;
 border-radius: 5px;
 }
