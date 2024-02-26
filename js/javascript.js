@@ -239,7 +239,7 @@ function creacionNuevoCarrito() {
                                             alt="producto_carrito"> </div>
                                     <div class="info">
                                         <h6 class="nombre_pro_carr">${x.nombre}</h6>
-                                        <p class="precio_art_carr">$${x.precio}</p>
+                                        <p class="precio_art_carr">$${x.precio.toLocaleString()}</p>
                                     </div>
                                     `
             PantallaCarrito.append(divElement)
@@ -253,7 +253,7 @@ function creacionNuevoCarrito() {
         }
         /* SUMAR TODOS LOS PRECIOS DE LOS PRODUCTOS */
         preciodelcarrito ? total = preciodelcarrito.reduce((acc, num) => acc + num) : total = 0
-        precioFinal.innerText = total
+        precioFinal.innerText = total.toLocaleString()
         if(estadoUsuario){
             localStorage.setItem("carrito",JSON.stringify(varCarro))
         } 
@@ -330,7 +330,7 @@ function filtrarCatalogo() {
                         div.innerHTML = `
                     <img src="${producto.img}" alt="producto">
                     <p class="nombre_producto">${producto.nombre}</p>
-                    <p class="precio" id="precio">$${producto.precio}</p>
+                    <p class="precio" id="precio">$${producto.precio.toLocaleString()}</p>
                     <div class="caja_boton">
                     <button type="button" class="botonAgregarProducto" id="btn${producto.id}">Agregar producto</button>
                     </div>
@@ -378,7 +378,7 @@ function buscarCatalogo() {
                             div.innerHTML = `
                         <img src="${producto.img}" alt="producto">
                         <p class="nombre_producto">${producto.nombre}</p>
-                        <p class="precio" id="precio">$${producto.precio}</p>
+                        <p class="precio" id="precio">$${producto.precio.toLocaleString()}</p>
                         <div class="caja_boton">
                         <button type="button" class="botonAgregarProducto" id="btn${producto.id}">Agregar producto</button>
                         </div>
@@ -465,7 +465,7 @@ function carritoEnHtml() {
                                         alt="producto_carrito"> </div>
                                 <div class="info">
                                     <h6 class="nombre_pro_carr">${x.nombre}</h6>
-                                    <p class="precio_art_carr">$${x.precio}</p>
+                                    <p class="precio_art_carr">$${x.precio.toLocaleString()}</p>
                                 </div>
                                 `
         PantallaCarrito.append(divElement)
@@ -524,7 +524,7 @@ function sumarCarrito() {
     /* SUMAR TODOS LOS PRECIOS DE LOS PRODUCTOS */
     total = preciodelcarrito.reduce((acc, num) => acc + num)
     /* CAMBIO DEL TEXTO CON EL DOM */
-    precioFinal.innerText = total
+    precioFinal.innerText = total.toLocaleString()
     avisoCarrito()
 }
 
@@ -535,7 +535,7 @@ function productoMasCaro() {
     let masCaro = Math.max(...preciodelcarrito)
     /* CAMBIO DEL TEXTO CON EL DOM */
     let mayorValor = document.getElementById("mayorValor")
-    mayorValor.innerText = masCaro
+    mayorValor.innerText = masCaro.toLocaleString()
 }
 
 /* SECCION DE AVISOS DE TOASTIFY */
@@ -620,7 +620,7 @@ function pagarCarroDeCompras(){
         dolarapi()
         carritoVentanaPago()
         ventanaDePago.style.display = "flex"
-        pagarCarrito.innerText = total
+        pagarCarrito.innerText = total.toLocaleString()
         cerrarIngreso()
         cerrarRegistro()
 
@@ -655,7 +655,7 @@ function carritoVentanaPago() {
                                             alt="producto_carrito"> </div>
                                     <div class="info">
                                         <h6 class="nombre_pro_carr">${x.nombre}</h6>
-                                        <p class="precio_art_carr">$${x.precio}</p>
+                                        <p class="precio_art_carr">$${x.precio.toLocaleString()}</p>
                                     </div>
                                     `
             ventanaPagoProductos.append(divElementVentanaPago)
@@ -664,13 +664,15 @@ function carritoVentanaPago() {
         btndelet.style.display = "block"
     
 
-        pagarCarrito.innerText = total
+        pagarCarrito.innerText = total.toLocaleString()
         
     } 
     
 }
 
+/* SECCION DE MONEDAS DE PAGO */
 let dolar = document.getElementById("dolar")
+let pesos = document.getElementById("pesos")
 function dolarapi(){
     setTimeout(()=>{
         new Promise((resolve)=>{
@@ -680,8 +682,8 @@ function dolarapi(){
                 .then((response) => response.json())
                 .then((data) => {
                     coticazion = data[1].venta
-                    coticazion = total / coticazion
-                    dolar.innerText = coticazion.toFixed(2)
+                    enDolar()
+                    enPesos()
     
     /* QUEDE EN AGREGAR AHORA EL PRECIO DEL CARRO EN PESOS Y QUE PUEDA ELEGIR QUE TIPO DE MONEDA QUIERE PAGAR EL USUARIO */
     })
@@ -690,12 +692,26 @@ function dolarapi(){
         })
     })
 }
+let pagoEnDolar
+function enDolar(){
+    coticazion = total / coticazion
+    pagoEnDolar = coticazion 
+    dolar.innerText = pagoEnDolar.toFixed(2)
+}
+let pagoEnPesos
+function enPesos(){
+    coticazion = total
+    pagoEnPesos = coticazion
+    pesos.innerText = pagoEnPesos.toLocaleString()
+}
+
+let pagoDolar = document.getElementById("pagoDolar")
+pagoDolar.addEventListener("click",()=> {
+    pagarCarrito.innerText = pagoEnDolar.toFixed(2)
+})
 
 
-
-
-// fetch("js/productos.json")
-//                 .then((responde) => responde.json())
-//                 .then((data) => {
-//                     produFiltra = data.producto
-
+let pagoPesos = document.getElementById("pagoPesos")
+pagoPesos.addEventListener("click",()=> {
+    pagarCarrito.innerText = pagoEnPesos.toLocaleString()
+})

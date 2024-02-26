@@ -3,74 +3,62 @@
         {
             "id": 1,
             "nombre": "consola exbox series s ",
-            "precio": 750,
+            "precio": 600000,
             "img": "https://images.start.com.ar/RRS-00002.jpg"
         },
         {
             "id": 2,
             "nombre": "auricular sony ps5",
-            "precio": 200,
+            "precio": 215000,
             "img": "https://images.start.com.ar/3006433.jpg"
         },
         {
             "id": 3,
             "nombre": "notebook gamer asus",
-            "precio": 2500,
+            "precio": 2300000,
             "img": "https://images.start.com.ar/G513RM-HQ084W-365.jpg"
         },
         {
             "id": 4,
             "nombre": "joystick microsoft xbox",
-            "precio": 130,
+            "precio": 108000,
             "img": "https://images.start.com.ar/QAS-00007.jpg"
         },
         {
             "id": 5,
             "nombre": "consola sony playstation 4tb",
-            "precio": 1200,
+            "precio": 800000,
             "img": "https://images.start.com.ar/1000037231.jpg"
         },
         {
             "id": 6,
             "nombre": "mouse gamer",
-            "precio": 75,
+            "precio": 3500,
             "img": "https://images.start.com.ar/910-006366.jpg"
         },
         {
             "id": 7,
             "nombre": "teclado gamer g715",
-            "precio": 190,
+            "precio": 300000,
             "img": "https://images.start.com.ar/920-010453.jpg"
         },
         {
             "id": 8,
             "nombre": "monitor samsung 24",
-            "precio": 270,
+            "precio": 150000,
             "img": "https://images.start.com.ar/LF24T350FHLCZB.jpg"
         },
         {
             "id": 9,
             "nombre": "taclado gamer trust gtx 833",
-            "precio": 25,
+            "precio": 30000,
             "img": "https://images.start.com.ar/24067.jpg"
         },
         {
             "id": 10,
             "nombre": "teclado microsoft bluetooth",
-            "precio": 84,
+            "precio": 95000,
             "img": "https://images.start.com.ar/21Y-00061.jpg"
-        },
-        {
-            "id": 11,
-            "nombre": "teclado y mouse trust gamer",
-            "precio": 52,
-            "img": "https://images.start.com.ar/22460.jpg"
-        },
-        {
-            "id": 12,
-            "nombre": "teclado y mouse trust gamer",
-            "precio": 35,
-            "img": "https://images.start.com.ar/CRU-CT240BX500SSD1.jpg"
         }
         
     ]
