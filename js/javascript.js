@@ -484,9 +484,9 @@ function carritoEnHtml() {
 
 /* EVENTO DE BOTONES ELIMINAR DEL CARRITO */
 let btndelet = document.getElementById("delet")
-btndelet.addEventListener("click",()=> prueba())
+btndelet.addEventListener("click",()=> deletProducto())
 
-function prueba(){
+function deletProducto(){
     estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
     if(varCarro.length < 2){
         localStorage.removeItem("carrito")
@@ -594,4 +594,12 @@ function avisoCerrar() {
 }
 
 /* FINAL SECCION DE AVISOS DE TOASTTIFY */
+let ventanaDePago = document.getElementById("ventanaDePago")
 
+let pagar = document.getElementById("pagar")
+pagar.addEventListener("click",()=> pagarCarroDeCompras())
+
+function pagarCarroDeCompras(){
+    cerrarCarrito()
+ventanaDePago.style.display = "flex"
+}

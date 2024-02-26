@@ -101,11 +101,20 @@
                     </div>
                     <div class="total_carrito">
                         <p>Total: <span id="totalCarrito">$</span></p>
-                        <a href=""><p class="pagar">Pagar Carrito</p></a>
+                        <p class="pagar" id="pagar">Pagar Carrito</p>
                     </div>
                 </div>
             </div>
         </section>
+        <div class="ventana_de_pago" id="ventanaDePago">
+            <div class="caja_de_pago">
+                <h1>Pago del carrito</h1>
+                <p>total a Pagar <span Id="precioCarrito"></span>$</p>
+                <div class="boton_pagar">
+                    <button id="pagarCarrito">Pagar</button>
+                </div>
+            </div>
+        </div>
         <div class="section_productos" id="productos">
             <div class="filtro">
                 <h3>Buscar Producto</h3>
@@ -122,6 +131,7 @@
 
             </section>
         </div>
+        
         <footer class="pie_pagina">
             <form action="post" id="contacto">
                 <label for="Nombre">Nombre</label>
