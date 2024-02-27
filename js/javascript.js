@@ -24,37 +24,29 @@ let usuarioEnLoSt;
 let registroDeUsuario = document.getElementById("registroDeUsuario").addEventListener("click", () => abrirRegistro())
 
 /* FUNCION DE ABRIR LA VENTADA DE REGISTRO */
-
+let ventanaReg = document.getElementById("registro")
 function abrirRegistro() {
-    let ventanaReg = document.getElementById("registro")
     ventanaReg.style.display = "flex"
     cerrarVentaPago()
     cerrarIngreso()
     cerrarVentaPago()
 }
-
 /* FINAL DEL CODIGO PARA ABRIR LA VENTANA DE REGISTRO */
 
 
 /* FUNCION DE CERRAR LA VENTADA DE REGISTRO */
-
 /* CERRAR REGISTRO DE USUARIO */
 let cierreRegistroUsuario = document.getElementById("cerrarRegistroUsuario").addEventListener("click", () => cerrarRegistro())
-
 /* FUNCION DE CERRRAR LA VENTA DE REGISTRO */
 function cerrarRegistro() {
     let ventanaReg = document.getElementById("registro")
     ventanaReg.style.display = "none"
     textErroregistro.innerText = ""
 }
-
 /*  FINAL DE CODIGO FUNCION DE ABRIR LA VENTADA DE REGISTRO */
-
-
 
 /* ABRIR INGRESO DE USUARIO */
 let ingresoDeUsuario = document.getElementById("inicioSesionUsuario").addEventListener("click", () => abrirIngreso())
-
 /* FUNCION ABRIR VENTA DE INGRESO */
 function abrirIngreso() {
     let ventanaing = document.getElementById("ventanaIngreso")
@@ -67,7 +59,6 @@ function abrirIngreso() {
 
 /* EVENTO CERRAR INGRESO USUARIO */
 let cierreIngresoUsuario = document.getElementById("cerrarIngresoUsuario").addEventListener("click", () => cerrarIngreso())
-
 /* fUNCION CERRAR VENTANE DE INGRESO */
 function cerrarIngreso() {
     let ventanaing = document.getElementById("ventanaIngreso")
@@ -76,7 +67,6 @@ function cerrarIngreso() {
 
 }
 /* FINAL SECCION DE EVENTOS DE VENTANA REGISTRO E INGRESO */
-
 
 /* VARIABLES PARA EL REGISTRO USUARIO */
 let regNomUsu = document.getElementById("registroNombreUsuario").addEventListener("change", (event) => { regNomUsu = event.target.value })
@@ -147,39 +137,37 @@ function creacionUsuario() {
     localStorage.setItem("usuario", JSON.stringify(usuarioEnLoSt))
     cerrarRegistro()
 }
+/* FINAL LOGICA REGISTRO USUARIO */
 
-/* FINAL LOGICA REGISTRO USUARIO ******************* */
 
-
-/* LOGICA INGRESO USUARIO ************************* */
-
+/* LOGICA INGRESO USUARIO */
 
 /*DATOS INGRESADO DEL USUARIO  */
 let ingCorrUsu = document.getElementById("ingresoCorreoUsuario").addEventListener("change", (event) => ingCorrUsu = event.target.value)
 let contrUsu = document.getElementById("ingresoContraseñaUsuario").addEventListener("change", (event) => contrUsu = event.target.value)
 
-
 /* BOTON DE INGRESO USUARIO */
 let btnIngreso = document.getElementById("btnIngreso").addEventListener("click", () => ingresoUsuario())
-
 
 /* FUNCION DE INGRESOS DEL USUARIO*/
 let textErroingreso = document.getElementById("errorDeIngreso")
 
 /* FUNCION PARA INGESAR EL USUARIO A SU CUENTA */
 function ingresoUsuario() {
-
     usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
     usuarioEnLoSt ? usbUser() : textErroingreso.innerText = "No tenemos tus datos. Debes registrarte"
 }
+/* FUNCION PARA DESTRUCTURAR LAS VARIABLES */
 function usbUser() {
     usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : false
     validacionDatos() ? ingresoDePerfil() : errorlogin()
 }
+/* FUNCION PARA INDICAR UN ERROR EN EL INGRESO */
 function errorlogin() {
     textErroingreso.innerText = "Error en la contraseña o usuario"
 }
 
+/* FUNCION PARA VALIDAR LOS DATOS EN EL INGRESO DE USAURIO */
 function validacionDatos() {
     if (validacionContraseña() && validacionCorreo()) {
         return true
@@ -187,6 +175,7 @@ function validacionDatos() {
         return false
     }
 }
+/* VALIDACION DE CORREO */
 function validacionCorreo() {
     if (ingCorrUsu == correo) {
         return true
@@ -194,6 +183,7 @@ function validacionCorreo() {
         return false
     }
 }
+/* VALIDACION DE CONTRASEÑA */
 function validacionContraseña() {
     if (contrUsu === contraseña) {
         return true
@@ -206,12 +196,14 @@ function validacionContraseña() {
 /* CAMBIO DE PERFIL DEL USUARIO  */
 let sesionIngreoRegistro = document.getElementById("inicio_registo_Sesion")
 
+/* VARIABLE PARA EL USO DEL DOM CON EL NOMBRE DE USUARIO */
 let perfil = document.getElementById("usuarioIngresado")
 
-
 let carritoEnLoSt
+/* INICIO DEL ESTADO DEL USUARIO */
 let estadoUsuario = false
 
+/* FUNCION PARA INGRESAR A LA CUENTA DE USUARIO */
 function ingresoDePerfil() {
     eliminarcatg()
     usuarioEnLoSt ? { nombre, apellido, correo, contraseña } = usuarioEnLoSt : false
@@ -232,7 +224,7 @@ function ingresoDePerfil() {
     avisoInicio()
 
 }
-
+/* FUNCION PARA CREAR EL CARRITO INTERACTIVO*/
 function creacionNuevoCarrito() {
     estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
     if(varCarro[0]){
@@ -265,15 +257,18 @@ function creacionNuevoCarrito() {
     } 
     
 }
-
+/* FUNCION PARA ELIMINAR TODOS LOS PRODUCTOS AGREGADOS AL CARRITO  */
 function eliminarcatg() {
     let catalogoDivs = document.querySelectorAll('.spd');
     catalogoDivs.forEach(div => {
         div.remove();
     });
 }
+/* VARIABLE DEL DOM PARA CERRAR LA SESION DEL USUARIO */
 let cerrarSesion = document.getElementById("cerrarSesion")
 cerrarSesion.addEventListener("click", () => { cerrarlaSesion() })
+
+/* FUNCION PARA CERRAR LA SESION DEL USUARIO */
 function cerrarlaSesion() {
     sesionIngreoRegistro.style.display = "block"
     cerrarSesion.style.display = "none"
@@ -290,39 +285,40 @@ function cerrarlaSesion() {
 }
 /* FINAL LOCICA INGRESO USUARIO */
 
-/* CERRAR SESION DEL USUARIO */
-/* PRODUCTOS */
 /* CREADOR DE PRODUCTOS */
 class nuevoProducto {
     constructor(id, nombre, precio, img) {
         this.id = id,
-            this.nombre = nombre;
+        this.nombre = nombre;
         this.precio = precio;
         this.img = img
     }
 }
 
-
+/* VARIABLE DEL DOM X PARA CERRAR EL CARRITO */
 let cerrarCarr = document.getElementById("cerrarCarrito").addEventListener("click", () => cerrarCarrito())
+
+/* VARIABLE DEL DOM PARA ARBIR EL CARRITO */
 let abrirCarr = document.getElementById("carritoCompras").addEventListener("click", () => abrirCarrito())
 
+/* VARIABLE DEL DOM VENTANA DEL CARRO DE COMPRAS */
 let ventanaCarrito = document.getElementById("contenedorCarrito")
+/* FUNCIONPARA CERRAR EL CARRITO */
 function cerrarCarrito() {
     ventanaCarrito.style.display = "none"
 }
+/* FUNCION PARA ABRIR EL CARRITO */
 function abrirCarrito() {
     ventanaCarrito = document.getElementById("contenedorCarrito")
     ventanaCarrito.style.display = "flex"
     cerrarVentaPago()
-
-
 }
 
 /* SECCION PARA EL FILTRADO DE LOS PRODUCTOS */
 
 /* VARIABLE DEL NODO INPUT DEL FILTRADO */
 let entraFiltro = document.getElementById("productoFiltro").addEventListener("change", (event) => { entraFiltro = (event.target.value) })
-
+/* FUNCION PARA HACER EL FILTRADO DE PRODUCTOS */
 function filtrarCatalogo() {
     filtrado = new Promise((resolve) => {
         resolve(
@@ -353,15 +349,13 @@ function filtrarCatalogo() {
         btnProductos()
     }, 300)
 }
-/* FUNCION DE FILTRADO */
-// function filtrarProducto(valor) {}
 
 /* VARIBLE NODO DEL FORMULARIO DE FILTRADO */
 let formFiltr = document.getElementById("form_filtr")
+/* EVENTO PARA FILTAR EL CATALOGO */
 formFiltr.addEventListener("submit", (event) => {
     event.preventDefault()
     filtrarCatalogo()
-
 })
 
 /* CREACION DE LOS PRODUCTOS EN LA WEB */
@@ -370,6 +364,7 @@ let div2; //variable para eliminar los productos al aplicar el filtro
 /* FUNCION PARA CRAR EL CATALOGO DE INICIO */
 let div
 let productos
+/* FUNCION PARA HACER HACER EL CARRO DE COMRAS POR PRIMERA VEZ */
 function buscarCatalogo() {
     setTimeout(() => {
         creacionCatalogo = new Promise((resolve) => {
@@ -416,8 +411,6 @@ function eliminarDivs() {
 
 /* SECCION PARA MOSTRAR EL CARRITO DE COMPRAS */
 
-
-
 /* EVENTO DE BOTONES AGREGAR PRODUCTOS */
 function btnProductos() {
     for (let i = 0; i < productos.length; i++) {
@@ -427,14 +420,8 @@ function btnProductos() {
 }
 
 
-
-
-
-
-
-/* variable carrito donde se guardan */
 carritoEnLoSt
-/* CANTIDAD DE ARTICULOS */
+/* VARIABLE PARA GUARDAR LOS PDOCUTOS*/
 let carrito = []
 
 /* FUNCION AGREGAR EL PRODUCTO AL CARRITO */
@@ -446,7 +433,6 @@ function agregarAlCarrito(valor) {
     } else {
         carrito.push(valor)
     }
-    // estadoUsuario ? conSesion() : sinSesion()
     mostarCarrtio()
 }
 
@@ -458,6 +444,7 @@ function mostarCarrtio() {
 
 let PantallaCarrito = document.getElementById("carrito")
 let divElement
+
 /* FUNCION DE AGREGAR LOS PORDUCTOS AL HTML */
 function carritoEnHtml() {
     divElement = document.createElement("div")
@@ -480,15 +467,11 @@ function carritoEnHtml() {
     sumarCarrito()
 }
 
-
-
-
-
-
 /* EVENTO DE BOTONES ELIMINAR DEL CARRITO */
 let btndelet = document.getElementById("delet")
 btndelet.addEventListener("click",()=> deletProducto())
 
+/* FUNCION PARA ELIMINAR UN PRODUCTO DEL CARRTIO */
 function deletProducto(){
     /*  */
     estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
@@ -509,19 +492,12 @@ function deletProducto(){
 
 }
 
-
-
-
-
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++ */
-
-
-
 /* AGREGAR SOLO EL PRECIO DE LOS PRODUCTOS A UNA VARIABLE */
 let preciodelcarrito
 let total
 let precioFinal = document.getElementById("totalCarrito")
+
+/* FUNCION PARA SUMAR LOS PRODUCTOS DEL CARRITO */
 function sumarCarrito() {
     preciodelcarrito = []
     for (x of varCarro) {
@@ -534,7 +510,6 @@ function sumarCarrito() {
 
     avisoCarrito()
 }
-
 
 /* PRODUCTO MAS CARO CON EM METODO SPREND */
 function productoMasCaro() {
@@ -659,11 +634,11 @@ function pagarCarroDeCompras(){
     
 }
 
-
 /* CERRAR VENTA DE PAGO */
 let cerrar_v_P = document.getElementById("cerrar_v_P")
 cerrar_v_P.addEventListener("click",()=> cerrarVentaPago())
 
+/* FUNCION PARA CERRAR LA VENTANA DE PAGO */
 function cerrarVentaPago(){
     ventanaDePago.style.display ="none"
     
@@ -704,6 +679,8 @@ function carritoVentanaPago() {
 /* SECCION DE MONEDAS DE PAGO */
 let dolar = document.getElementById("dolar")
 let pesos = document.getElementById("pesos")
+
+/* FUNCTINO PARA TRAER LOS DATOS DE LA API DEL DOLAR */
 function dolarapi(){
     setTimeout(()=>{
         new Promise((resolve)=>{
@@ -723,31 +700,33 @@ function dolarapi(){
         })
     })
 }
+
 let pagoEnDolar
+
+/* FUNCION PARA HACER LA CONVERDION DE PESO A DOLARES */
 function enDolar(){
     coticazion = total / coticazion
     pagoEnDolar = coticazion 
     dolar.innerText = pagoEnDolar.toFixed(2)
 }
+/* FUNCION PARA HACER LA CONVERSIO DE DOLARES A PESOS */
 let pagoEnPesos
 function enPesos(){
     coticazion = total
     pagoEnPesos = coticazion
     pesos.innerText = pagoEnPesos.toLocaleString()
 }
-
+/* VARIABLE DEL DOM PARA INGRESAR EL PRECIO DE DOLAR */
 let pagoDolar = document.getElementById("pagoDolar")
 pagoDolar.addEventListener("click",()=> {
     pagarCarrito.innerText = pagoEnDolar.toFixed(2)
 })
 
-
+/* VARIABLE DEL DOM PARA INGRESAR EL PRECIO DEL PESE */
 let pagoPesos = document.getElementById("pagoPesos")
 pagoPesos.addEventListener("click",()=> {
     pagarCarrito.innerText = pagoEnPesos.toLocaleString()
 })
-
-
 
 /* FUNCTIONES DE VERIFICACION DE PAGO */
 let pagoFinal = document.getElementById("pagar_Carrito")
