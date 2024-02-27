@@ -1,22 +1,12 @@
 /* TAREAS 
-investigar en cuanto sale el precio del hosttinger para alojar mis proyectos
-cambiar los colores del texto de  la presentacion
-PENSAR EL FOOTER PARA COMPLETAR LA VISTA DE LA PAGINA
-    NOMBRE DEL SITIO WEB / CONTACTO /METODOS DE PAGO
-COMENZAR A INCORMPAR BOOSTRAP
-ADAPTAR A DISTINTOS DISPOSITIVOS 
-incorparar la api de dolar
-agregar el boton de compra {que lleve a un html aparte para realizar el pago del carrito}
-simular el pago realizado y el pago con error
-COMENTAR Y SEPARAR LAS PORCIONES DE CODIGO PARA QUE SEA MAS ENTENDIBLE EN HTML CSS Y JS
 AGREGAR EL FORMATO PARA QUE ACEPTE SOLAMENTE CON EL .COM EN EL INPUT DE CORREO
-EDITAR LA CARTAS Y LOS BOTONES 
+QUE SEA OBLIGATORIO AGREGAR LOS DATOS DE LA TARJETA PARA HACER EL PAGO
 
-****** quede en hacer el codigo mas legible y sencillo el inicio se sesion y cerrar sesion estan muy complejos ************
  */
 
 /* CONSTRUCTOR DE USURIO */
 class registroUsuario {
+    /* VARIABLES PARA EL OBJETO USUARIO */
     constructor(nombre, apellido, correo, contraseña) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -24,19 +14,29 @@ class registroUsuario {
         this.contraseña = contraseña
     }
 }
+
+/* VARIABLE PARA ALOJAR EL CARRITO EN EL LOCALSTORAGE */
 let usuarioEnLoSt;
+
 /* SECCION DE EVENTOS DE VENTANA REGISTRO E INGRESO */
 
 /* ABRIR REGISTRO DE USUARIO */
 let registroDeUsuario = document.getElementById("registroDeUsuario").addEventListener("click", () => abrirRegistro())
 
 /* FUNCION DE ABRIR LA VENTADA DE REGISTRO */
+
 function abrirRegistro() {
     let ventanaReg = document.getElementById("registro")
     ventanaReg.style.display = "flex"
+    cerrarVentaPago()
     cerrarIngreso()
     cerrarVentaPago()
 }
+
+/* FINAL DEL CODIGO PARA ABRIR LA VENTANA DE REGISTRO */
+
+
+/* FUNCION DE CERRAR LA VENTADA DE REGISTRO */
 
 /* CERRAR REGISTRO DE USUARIO */
 let cierreRegistroUsuario = document.getElementById("cerrarRegistroUsuario").addEventListener("click", () => cerrarRegistro())
@@ -46,8 +46,11 @@ function cerrarRegistro() {
     let ventanaReg = document.getElementById("registro")
     ventanaReg.style.display = "none"
     textErroregistro.innerText = ""
-
 }
+
+/*  FINAL DE CODIGO FUNCION DE ABRIR LA VENTADA DE REGISTRO */
+
+
 
 /* ABRIR INGRESO DE USUARIO */
 let ingresoDeUsuario = document.getElementById("inicioSesionUsuario").addEventListener("click", () => abrirIngreso())
@@ -58,6 +61,8 @@ function abrirIngreso() {
     ventanaing.style.display = "flex"
     cerrarRegistro()
     cerrarVentaPago()
+    cerrarVentaPago()
+
 }
 
 /* EVENTO CERRAR INGRESO USUARIO */
@@ -161,7 +166,7 @@ let btnIngreso = document.getElementById("btnIngreso").addEventListener("click",
 /* FUNCION DE INGRESOS DEL USUARIO*/
 let textErroingreso = document.getElementById("errorDeIngreso")
 
-
+/* FUNCION PARA INGESAR EL USUARIO A SU CUENTA */
 function ingresoUsuario() {
 
     usuarioEnLoSt = JSON.parse(localStorage.getItem("usuario"))
@@ -301,13 +306,16 @@ class nuevoProducto {
 let cerrarCarr = document.getElementById("cerrarCarrito").addEventListener("click", () => cerrarCarrito())
 let abrirCarr = document.getElementById("carritoCompras").addEventListener("click", () => abrirCarrito())
 
+let ventanaCarrito = document.getElementById("contenedorCarrito")
 function cerrarCarrito() {
-    let ventanaCarrito = document.getElementById("contenedorCarrito")
     ventanaCarrito.style.display = "none"
 }
 function abrirCarrito() {
     ventanaCarrito = document.getElementById("contenedorCarrito")
     ventanaCarrito.style.display = "flex"
+    cerrarVentaPago()
+
+
 }
 
 /* SECCION PARA EL FILTRADO DE LOS PRODUCTOS */
@@ -388,9 +396,7 @@ function buscarCatalogo() {
                             div2 = div
                         });
                     })
-                    .catch(error => {
-                        console.error("algo salio mal")
-                    })
+                    
             )
         })
     }, 1200)
@@ -436,7 +442,6 @@ function agregarAlCarrito(valor) {
     if (estadoUsuario) {
         carritoEnLoSt.push(valor)
         localStorage.setItem("carrito", JSON.stringify(carritoEnLoSt))
-        console.log(carritoEnLoSt);
 
     } else {
         carrito.push(valor)
@@ -485,6 +490,7 @@ let btndelet = document.getElementById("delet")
 btndelet.addEventListener("click",()=> deletProducto())
 
 function deletProducto(){
+    /*  */
     estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
     if(varCarro.length < 2){
         localStorage.removeItem("carrito")
@@ -525,6 +531,7 @@ function sumarCarrito() {
     total = preciodelcarrito.reduce((acc, num) => acc + num)
     /* CAMBIO DEL TEXTO CON EL DOM */
     precioFinal.innerText = total.toLocaleString()
+
     avisoCarrito()
 }
 
@@ -603,6 +610,28 @@ function avisoCarroVacio() {
     }).showToast();
 }
 
+/* FUNCION AVISO DE PAGO COMPLETADO */
+function pagoRealiazo(){
+    estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
+    if(estadoUsuario){
+        localStorage.removeItem("carrito")
+    } else{
+        varCarro , carritoEnLoSt , carrito = []
+    }
+    btndelet.style.display = "none"
+    totalCarrito.innerText = ""
+    eliminarcatg()
+
+
+
+
+    Swal.fire({
+        title: "Pago realizado con exito!",
+        icon: "success"
+    });
+}
+
+
 /* FINAL SECCION DE AVISOS DE TOASTTIFY */
 
 /* EVENTO ABRIR VENTANA DE PAGO */
@@ -643,9 +672,11 @@ function cerrarVentaPago(){
 /* creacion del catalago en la venta de pago  */
 let ventanaPagoProductos = document.getElementById("pagoCatalogo")
 let divElementVentanaPago
+
 /* FUNCION DE AGREGAR LOS PORDUCTOS AL HTML */
 function carritoVentanaPago() {
     estadoUsuario ? varCarro = carritoEnLoSt : varCarro = carrito
+    divElementVentanaPago? divElementVentanaPago.remove(): false
     if(varCarro[0]){
         for (const x of varCarro) {
             divElementVentanaPago = document.createElement("div")
@@ -715,3 +746,13 @@ let pagoPesos = document.getElementById("pagoPesos")
 pagoPesos.addEventListener("click",()=> {
     pagarCarrito.innerText = pagoEnPesos.toLocaleString()
 })
+
+
+
+/* FUNCTIONES DE VERIFICACION DE PAGO */
+let pagoFinal = document.getElementById("pagar_Carrito")
+pagoFinal.addEventListener("click",()=>buyCarrito())
+function buyCarrito(){
+    cerrarVentaPago()
+    pagoRealiazo()
+}

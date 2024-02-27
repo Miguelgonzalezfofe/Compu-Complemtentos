@@ -182,15 +182,14 @@ main .section_productos {
 
 /* +++++++++++++++++ DESDE AQUI FALTA COMENTAR EL CODIGO ++++++++++++++++++++++++++++++ */
 main .section_productos .filtro {
-    background-color: aquamarine;
     text-align: center;
     margin: auto;
     width: 85%;
     height: 80px;
-    padding: 10px;
 }
 
 main .section_productos .filtro h3 {
+    font-size: 40px;
     text-align: center;
 }
 
@@ -202,7 +201,9 @@ main .section_productos .filtro form {
 main .section_productos .filtro form input{
     border-radius: 5px;
     border: 1px solid #aaa;
-    width: 400px;
+    width: 500px;
+    height: 35px;
+    font-size: 20px;
 }
 
 main .section_productos .productos {
@@ -211,6 +212,7 @@ main .section_productos .productos {
 }
 
 main .section_productos .productos h2 {
+    padding: 10px;
     text-align: center;
     font-size: 35px;
 }
@@ -228,25 +230,29 @@ main .section_productos .productos .caja_productos {
 
 main .section_productos .productos .caja_productos .producto {
     width: 250px;
-    height: 320px;
     padding: 10px;
     border-radius: 15px;
-    border: 1px solid;
     box-shadow: 1px 1px 4px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
+    transition: 200ms;
+
+
 }
 
 main .section_productos .productos .caja_productos .producto:hover {
     box-shadow: 0 1px 15px rgba(139, 37, 159, 0.694);
     scale: 1.03;
-}
+    transition: 200ms;
+    rotate: 1deg;
+
+}   
 
 
 main .section_productos .productos .caja_productos .producto img {
-    width: auto;
-    height: 200px;
+    width: 100%;
+    height: 190px;
     border-radius: 15px;
 }
 
@@ -265,13 +271,18 @@ main .section_productos .productos .caja_productos .producto .precio {
 
 main .section_productos .productos .caja_productos .producto .caja_boton .botonAgregarProducto {
     width: 100%;
-    height: 25px;
-    border-radius: 5px;
-    background-color: rgba(159, 37, 159, 0.694)
+    padding: 2px;
+    border-radius: 8px;
+    background-color: rgba(159, 37, 159, 0.562);
+    transition: 200ms;
+
 }
 
 main .section_productos .productos .caja_productos .producto .caja_boton .botonAgregarProducto:hover {
     scale: 1.05;
+    background-color: rgba(159, 37, 159, 0.726);
+    transition: 200ms;
+
 }
 
 
@@ -579,58 +590,27 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     padding: 10px;
     width: 100%;
     height: auto;
-    background-color: brown;
-    
-}
-.pie_pagina h1{
-    text-align: center;
+    background: linear-gradient(to top, #037466, rgba(159, 37, 159));
 }
 .pie_pagina .contenedor_footer{
     display: flex;
     flex-direction: row;
-}
-
-.pie_pagina form {
-    border: 1px solid;
-    border-radius: 10px;
-    padding: 10px;
-    margin: auto;
-}
-
-
-.pie_pagina #contacto {
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-}
-
-.pie_pagina #contacto input {
-    height: 22px;
-    font-size: 15px;
-    border-radius: 5px;
-}
-
-.pie_pagina #contacto textarea {
-    width: auto;
-    height: 120px;
-    overflow: auto;
-}
-
-.pie_pagina #contacto #botonEnviar {
-    width: 90%;
-    margin: 5px auto;
-}
-
-.pie_pagina #contacto #reset {
-    width: 90%;
-    margin: 5px auto;
+    justify-content: space-between;
 }
 .pie_pagina .map{
-    width: 280px;
-    height: 280px;
-    background-color: blue;
+    width: 80%;
 }
+.pie_pagina .contenedor_footer .info_web{
+    width: 110%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: rgb(218, 218, 218);
+}
+.pie_pagina .contenedor_footer .info_web h1{
+    text-align: center;
+}
+
 
 /* @~@~@ ESTYLOS PARA EL PAGO DE LOS PRODUCTOS @~@~@ */
 
@@ -642,7 +622,7 @@ main .section_productos .productos .caja_productos .producto .caja_boton .botonA
     background-color: rgba(0, 0, 0, 0.655);
     width: 100%;
     height: 100vh;
-    display: flex;
+    display:  none;
     flex-direction: column;
     justify-content: start;
     align-items: center;

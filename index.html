@@ -2,14 +2,25 @@
 <html lang="es">
 
 <head>
+    <!-- DATOS META -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- LINK A LOS STYLOS DE TOASTIFY -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <!-- LINK A LA LOS DE BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- LINK A LOS ICONOS DE BOOTSTRAP -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- LINK A LA HOJA DE STYLE PROPIA -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- TITULO DE LA PAGINA -->
     <title>Compu/Complemetos</title>
+
 </head>
 
 <body>
@@ -19,16 +30,16 @@
         <nav>
             <!-- CONTENEDOR DE LOGO -->
             <div class="contenedor_img">
-                <img src="img/logo/DSC06105 - copia.png" alt="logo">
+                <img src="img/logo/DSC06105 - copia.png" alt="logo"> <!-- IMAGEN MIA COMO LOGO -->
             </div>
-            <!-- ENLACES -->
+            <!-- ENLACES INTERNOS -->
             <ul>
                 <li><a href="#inicio">inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#contacto">contacto</a></li>
             </ul>
         </nav>
-        <!-- CONTENEDOR DE CODIGO DE SESION -->
+        <!-- REIGSTRO E INICIO DE SESION -->
         <div class="sesion">
             <div class="img-sesion">
                 <img src="img/logo/usuarioSinRegistro.png" alt="img_sesion" id="foto_perfil_usuario">
@@ -75,6 +86,7 @@
                     <input type="button" id="btnRegistrase" value="Registrarse">
                 </div>
             </div>
+            <!-- CONTENEDOR DE INGRESO DE USUARIO -->
             <div class="contenedor_ingreso" id="ventanaIngreso">
                 <div class="ingreso">
                     <div class="cerrar" id="cerrarIngresoUsuario">X</div>
@@ -90,6 +102,7 @@
                     <input type="button" id="btnIngreso" value="Ingresar">
                 </div>
             </div>
+            <!-- CONTENEDOR DE CARRITO DE COMPRAS -->
             <div class="contenedor_carrito" id="contenedorCarrito">
                 <p id="cerrarCarrito">x</p>
                 <h3>Carro de compras</h3>
@@ -105,8 +118,9 @@
                     </div>
                 </div>
             </div>
-        </section>
 
+        </section>
+        <!-- CONTENEDOR DE LA VENTANA PARA PAGOS -->
         <div class="ventana_de_pago" id="ventanaDePago">
             <div class="caja_de_pago">
                 <p id="cerrar_v_P">x</p>
@@ -149,22 +163,21 @@
 
                     </form>
                     <div class="boton_pagar">
-                        <button class="pagar_Carrito">Pagar</button>
+                        <button class="pagar_Carrito" id="pagar_Carrito">Pagar</button>
                     </div>
                 </div>
             </div>
         </div>
-
-
+        <!-- CONTENEDOR DEL CATALOGO -->
         <div class="section_productos" id="productos">
             <div class="filtro">
-                <h3>Buscar Producto</h3>
+                <h3>Buscardor Productos</h3>
                 <form id="form_filtr">
                     <input type="text" id="productoFiltro" placeholder="Buscar Producto">
                 </form>
             </div>
             <section class="productos">
-                <h2>Productos</h2>
+                <h2>Catalogo</h2>
 
                 <div class="caja_productos" id="cajaProductos">
 
@@ -172,35 +185,37 @@
 
             </section>
         </div>
-
+        <!-- FOOTER DE LA WEB -->
         <footer class="pie_pagina">
-            <div class="contanedor-footer">
+            <div class="contenedor_footer">
                 <div class="map">
-                mapa
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.845996880154!2d-58.37285272425958!3d-34.60805557295284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a3352cbe276f75%3A0xe16921ef0545f86d!2sCasa%20Rosada!5e0!3m2!1ses-419!2sar!4v1709006257348!5m2!1ses-419!2sar" width="95%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="info_web">
+                    <h1>Compu / complementos </h1>
+                    <div class="">
+                        <h2>AQUI ENCONTRARAS TODO LO QUE NECESITAS<br> PARA ARMAR TU ZONA DE TRABAJO O ZONA GAMER</h2>
+            <p id="ini">Equipos de alta calidad <span id="garantia">Garantias</span> de hasta 6 meses. Envios a todo el
+                mundo desde argentina </p>
+                    </div>
+                    
+
+                </div>
+
             </div>
-            <!-- <form action="post" id="contacto">
-                <label for="Nombre">Nombre</label>
-                <input type="text" id="Nombre">
-                <label for="apellido">Apellido</label>
-                <input type="text" id="apellido">
-                <label for="correo">Correo</label>
-                <input type="text" id="correo">
-                <label for="comentario">Mensaje</label>
-                <textarea name="comentario" id="comentario"></textarea>
-                <input type="button" value="Enviar" id="botonEnviar">
-                <input type="reset" value="Borrar" id="reset">
-            </form> -->
-            </div>
-            <h1>Compu / complementos </h1>
         </footer>
 
     </main>
+    <!-- ENLACES A SCRIPT JS -->
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="js/javascript.js"></script>
+
+    <!-- FINAL DE ENLACES SCRIPT JS -->
 </body>
 
 </html>
