@@ -95,16 +95,20 @@ header .sesion .inicio_sesion p {
     margin: 0;
     cursor: pointer;
 }
+header .sesion .inicio_sesion p:hover{
+    color: #9b98b4;
+}
+
 
 /* CONTENEDOR CARRITO */
 header .carrito_de_compras {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     width: 100px;
-    height: 70px;
+    height: 65px;
     cursor: pointer;
     background-color: white;
     border-radius: 50%;
@@ -114,7 +118,7 @@ header .carrito_de_compras {
 /* IMG DEL CARRITO */
 header .carrito_de_compras img {
     width: 70%;
-    height: 60%;
+    height: 75%;
 }
 
 /* CANTIDAD DE ARTICULOS EN EL CARRITO */
@@ -713,8 +717,5 @@ div .info .precio_art_carr {
 width: 80%;
 border-radius: 8px;
 }
-
-
-
 
 

@@ -1,8 +1,18 @@
 /* TAREAS 
 AGREGAR EL FORMATO PARA QUE ACEPTE SOLAMENTE CON EL .COM EN EL INPUT DE CORREO
-QUE SEA OBLIGATORIO AGREGAR LOS DATOS DE LA TARJETA PARA HACER EL PAGO
+VALIDADR LOS DATOS DE INGRESO QUE CUMPLA LOS REQUISITOS MUNIMOS 
 
- */
+QUE SEA OBLIGATORIO AGREGAR LOS DATOS DE LA TARJETA PARA HACER EL PAGO
+centrar el carrito de compras 
+
+
+tareas de dani
+
+agregar una funcion que al dar click en le producto se muestre las caracteristicas del productos con mas detalle
+lograr hacer que se elimine mas de un producto al carrito y no solo el ultimo
+hacer el proyecto responsive
+
+*/
 
 /* CONSTRUCTOR DE USURIO */
 class registroUsuario {
@@ -523,7 +533,7 @@ function productoMasCaro() {
 /* SECCION DE AVISOS DE TOASTIFY */
 function avisoCarrito() {
     Toastify({
-        text: "Se agrego un producto al carrito",
+        text: "Se agregó un producto al carrito",
         duration: 3000,
         gravity: "top",
         position: "left",
@@ -735,3 +745,57 @@ function buyCarrito(){
     cerrarVentaPago()
     pagoRealiazo()
 }
+
+
+
+/* posible codigo 
+
+para validar el texto y que contenga solo letras 
+function validarTexto(input) {
+    // Expresión regular para verificar si el valor contiene solo letras
+    let regex = /^[a-zA-Z]+$/;
+
+    if (!regex.test(input.value)) {
+        // Mostrar un mensaje de error si el valor no contiene solo letras
+        alert("Por favor, ingresa solo texto.");
+        // Limpiar el campo de entrada
+        input.value = "";
+    }
+}
+
+<input type="text" id="nombreUsuario" onchange="validarTexto(this)">
+
+function validarNumeros(input) {
+    // Expresión regular para verificar si el valor contiene solo números
+    let regex = /^[0-9]+$/;
+
+    if (!regex.test(input.value)) {
+        // Mostrar un mensaje de error si el valor no contiene solo números
+        alert("Por favor, ingresa solo números.");
+        // Limpiar el campo de entrada
+        input.value = "";
+    }
+}
+<input type="text" id="numeroUsuario" onchange="validarNumeros(this)">
+
+
+function validarEmail(input) {
+    // Expresión regular para verificar si el valor contiene un "@" 
+    let regex = /@/;
+
+    if (!regex.test(input.value)) {
+        // Mostrar un mensaje de error si el valor no contiene un "@"
+        alert("Por favor, ingresa un correo electrónico válido.");
+        // Limpiar el campo de entrada
+        input.value = "";
+    }
+}
+
+<input type="text" id="correoUsuario" onchange="validarEmail(this)">
+
+
+
+
+
+
+*/

@@ -2,19 +2,19 @@
     "producto": [
         {
             "id": 1,
-            "nombre": "consola exbox series s ",
+            "nombre": "consola Xbox series s ",
             "precio": 600000,
             "img": "https://images.start.com.ar/RRS-00002.jpg"
         },
         {
             "id": 2,
-            "nombre": "auricular sony ps5",
+            "nombre": "auricular Sony ps5",
             "precio": 215000,
             "img": "https://images.start.com.ar/3006433.jpg"
         },
         {
             "id": 3,
-            "nombre": "notebook gamer asus",
+            "nombre": "notebook gamer Asus",
             "precio": 2300000,
             "img": "https://images.start.com.ar/G513RM-HQ084W-365.jpg"
         },
@@ -26,7 +26,7 @@
         },
         {
             "id": 5,
-            "nombre": "consola sony playstation 4tb",
+            "nombre": "consola Sony PlayStation 4tb",
             "precio": 800000,
             "img": "https://images.start.com.ar/1000037231.jpg"
         },
@@ -44,19 +44,19 @@
         },
         {
             "id": 8,
-            "nombre": "monitor samsung 24",
+            "nombre": "monitor Samsung 24",
             "precio": 150000,
             "img": "https://images.start.com.ar/LF24T350FHLCZB.jpg"
         },
         {
             "id": 9,
-            "nombre": "taclado gamer trust gtx 833",
+            "nombre": "teclado gamer trust gtx 833",
             "precio": 30000,
             "img": "https://images.start.com.ar/24067.jpg"
         },
         {
             "id": 10,
-            "nombre": "teclado microsoft bluetooth",
+            "nombre": "teclado microsoft Bluetooth",
             "precio": 95000,
             "img": "https://images.start.com.ar/21Y-00061.jpg"
         }
